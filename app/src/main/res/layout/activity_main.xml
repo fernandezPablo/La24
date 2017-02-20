@@ -92,7 +92,7 @@
                 android:onClick="clickVenta">
 
                 <TextView
-                    android:text="BUZON-VALE"
+                    android:text="BUZON/VALE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvBuzonVale"
