@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="backgroundApp">#555</color>
     <color name="grey">#777</color>
+    <color name="grey_light">#999</color>
     <color name="colorAbrirTurno">#00A</color>
     <color name="colorVenta">#A00</color>
     <color name="colorCerrarTurno">#0a0</color>
