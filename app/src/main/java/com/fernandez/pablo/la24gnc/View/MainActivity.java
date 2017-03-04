@@ -1,10 +1,12 @@
-package com.fernandez.pablo.la24gnc;
+package com.fernandez.pablo.la24gnc.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.fernandez.pablo.la24gnc.R;
 
 public class MainActivity extends AppCompatActivity {
 

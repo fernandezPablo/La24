@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc;
+package com.fernandez.pablo.la24gnc.View;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fernandez.pablo.la24gnc.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GncFragment extends Fragment {
+public class VariosFragment extends Fragment {
 
 
-    public GncFragment() {
+    public VariosFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +25,7 @@ public class GncFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gnc, container, false);
+        return inflater.inflate(R.layout.fragment_varios, container, false);
     }
 
 }

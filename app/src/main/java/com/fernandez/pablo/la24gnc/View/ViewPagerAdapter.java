@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc;
+package com.fernandez.pablo.la24gnc.View;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
