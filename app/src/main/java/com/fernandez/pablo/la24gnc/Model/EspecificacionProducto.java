@@ -52,6 +52,14 @@ public class EspecificacionProducto {
         this.precio = precio;
     }
 
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
     public double getDiferenciaStock(){
         return this.stock.diferenciaStock();
     }
