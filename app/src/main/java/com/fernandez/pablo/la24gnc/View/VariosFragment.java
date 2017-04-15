@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
@@ -26,7 +28,7 @@ import static android.widget.Toast.makeText;
  */
 public class VariosFragment extends Fragment{
 
-    private ListView listView;
+    private Spinner spProductos;
 
     public VariosFragment() {
         // Required empty public constructor
@@ -38,24 +40,24 @@ public class VariosFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_varios,container,false);
 
-        List<EspecificacionProducto> productos = new ArrayList<>();
-        productos.add(new EspecificacionProducto(101,"HIELO X 5KG",45.0,new Stock(0.0,0.0)));
-        productos.add(new EspecificacionProducto(102,"HIELO X 15KG",75.0,new Stock(0.0,0.0)));
-        productos.add(new EspecificacionProducto(103,"AGUA DESTILADA X 5LTS",35.0,new Stock(0.0,0.0)));
-        productos.add(new EspecificacionProducto(104,"LIQUIDO DE FRENOS",40.0,new Stock(0.0,0.0)));
-        productos.add(new EspecificacionProducto(105,"LIQUIDO REFRIGERANTE X 5LTS",50.0,new Stock(0.0,0.0)));
-        productos.add(new EspecificacionProducto(106,"LIQUIDO REFRIGERANTE X 1LTS",20.0,new Stock(0.0,0.0)));
-        productos.add(new EspecificacionProducto(107,"ACEITE NORMAL 40 YPF",40.0,new Stock(0.0,0.0)));
+        spProductos = (Spinner) view.findViewById(R.id.spProductos);
 
-        listView = (ListView) view.findViewById(R.id.listProductos);
-        listView.setAdapter(new ProductoAdapter(getContext(),productos));
+        List<String> productos = new ArrayList<>();
+        /*
+        productos.add(new EspecificacionProducto(1,"HIELO X 5KG",45,new Stock(0,0)));
+        productos.add(new EspecificacionProducto(2,"HIELO X 15KG",75,new Stock(0,0)));
+        productos.add(new EspecificacionProducto(1,"REFRIGERANTE X 5LTS",50,new Stock(0,0)));
+        */
+        productos.add("HIELO X 5KG");
+        productos.add("HIELO X 15KG");
+        productos.add("REFRIGERANTE X 5LTS");
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setBackgroundColor(Color.BLUE);
-            }
-        });
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item,productos);
+
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spProductos.setAdapter(arrayAdapter);
+
 
         return view;
     }
