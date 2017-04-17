@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
@@ -29,6 +31,14 @@ import static android.widget.Toast.makeText;
 public class VariosFragment extends Fragment{
 
     private Spinner spProductos;
+    private EditText tvCantidad;
+    private ItemSpinnerAdapter spProductoAdapter;
+    private ListView listViewProductos;
+    private ProductoAdapter productoAdapter;
+    private List<EspecificacionProducto> productosOnSpinner;
+    private List<EspecificacionProducto> productosOnListView;
+    private List<Double> cantidades;
+
 
     public VariosFragment() {
         // Required empty public constructor
@@ -41,25 +51,88 @@ public class VariosFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_varios,container,false);
 
         spProductos = (Spinner) view.findViewById(R.id.spProductos);
+        tvCantidad = (EditText) view.findViewById(R.id.etCantidad);
+        listViewProductos = (ListView) view.findViewById(R.id.lvProductos);
 
-        List<String> productos = new ArrayList<>();
-        /*
-        productos.add(new EspecificacionProducto(1,"HIELO X 5KG",45,new Stock(0,0)));
-        productos.add(new EspecificacionProducto(2,"HIELO X 15KG",75,new Stock(0,0)));
-        productos.add(new EspecificacionProducto(1,"REFRIGERANTE X 5LTS",50,new Stock(0,0)));
-        */
-        productos.add("HIELO X 5KG");
-        productos.add("HIELO X 15KG");
-        productos.add("REFRIGERANTE X 5LTS");
+        productosOnSpinner = new ArrayList<>();
+        productosOnListView = new ArrayList<>();
+        cantidades = new ArrayList<>();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item,productos);
+        productosOnSpinner.add(new EspecificacionProducto(1,"HIELO X 5KG",45,new Stock(0,0)));
+        productosOnSpinner.add(new EspecificacionProducto(2,"HIELO X 15KG",75,new Stock(0,0)));
+        productosOnSpinner.add(new EspecificacionProducto(1,"REFRIGERANTE X 5LTS",50,new Stock(0,0)));
 
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spProductos.setAdapter(arrayAdapter);
+        spProductoAdapter = new ItemSpinnerAdapter(getActivity(),productosOnSpinner);
+        spProductos.setAdapter(spProductoAdapter);
 
+        productoAdapter = new ProductoAdapter(getActivity(),productosOnListView,cantidades);
+        listViewProductos.setAdapter(productoAdapter);
 
         return view;
     }
 
+    public Spinner getSpProductos() {
+        return spProductos;
+    }
+
+    public void setSpProductos(Spinner spProductos) {
+        this.spProductos = spProductos;
+    }
+
+    public EditText getTvCantidad() {
+        return tvCantidad;
+    }
+
+    public void setTvCantidad(EditText tvCantidad) {
+        this.tvCantidad = tvCantidad;
+    }
+
+    public ItemSpinnerAdapter getSpProductoAdapter() {
+        return spProductoAdapter;
+    }
+
+    public void setSpProductoAdapter(ItemSpinnerAdapter spProductoAdapter) {
+        this.spProductoAdapter = spProductoAdapter;
+    }
+
+    public ListView getListViewProductos() {
+        return listViewProductos;
+    }
+
+    public void setListViewProductos(ListView listViewProductos) {
+        this.listViewProductos = listViewProductos;
+    }
+
+    public ProductoAdapter getProductoAdapter() {
+        return productoAdapter;
+    }
+
+    public void setProductoAdapter(ProductoAdapter productoAdapter) {
+        this.productoAdapter = productoAdapter;
+    }
+
+    public List<EspecificacionProducto> getProductosOnSpinner() {
+        return productosOnSpinner;
+    }
+
+    public void setProductosOnSpinner(List<EspecificacionProducto> productosOnSpinner) {
+        this.productosOnSpinner = productosOnSpinner;
+    }
+
+    public List<EspecificacionProducto> getProductosOnListView() {
+        return productosOnListView;
+    }
+
+    public void setProductosOnListView(List<EspecificacionProducto> productosOnListView) {
+        this.productosOnListView = productosOnListView;
+    }
+
+    public List<Double> getCantidades() {
+        return cantidades;
+    }
+
+    public void setCantidades(List<Double> cantidades) {
+        this.cantidades = cantidades;
+    }
 }

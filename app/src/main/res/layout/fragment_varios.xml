@@ -38,10 +38,13 @@
                 android:id="@+id/btnAdd"
                 android:layout_alignParentEnd="true"
                 android:text="AGREGAR"
-                android:src="@android:drawable/ic_input_add" />
+                android:src="@android:drawable/ic_input_add"
+                android:onClick="addProductoListView"
+                />
         </LinearLayout>
 
         <ListView
+            android:id="@+id/lvProductos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/llProducto"

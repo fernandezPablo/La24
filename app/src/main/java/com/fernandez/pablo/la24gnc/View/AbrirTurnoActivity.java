@@ -5,7 +5,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Toast;
 
+import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
 import com.fernandez.pablo.la24gnc.R;
 
 public class AbrirTurnoActivity extends AppCompatActivity {
@@ -14,6 +17,9 @@ public class AbrirTurnoActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter viewPageAdapter;
+    GncFragment gncFragment;
+    AceiteFragment aceiteFragment;
+    VariosFragment variosFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +30,34 @@ public class AbrirTurnoActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPageAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPageAdapter.addFragments(new GncFragment(),"GNC");
-        viewPageAdapter.addFragments(new AceiteFragment(),"ACEITE");
-        viewPageAdapter.addFragments(new VariosFragment(),"VARIOS");
+        gncFragment = new GncFragment();
+        aceiteFragment = new AceiteFragment();
+        variosFragment = new VariosFragment();
+        viewPageAdapter.addFragments(gncFragment,"GNC");
+        viewPageAdapter.addFragments(aceiteFragment,"ACEITE");
+        viewPageAdapter.addFragments(variosFragment,"VARIOS");
         viewPager.setAdapter(viewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
+    public void addProductoListView(View v){
+        EspecificacionProducto productoSeleccionado = (EspecificacionProducto) variosFragment.getSpProductos().getSelectedItem();
+        if (variosFragment.getProductosOnListView().size()> 0) {
+            for (EspecificacionProducto prod :
+                    variosFragment.getProductosOnListView()) {
+                if (prod.equals(productoSeleccionado)) {
+                    Toast.makeText(this, "EL PRODUCTO YA FUE AGREGADO AL LISTADO ANTERIORMENTE...", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        }
+        variosFragment.getProductosOnListView().add(productoSeleccionado);
+        variosFragment.getCantidades().add(Double.parseDouble(variosFragment.getTvCantidad().getText().toString()));
+        variosFragment.getTvCantidad().setText("");
+        variosFragment.getProductoAdapter().notifyDataSetChanged();
+
+        Toast.makeText(this,variosFragment.getSpProductos().getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+    }
+
+
 }
