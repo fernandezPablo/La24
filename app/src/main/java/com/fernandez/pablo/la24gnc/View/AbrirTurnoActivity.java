@@ -49,6 +49,7 @@ public class AbrirTurnoActivity extends AppCompatActivity {
                     Toast.makeText(this, "EL PRODUCTO YA FUE AGREGADO AL LISTADO ANTERIORMENTE...", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
             }
         }
         variosFragment.getProductosOnListView().add(productoSeleccionado);
