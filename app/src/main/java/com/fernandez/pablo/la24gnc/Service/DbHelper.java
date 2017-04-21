@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc;
+package com.fernandez.pablo.la24gnc.Service;
 
 import android.content.Context;
 import android.database.DatabaseErrorHandler;
