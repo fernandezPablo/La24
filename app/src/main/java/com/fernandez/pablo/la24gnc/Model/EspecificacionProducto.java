@@ -7,25 +7,19 @@ package com.fernandez.pablo.la24gnc.Model;
 public class EspecificacionProducto {
 
     private int codigo;
+    private int rubro;
     private String descripcion;
     private double precio;
-    private Stock stock;
 
     public EspecificacionProducto(){
 
     }
 
-    public EspecificacionProducto(int codigo, String descripcion, double precio) {
+    public EspecificacionProducto(int codigo, String descripcion, double precio, int rubro) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
-    }
-
-    public EspecificacionProducto(int codigo, String descripcion, double precio, Stock stock) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.stock = stock;
+        this.rubro = rubro;
     }
 
     public int getCodigo() {
@@ -52,22 +46,19 @@ public class EspecificacionProducto {
         this.precio = precio;
     }
 
-    public Stock getStock() {
-        return stock;
+    public int getRubro() {
+        return rubro;
     }
 
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
-
-    public double getDiferenciaStock(){
-        return this.stock.diferenciaStock();
+    public void setRubro(int rubro) {
+        this.rubro = rubro;
     }
 
     @Override
     public String toString() {
         return "EspecificacionProducto{" +
                 "codigo=" + codigo +
+                ", rubro=" + rubro +
                 ", descripcion='" + descripcion + '\'' +
                 ", precio=" + precio +
                 '}';

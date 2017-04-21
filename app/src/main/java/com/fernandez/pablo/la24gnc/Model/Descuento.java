@@ -6,15 +6,21 @@ package com.fernandez.pablo.la24gnc.Model;
 
 public class Descuento {
 
+    private int codigo;
     private String descripcion;
     private double monto;
 
     public Descuento() {
     }
 
-    public Descuento(String descripcion, double monto) {
+    public Descuento(int codigo, String descripcion, double monto) {
+        this.codigo = codigo;
         this.descripcion = descripcion;
         this.monto = monto;
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 
     public String getDescripcion() {
@@ -36,7 +42,8 @@ public class Descuento {
     @Override
     public String toString() {
         return "Descuento{" +
-                "descripcion='" + descripcion + '\'' +
+                "codigo=" + codigo +
+                ", descripcion='" + descripcion + '\'' +
                 ", monto=" + monto +
                 '}';
     }

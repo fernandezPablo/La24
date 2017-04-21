@@ -1,22 +1,16 @@
 package com.fernandez.pablo.la24gnc.View;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
-import com.fernandez.pablo.la24gnc.Model.Stock;
 import com.fernandez.pablo.la24gnc.R;
 
 import java.util.ArrayList;
@@ -58,9 +52,9 @@ public class VariosFragment extends Fragment{
         productosOnListView = new ArrayList<>();
         cantidades = new ArrayList<>();
 
-        productosOnSpinner.add(new EspecificacionProducto(1,"HIELO X 5KG",45,new Stock(0,0)));
-        productosOnSpinner.add(new EspecificacionProducto(2,"HIELO X 15KG",75,new Stock(0,0)));
-        productosOnSpinner.add(new EspecificacionProducto(1,"REFRIGERANTE X 5LTS",50,new Stock(0,0)));
+        productosOnSpinner.add(new EspecificacionProducto(1,"HIELO X 5KG",45,2));
+        productosOnSpinner.add(new EspecificacionProducto(2,"HIELO X 15KG",75,2));
+        productosOnSpinner.add(new EspecificacionProducto(1,"REFRIGERANTE X 5LTS",50,3));
 
 
         spProductoAdapter = new ItemSpinnerAdapter(getActivity(),productosOnSpinner);
