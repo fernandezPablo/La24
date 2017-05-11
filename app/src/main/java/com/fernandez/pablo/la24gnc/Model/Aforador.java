@@ -6,16 +6,23 @@ package com.fernandez.pablo.la24gnc.Model;
 
 public class Aforador {
 
+    public static final String ACEITE = "ACEITE";
+    public static final String GNC = "GNC";
+
     private int numero;
     private String unidad;
     private double valorInicial;
     private double valorFinal;
+    private String tipo;
+    private int codigoTurno;
 
-    public Aforador(int numero, String unidad, double valorInicial, double valorFinal) {
+    public Aforador(int numero, String unidad, double valorInicial, double valorFinal, String tipo,int codigoTurno) {
         this.numero = numero;
         this.unidad = unidad;
         this.valorInicial = valorInicial;
         this.valorFinal = valorFinal;
+        this.tipo = tipo;
+        this.codigoTurno = codigoTurno;
     }
 
     public int getNumero() {
@@ -48,6 +55,22 @@ public class Aforador {
 
     public void setValorFinal(double valorFinal) {
         this.valorFinal = valorFinal;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getCodigoTurno() {
+        return codigoTurno;
+    }
+
+    public void setCodigoTurno(int codigoTurno) {
+        this.codigoTurno = codigoTurno;
     }
 
     @Override

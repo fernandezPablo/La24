@@ -8,29 +8,32 @@ import java.util.ArrayList;
 
 public class Venta {
 
+    private int codigo;
     private double total;
     private ArrayList<LineaVenta> lineasVenta;
-    private Gnc gnc;
-    private Aceite aceite;
     private ArrayList<Descuento> descuentos;
 
     public Venta() {
         lineasVenta = new ArrayList<>();
         descuentos = new ArrayList<>();
-        this.gnc = new Gnc();
-        this.aceite = new Aceite();
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     public double getTotal(){
         for (LineaVenta lv : lineasVenta) {
             this.total += lv.getSubtotal();
         }
-        this.total += this.gnc.totalDineroGnc();
-        this.total += this.aceite.totalDineroAceite();
 
         return total;
     }
+
 
     public double getTotalConDescuento(){
 
@@ -43,4 +46,8 @@ public class Venta {
     }
 
 
+    public void crearLineaVenta(EspecificacionProducto prod, double cantidad) {
+        LineaVenta lv = new LineaVenta(cantidad,prod);
+        this.lineasVenta.add(lv);
+    }
 }

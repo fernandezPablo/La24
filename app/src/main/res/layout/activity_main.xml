@@ -20,6 +20,34 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="4dp"
+            card_view:cardBackgroundColor="@color/grey"
+            card_view:cardCornerRadius="10dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="clickAbrirTurno">
+
+                <TextView
+                    android:text="TURNO 1 - 10/05/2017"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvInfoTurno"
+                    android:textSize="15dp"
+                    android:textColor="@color/white"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:id="@+id/card_abrir_turno"
@@ -59,20 +87,21 @@
             card_view:cardBackgroundColor="@color/grey"
             card_view:cardCornerRadius="10dp"
             >
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="clickVenta">
 
                 <TextView
-                    android:text="VENTA"
+                    android:id="@+id/tvVenta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvVenta"
-                    android:textSize="20dp"
-                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:text="VENTA"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
@@ -89,7 +118,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="clickVenta">
+                android:onClick="clickBuzonVale">
 
                 <TextView
                     android:text="BUZON/VALE"

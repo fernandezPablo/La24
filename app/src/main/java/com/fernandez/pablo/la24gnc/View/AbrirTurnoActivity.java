@@ -1,5 +1,6 @@
 package com.fernandez.pablo.la24gnc.View;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
+import com.fernandez.pablo.la24gnc.Presenter.AbrirTurnoPresenter;
 import com.fernandez.pablo.la24gnc.R;
 
 public class AbrirTurnoActivity extends AppCompatActivity {
@@ -60,5 +62,35 @@ public class AbrirTurnoActivity extends AppCompatActivity {
         Toast.makeText(this,variosFragment.getSpProductos().getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
     }
 
+    public GncFragment getGncFragment() {
+        return gncFragment;
+    }
+
+    public void setGncFragment(GncFragment gncFragment) {
+        this.gncFragment = gncFragment;
+    }
+
+    public AceiteFragment getAceiteFragment() {
+        return aceiteFragment;
+    }
+
+    public void setAceiteFragment(AceiteFragment aceiteFragment) {
+        this.aceiteFragment = aceiteFragment;
+    }
+
+    public VariosFragment getVariosFragment() {
+        return variosFragment;
+    }
+
+    public void setVariosFragment(VariosFragment variosFragment) {
+        this.variosFragment = variosFragment;
+    }
+
+    public void guardarTurno(View v){
+        AbrirTurnoPresenter.guardarTurno(this);
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 }
