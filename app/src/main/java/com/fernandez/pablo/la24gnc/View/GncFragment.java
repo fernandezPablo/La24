@@ -50,8 +50,6 @@ public class GncFragment extends Fragment {
 
     public ArrayList<Double> getValoresAforadores(){
 
-
-        //TODO Verificar que el usuario haya ingresado valores en los campos
         ArrayList<Double> valoresAforadores = new ArrayList<>();
         if(this.aforador_1.getText().length() > 0){
             valoresAforadores.add(Double.parseDouble(this.aforador_1.getText().toString()));

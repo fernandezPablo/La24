@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
     public void clickVenta(View v){
             if(!turnoAbierto.equals(SIN_TURNO)) {
                 Toast.makeText(this, "INICIANDO VENTA...", Toast.LENGTH_SHORT).show();
-
+                Intent i = new Intent(this,VentaActivity.class);
+                startActivity(i);
             }
             else{
                 Toast.makeText(this, "NO EXISTE NINGUN TURNO ABIERTO...", Toast.LENGTH_SHORT).show();

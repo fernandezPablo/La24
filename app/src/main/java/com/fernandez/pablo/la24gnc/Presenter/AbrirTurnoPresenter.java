@@ -4,6 +4,7 @@ import com.fernandez.pablo.la24gnc.Model.Aforador;
 import com.fernandez.pablo.la24gnc.Model.AforadorDAO;
 import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
+import com.fernandez.pablo.la24gnc.Model.VentaDAO;
 import com.fernandez.pablo.la24gnc.View.AbrirTurnoActivity;
 
 import java.text.SimpleDateFormat;
@@ -47,13 +48,16 @@ public class AbrirTurnoPresenter {
             turno.setNro(0);
         }
 
+        VentaDAO ventaDAO = new VentaDAO(activity);
+        turno.setVenta(ventaDAO.createVenta());
+
         TurnoDAO turnoDAO = new TurnoDAO(activity);
         turnoDAO.createTurno(turno);
 
         turno.setCodigo(turnoDAO.getCodLastTurno());
 
         for (int i = 0; i < valoresInicialesGnc.size(); i++) {
-            aforadoresGnc.add(new Aforador(i + 1, "mt3", valoresInicialesGnc.get(i).doubleValue(), 0, Aforador.GNC, turno.getCodigo()));
+            aforadoresGnc.add(new Aforador(i + 1, "m3", valoresInicialesGnc.get(i).doubleValue(), 0, Aforador.GNC, turno.getCodigo()));
         }
 
         AforadorDAO aforadorDAO = new AforadorDAO(activity);

@@ -42,7 +42,6 @@ public class AceiteFragment extends Fragment {
 
         ArrayList<Double> valoresAforadores = new ArrayList<>();
 
-        //TODO Verificar que el usuario haya ingresado valores en los campos
         if(etAforador1.getText().length() > 0){
             valoresAforadores.add(Double.parseDouble(etAforador1.getText().toString()));
         }

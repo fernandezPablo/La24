@@ -6,16 +6,21 @@ package com.fernandez.pablo.la24gnc.Model;
 
 public class Descuento {
 
+    public static final String BUZON = "BUZON";
+    public static final String VALE = "VALE";
+
     private int codigo;
     private String descripcion;
+    private String tipo;
     private double monto;
 
     public Descuento() {
     }
 
-    public Descuento(int codigo, String descripcion, double monto) {
+    public Descuento(int codigo, String descripcion, String tipo, double monto) {
         this.codigo = codigo;
         this.descripcion = descripcion;
+        this.tipo = tipo;
         this.monto = monto;
     }
 
@@ -29,6 +34,14 @@ public class Descuento {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public double getMonto() {

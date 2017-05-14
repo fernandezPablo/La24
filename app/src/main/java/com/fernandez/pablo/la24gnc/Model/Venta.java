@@ -13,9 +13,15 @@ public class Venta {
     private ArrayList<LineaVenta> lineasVenta;
     private ArrayList<Descuento> descuentos;
 
+    public Venta(int codigo) {
+        this.codigo = codigo;
+        this.total = 0.0;
+    }
+
     public Venta() {
-        lineasVenta = new ArrayList<>();
-        descuentos = new ArrayList<>();
+        this.total = 0.0;
+        this.lineasVenta = new ArrayList<>();
+        this.descuentos = new ArrayList<>();
     }
 
     public int getCodigo() {
@@ -24,6 +30,10 @@ public class Venta {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public void setTotal(double total){
+        this.total = total;
     }
 
     public double getTotal(){
@@ -47,7 +57,7 @@ public class Venta {
 
 
     public void crearLineaVenta(EspecificacionProducto prod, double cantidad) {
-        LineaVenta lv = new LineaVenta(cantidad,prod);
+        LineaVenta lv = new LineaVenta(cantidad,prod,this);
         this.lineasVenta.add(lv);
     }
 }

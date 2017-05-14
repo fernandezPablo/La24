@@ -20,18 +20,28 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String TABLE_VENTA = "CREATE TABLE Venta(codigo INTEGER NOT NULL PRIMARY " +
             "KEY AUTOINCREMENT, total DECIMAL)";
     private static final String TABLE_LVENTA = "CREATE TABLE Linea_Venta(codigo INTEGER NOT NULL " +
-            "PRIMARY KEY AUTOINCREMENT, cantidad DECIMAL, codigo_producto INTEGER, FOREIGN KEY" +
-            "(codigo_producto) REFERENCES especificacion_producto(codigo))";
+            "PRIMARY KEY AUTOINCREMENT, cantidad DECIMAL, codigo_producto INTEGER, codigo_venta " +
+            "INTEGER, FOREIGN KEY(codigo_producto) REFERENCES especificacion_producto(codigo)" +
+            ", FOREIGN KEY(codigo_venta) REFERENCES Venta(codigo))";
     private static final String TABLE_ESPECIFICACIONPROD = "CREATE TABLE especificacion_producto" +
-            "(codigo INTEGER NOT NULL PRIMARY KEY, rubro INTEGER NOT NULL, descripcion VARCHAR(50)," +
+            "(codigo INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, rubro INTEGER NOT NULL, descripcion VARCHAR(50)," +
             "precio DECIMAL)";
     private static final String TABLE_DESCUENTO= "CREATE TABLE Descuento(codigo INTEGER NOT NULL " +
-            "PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR(50), monto DECIMAL, codigo_venta INTEGER," +
+            "PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR(50), tipo VARCHAR(10), monto DECIMAL, codigo_venta INTEGER," +
             " FOREIGN KEY(codigo_venta) REFERENCES Venta(codigo))";
-    private static final String TABLE_AFORADOR= "CREATE TABLE Aforador(codigo INTEGER NOT NULL " +
+    private static final String TABLE_AFORADOR = "CREATE TABLE Aforador(codigo INTEGER NOT NULL " +
             "PRIMARY KEY AUTOINCREMENT, numero INT NOT NULL, unidad VARCHAR(3), valor_inicial " +
             "DECIMAL, valor_final DECIMAL, tipo VARCHAR(10),codigo_turno INTEGER, " +
             "FOREIGN KEY(codigo_turno) REFERENCES Turno(codigo))";
+    private static final String PRODUCTOS = "INSERT INTO especificacion_producto(rubro,descripcion,precio)" +
+            "VALUES ('2','ACEITE NORMAL YPF x LTS','43')," +
+            "('3','HIELO x 5KG','55')," +
+            "('3','HIELO x 15KG','90')," +
+            "('4','REFRIGERANTE x 1LTS','20')," +
+            "('4','REFRIGERANTE x 5LTS','50')," +
+            "('5','AGUA DESTILADA x 1LTS','15')," +
+            "('5','AGUA DESTILADA x 5LTS','35')," +
+            "('6','LIQUIDO PARA FRENOS','20')";
 
     private static DbHelper dbHelper;
 
@@ -47,6 +57,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_LVENTA);
         db.execSQL(TABLE_DESCUENTO);
         db.execSQL(TABLE_AFORADOR);
+        db.execSQL(PRODUCTOS);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.fernandez.pablo.la24gnc.Model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
@@ -22,7 +23,7 @@ public class TurnoDAO {
 
     private DbHelper dbHelper;
 
-    private static String CREATE_TURNO = "INSERT INTO Turno(nro,pmz,fecha,estado) VALUES(?,?,?,?)";
+    private static String CREATE_TURNO = "INSERT INTO Turno(nro,pmz,fecha,estado,codigo_venta) VALUES(?,?,?,?,?)";
 
     public TurnoDAO(Context context) {
         this.dbHelper = DbHelper.getInstance(context);
@@ -32,14 +33,10 @@ public class TurnoDAO {
 
         SQLiteDatabase db = this.dbHelper.getWritableDatabase();
 
-        SQLiteStatement stmt = db.compileStatement(CREATE_TURNO);
+        db.execSQL(CREATE_TURNO,new Object[]{turno.getNro(),turno.getPmz(),
+                turno.getFecha().toString(),turno.getEstado(),turno.getVenta().getCodigo()});
 
-        stmt.bindString(1, String.valueOf(turno.getNro()));
-        stmt.bindDouble(2,turno.getPmz());
-        stmt.bindString(3,turno.getFecha().toString());
-        stmt.bindString(4,turno.getEstado());
-
-        stmt.execute();
+        db.close();
 
     }
 
@@ -66,6 +63,18 @@ public class TurnoDAO {
         if(c.moveToFirst()){
             return "Turno "+c.getString(0)+" - "+c.getString(1);
         }
+        return null;
+    }
+
+    public static Turno getTurno(Context context,int codigo){
+        SQLiteDatabase db = DbHelper.getInstance(context).getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE codigo = ?",new String[]{Integer.toString(codigo)});
+
+        if(c.moveToFirst()){
+            Venta v = new Venta(c.getInt(5));
+            return new Turno(c.getInt(1),c.getString(3),c.getDouble(2),c.getString(4),v);
+        }
+
         return null;
     }
 

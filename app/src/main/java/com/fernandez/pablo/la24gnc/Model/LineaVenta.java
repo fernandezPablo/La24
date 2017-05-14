@@ -6,17 +6,36 @@ package com.fernandez.pablo.la24gnc.Model;
 
 public class LineaVenta {
 
+    private int codigo;
     private double cantidad;
     private double subtotal;
-    EspecificacionProducto producto;
+    private EspecificacionProducto producto;
+    private Venta venta;
 
     public LineaVenta() {
     }
 
-    public LineaVenta(double cantidad, EspecificacionProducto producto) {
+    public LineaVenta(int codigo, double cantidad, EspecificacionProducto producto,Venta venta) {
+        this.codigo = codigo;
         this.cantidad = cantidad;
         this.producto = producto;
+        this.venta = venta;
         this.calcularSubtotal();
+    }
+
+    public LineaVenta(double cantidad, EspecificacionProducto producto,Venta venta) {
+        this.cantidad = cantidad;
+        this.producto = producto;
+        this.venta = venta;
+        this.calcularSubtotal();
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public double getCantidad() {
@@ -41,5 +60,13 @@ public class LineaVenta {
 
     public void setProducto(EspecificacionProducto producto) {
         this.producto = producto;
+    }
+
+    public Venta getVenta() {
+        return venta;
+    }
+
+    public void setVenta(Venta venta) {
+        this.venta = venta;
     }
 }
