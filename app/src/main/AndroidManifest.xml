@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.AbrirTurnoActivity" />
-        <activity android:name=".View.VentaActivity"></activity>
+        <activity android:name=".View.VentaActivity" />
+        <activity android:name=".View.DescuentoActivity"></activity>
     </application>
 
 </manifest>

@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     public void clickBuzonVale(View v){
         if(!turnoAbierto.equals(SIN_TURNO)) {
             Toast.makeText(this, "INICIANDO BUZON/VALE...", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this,DescuentoActivity.class);
+            startActivity(i);
         }
         else{
             Toast.makeText(this, "NO EXISTE NINGUN TURNO ABIERTO...", Toast.LENGTH_SHORT).show();

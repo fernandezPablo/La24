@@ -13,15 +13,24 @@ public class Descuento {
     private String descripcion;
     private String tipo;
     private double monto;
+    private Venta venta;
 
     public Descuento() {
     }
 
-    public Descuento(int codigo, String descripcion, String tipo, double monto) {
+    public Descuento(int codigo, String descripcion, String tipo, double monto, Venta venta) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.tipo = tipo;
         this.monto = monto;
+        this.venta = venta;
+    }
+
+    public Descuento(String descripcion, String tipo, double monto, Venta venta) {
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.monto = monto;
+        this.venta = venta;
     }
 
     public int getCodigo() {
@@ -50,6 +59,14 @@ public class Descuento {
 
     public void setMonto(double monto) {
         this.monto = monto;
+    }
+
+    public Venta getVenta() {
+        return venta;
+    }
+
+    public void setVenta(Venta venta) {
+        this.venta = venta;
     }
 
     @Override
