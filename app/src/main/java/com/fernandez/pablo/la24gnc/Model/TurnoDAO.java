@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.fernandez.pablo.la24gnc.Service.DbHelper;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -47,10 +48,15 @@ public class TurnoDAO {
 
         Cursor c = db.rawQuery("SELECT codigo FROM "+TABLE_NAME+" ORDER BY codigo DESC LIMIT 1",null);
 
-        if (c.moveToFirst()) {
-            return c.getInt(0);
+        try {
+            if (c.moveToFirst()) {
+                return c.getInt(0);
+            }
         }
-
+        finally {
+            db.close();
+            c.close();
+        }
         return -1;
     }
 
@@ -60,8 +66,14 @@ public class TurnoDAO {
 
         Cursor c = db.rawQuery("SELECT nro, fecha FROM Turno WHERE estado='ABIERTO' ORDER BY codigo DESC LIMIT 1",null);
 
-        if(c.moveToFirst()){
-            return "Turno "+c.getString(0)+" - "+c.getString(1);
+        try {
+            if (c.moveToFirst()) {
+                return "Turno " + c.getString(0) + " - " + c.getString(1);
+            }
+        }
+        finally {
+            db.close();
+            c.close();
         }
         return null;
     }
@@ -70,12 +82,35 @@ public class TurnoDAO {
         SQLiteDatabase db = DbHelper.getInstance(context).getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE codigo = ?",new String[]{Integer.toString(codigo)});
 
-        if(c.moveToFirst()){
-            Venta v = new Venta(c.getInt(5));
-            return new Turno(c.getInt(1),c.getString(3),c.getDouble(2),c.getString(4),v);
+
+        try{
+            if(c.moveToFirst()){
+                Venta v = new Venta(c.getInt(5));
+                ArrayList<LineaVenta> lvs = new LineaVentaDAO(context).getLineasVenta(v.getCodigo());
+                v.asignarLineasVenta(lvs);
+
+                return new Turno(c.getInt(0),c.getInt(1),c.getString(3),c.getDouble(2),c.getString(4),v);
+            }
+        }
+        finally {
+            db.close();
+            c.close();
         }
 
         return null;
+    }
+
+    public static void cerrarTurno(Context context,Turno turno){
+        SQLiteDatabase db =  DbHelper.getInstance(context).getWritableDatabase();
+        db.execSQL("UPDATE Turno SET estado = ?, pmz = ? WHERE codigo = ?",
+                new Object[]
+                        {
+                        Turno.TURNO_CERRADO,
+                        turno.getPmz(),
+                        turno.getCodigo()
+                        }
+        );
+        db.close();
     }
 
 }

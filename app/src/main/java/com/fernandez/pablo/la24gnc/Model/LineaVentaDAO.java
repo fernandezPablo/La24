@@ -36,8 +36,15 @@ public class LineaVentaDAO {
         Cursor cursor = db.rawQuery("SELECT codigo FROM Linea_Venta WHERE codigo_producto = ? AND codigo_venta = ? LIMIT 1",
                 new String[]{Integer.toString(producto.getCodigo()),Integer.toString(venta.getCodigo())});
 
-        if(cursor.moveToFirst()){
-            return cursor.getInt(0);
+
+        try {
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(0);
+            }
+        }
+        finally {
+            db.close();
+            cursor.close();
         }
 
         return -1;
@@ -62,12 +69,18 @@ public class LineaVentaDAO {
                         " WHERE Linea_Venta.codigo_venta = ?",
                 new String[]{Integer.toString(codigoVenta)});
 
-        if(c.moveToFirst()){
-            do {
-                lineasVenta.add(new LineaVenta(c.getInt(0),c.getDouble(1),
-                        new EspecificacionProducto(c.getInt(2),c.getString(3),c.getDouble(4),c.getInt(5)),
-                        new Venta(c.getInt(6))));
-            }while(c.moveToNext());
+        try {
+            if (c.moveToFirst()) {
+                do {
+                    lineasVenta.add(new LineaVenta(c.getInt(0), c.getDouble(1),
+                            new EspecificacionProducto(c.getInt(2), c.getString(3), c.getDouble(4), c.getInt(5)),
+                            new Venta(c.getInt(6))));
+                } while (c.moveToNext());
+            }
+        }
+        finally {
+            db.close();
+            c.close();
         }
         return lineasVenta;
     }

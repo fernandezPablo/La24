@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".View.AbrirTurnoActivity" />
         <activity android:name=".View.VentaActivity" />
-        <activity android:name=".View.DescuentoActivity"></activity>
+        <activity android:name=".View.DescuentoActivity" />
+        <activity android:name=".View.CerrarTurnoActivity"></activity>
     </application>
 
 </manifest>

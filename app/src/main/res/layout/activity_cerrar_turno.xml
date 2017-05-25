@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fernandez.pablo.la24gnc.View.CerrarTurnoActivity"
+    android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CIERRE DE TURNO"
+            android:gravity="left"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilPmz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="PMZ"
+                android:layout_margin="10dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tietPmz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="VALORES FINALES DE GNC (M3)"
+                    android:gravity="left"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tilSurtidor1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="SURTIDOR N°1"
+                        android:layout_margin="10dp"
+                        >
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/tietSurtidor1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tilSurtidor2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="SURTIDOR N°2"
+                        android:layout_margin="10dp"
+                        >
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/tietSurtidor2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tilSurtidor3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="SURTIDOR N°3"
+                        android:layout_margin="10dp"
+                        >
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/tietSurtidor3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tilSurtidor4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="SURTIDOR N°4"
+                        android:layout_margin="10dp"
+                        >
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/tietSurtidor4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tilSurtidor5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="SURTIDOR N°5"
+                        android:layout_margin="10dp"
+                        >
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/tietSurtidor5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tilSurtidor6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="SURTIDOR N°6"
+                        android:layout_margin="10dp"
+                        >
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/tietSurtidor6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            />
+                    </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_cerrar_turno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_action_fab_send"
+            android:onClick="cerrarTurno"
+            app:fabSize="normal" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>

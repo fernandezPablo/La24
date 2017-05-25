@@ -16,6 +16,8 @@ public class Venta {
     public Venta(int codigo) {
         this.codigo = codigo;
         this.total = 0.0;
+        this.lineasVenta = new ArrayList<>();
+        this.descuentos = new ArrayList<>();
     }
 
     public Venta() {
@@ -36,7 +38,7 @@ public class Venta {
         this.total = total;
     }
 
-    public double getTotal(){
+    public double calcularTotal(){
         for (LineaVenta lv : lineasVenta) {
             this.total += lv.getSubtotal();
         }
@@ -47,14 +49,39 @@ public class Venta {
 
     public double getTotalConDescuento(){
 
-        double total = this.getTotal();
+        double totalDescuento = this.total;
 
         for (Descuento des: descuentos) {
-            this.total -= des.getMonto();
+            totalDescuento -= des.getMonto();
         }
-        return this.total;
+        return totalDescuento;
     }
 
+    public void asignarLineasVenta(ArrayList<LineaVenta> lvs){
+        for (LineaVenta lv:
+             lvs) {
+            this.lineasVenta.add(lv);
+        }
+    }
+
+    public ArrayList<LineaVenta> getLineasVenta() {
+        return lineasVenta;
+    }
+
+    public void setLineasVenta(ArrayList<LineaVenta> lineasVenta) {
+        this.lineasVenta = lineasVenta;
+    }
+
+    public ArrayList<Descuento> getDescuentos() {
+        return descuentos;
+    }
+
+    public void setDescuentos(ArrayList<Descuento> descuentos) {
+        for (Descuento des:
+             descuentos) {
+            this.descuentos.add(des);
+        }
+    }
 
     public void crearLineaVenta(EspecificacionProducto prod, double cantidad) {
         LineaVenta lv = new LineaVenta(cantidad,prod,this);

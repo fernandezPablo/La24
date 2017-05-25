@@ -56,25 +56,38 @@ public class AforadorDAO {
 
         Cursor cursor = db.query(TABLE_NAME,COLUMNAS,"codigo=?",args,null,null,null,"LIMIT 1");
 
-        if(cursor.moveToFirst()){
-            return new Aforador(cursor.getInt(0),cursor.getString(1), cursor.getDouble(2),
-                    cursor.getDouble(3),cursor.getString(4),cursor.getInt(5));
+        try {
+            if (cursor.moveToFirst()) {
+                return new Aforador(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2),
+                        cursor.getDouble(3), cursor.getString(4), cursor.getInt(5));
+            }
+        }
+        finally {
+            db.close();
+            cursor.close();
         }
         return null;
     }
 
-    public ArrayList<Aforador> listAforadores(){
+    public ArrayList<Aforador> listAforadores(int codigoTurno, String tipo){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_NAME,COLUMNAS,null,null,null,null,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM Aforador WHERE codigo_turno = ? AND tipo = ?",
+                new String[]{Integer.toString(codigoTurno),tipo});
 
         ArrayList<Aforador> aforadores = new ArrayList<>();
 
-        if(cursor.moveToFirst()){
-            do{
-                aforadores.add(new Aforador(cursor.getInt(1),cursor.getString(2),cursor.getDouble(3)
-                        ,cursor.getDouble(4),cursor.getString(5),cursor.getInt(6)));
-            }while (cursor.moveToNext());
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    aforadores.add(new Aforador(cursor.getInt(1), cursor.getString(2), cursor.getDouble(3)
+                            , cursor.getDouble(4), cursor.getString(5), cursor.getInt(6)));
+                } while (cursor.moveToNext());
+            }
+        }
+        finally {
+            db.close();
+            cursor.close();
         }
         return aforadores;
     }
@@ -86,6 +99,15 @@ public class AforadorDAO {
 
         stmt.execute();
 
+    }
+
+    public void setValorFinal(Aforador aforador){
+        SQLiteDatabase db = this.dbHelper.getWritableDatabase();
+
+        db.execSQL("UPDATE "+TABLE_NAME+" SET valor_final = ? WHERE numero = ? AND codigo_turno = ? AND tipo = ?",
+                new Object[]{aforador.getValorFinal(),aforador.getNumero(),aforador.getCodigoTurno(),aforador.getTipo()});
+
+        db.close();
     }
 
 }

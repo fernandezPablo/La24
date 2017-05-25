@@ -11,8 +11,8 @@ public class Turno {
     private static final int CANT_AF_GNC = 6;
     private static final int CANT_AF_ACEITE = 1;
 
-    private static final String TURNO_ABIERTO = "ABIERTO";
-    private static final String TURNO_CERRADO = "CERRADO";
+    public static final String TURNO_ABIERTO = "ABIERTO";
+    public static final String TURNO_CERRADO = "CERRADO";
 
     private int codigo;
     private int nro;
@@ -27,19 +27,14 @@ public class Turno {
         this.venta = null;
     }
 
-    public Turno(int nro, String fecha, double pmz, String estado, Venta venta) {
+    public Turno(int codigo, int nro, String fecha, double pmz, String estado, Venta venta) {
+        this.codigo = codigo;
         this.nro = nro;
         this.fecha = fecha;
         this.venta = venta;
         this.pmz = pmz;
         this.estado = estado;
         this.aforadores = new ArrayList<>();
-        for(int i=0;i<CANT_AF_GNC;i++){
-            this.aforadores.add(new Aforador(i,"m3",0,0,Aforador.GNC,this.codigo));
-        }
-        for(int i=0;i<CANT_AF_ACEITE;i++){
-            this.aforadores.add(new Aforador(i,"lts",0,0,Aforador.ACEITE,this.codigo));
-        }
     }
 
     public int getNro() {
@@ -95,7 +90,10 @@ public class Turno {
     }
 
     public void setAforadores(ArrayList<Aforador> aforadores) {
-        this.aforadores = aforadores;
+        for (Aforador af:
+             aforadores) {
+            this.aforadores.add(af);
+        }
     }
 
     @Override
@@ -112,7 +110,7 @@ public class Turno {
         this.venta.crearLineaVenta(prod,cantidad);
     }
 
-    public void generarLvGnc(){
+    public void generarLvGnc(EspecificacionProducto gnc){
         for (int i=0;i<CANT_AF_GNC;i++){
             //TODO cambiar el producto que se pasa por GNC
             this.venta.crearLineaVenta(new EspecificacionProducto(),this.aforadores.get(i).getCantVendida());

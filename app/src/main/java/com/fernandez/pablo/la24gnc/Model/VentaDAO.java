@@ -29,13 +29,27 @@ public class VentaDAO {
 
         Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" ORDER BY codigo DESC LIMIT 1",null);
 
-        if(c.moveToFirst()){
-            Venta v = new Venta();
-            v.setCodigo(c.getInt(0));
-            v.setTotal(c.getDouble(1));
-            return v;
+        try {
+            if (c.moveToFirst()) {
+                Venta v = new Venta();
+                v.setCodigo(c.getInt(0));
+                v.setTotal(c.getDouble(1));
+                return v;
+            }
         }
-
+        finally {
+            db.close();
+            c.close();
+        }
         return null;
     }
+
+    public void setTotalVenta(Venta venta){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        db.execSQL("UPDATE "+TABLE_NAME+" SET total = ? WHERE codigo = ?",new Object[]{venta.calcularTotal(),venta.getCodigo()});
+
+        db.close();
+    }
+
 }

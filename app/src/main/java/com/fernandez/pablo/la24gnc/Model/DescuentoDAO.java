@@ -39,11 +39,17 @@ public class DescuentoDAO {
         Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE codigo_venta = ?",
                 new String[]{Integer.toString(codigoVenta)});
 
-        if(c.moveToFirst()){
-            do {
-                descuentos.add(new Descuento(c.getInt(0),c.getString(1),c.getString(2),
-                        c.getDouble(3),new Venta(c.getInt(4))));
-            }while (c.moveToNext());
+        try {
+            if (c.moveToFirst()) {
+                do {
+                    descuentos.add(new Descuento(c.getInt(0), c.getString(1), c.getString(2),
+                            c.getDouble(3), new Venta(c.getInt(4))));
+                } while (c.moveToNext());
+            }
+        }
+        finally {
+            db.close();
+            c.close();
         }
         return descuentos;
     }
