@@ -66,9 +66,9 @@ public class CerrarTurnoActivity extends AppCompatActivity {
     public void cerrarTurno(View view){
         this.presenter.cerrarTurno();
         finish();
-        Intent i = new Intent(this,MainActivity.class);
-        startActivity(i);
         Toast.makeText(this,"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
+        Intent i = new Intent(this,DetalleTurnoActivity.class);
+        startActivity(i);
     }
 
 }

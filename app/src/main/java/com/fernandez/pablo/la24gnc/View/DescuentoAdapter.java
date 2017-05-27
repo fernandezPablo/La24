@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.fernandez.pablo.la24gnc.Model.Descuento;
 import com.fernandez.pablo.la24gnc.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -56,9 +57,11 @@ public class DescuentoAdapter extends BaseAdapter {
         TextView tvDescripcion = (TextView) rowView.findViewById(R.id.tvDescripcion);
         TextView tvMonto = (TextView) rowView.findViewById(R.id.tvMonto);
 
+        DecimalFormat df = new DecimalFormat("#.00");
+
         tvTipo.setText(descuentos.get(position).getTipo());
         tvDescripcion.setText(descuentos.get(position).getDescripcion());
-        tvMonto.setText(Double.toString(descuentos.get(position).getMonto()));
+        tvMonto.setText(df.format(descuentos.get(position).getMonto()));
 
         return rowView;
     }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANTIDAD"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="1.0"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRODUCTO"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="4.0"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRECIO/UNIDAD"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="1.0"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBTOTAL"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="1.0"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cantidad"
+            android:text="2.0"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="1.0"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/producto"
+            android:text="Product"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="4.0"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/precioUnitario"
+            android:text="10.0"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="1.0"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/subTotal"
+            android:text="20.0"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:layout_weight="1.0"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,183 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fernandez.pablo.la24gnc.View.DetalleGeneralFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="140dp">
+
+            <TextView
+                android:id="@+id/tvTitleTotalVentas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="TOTAL VENTAS"
+                android:textAlignment="textStart"
+                android:textColor="@color/grey_light"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_weight="1.0"/>
+
+            <LinearLayout
+                android:id="@+id/llGnc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitleTotalVentas"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="TOTAL GNC ($): "
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/totalGnc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="0.0"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llAceite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llGnc"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="TOTAL ACEITE ($): "
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotaAceite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="0.0"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llVarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/llAceite"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="TOTAL VARIOS ($): "
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotalVarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="0.0"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llTotales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llVarios"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_weight="1.0"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="TOTAL VENTAS ($): "
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotalVentas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="0.0"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_weight="4.0">
+
+                <TextView
+                    android:id="@+id/tvTitleDescuentos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/llVarios"
+                    android:text="A DECLARAR"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/grey_light"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    />
+
+                <ListView
+                    android:id="@+id/listDescuentos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/tvTitleDescuentos"
+                    android:layout_marginTop="10dp"></ListView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

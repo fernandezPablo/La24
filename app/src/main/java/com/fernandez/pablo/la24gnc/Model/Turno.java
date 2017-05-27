@@ -112,14 +112,12 @@ public class Turno {
 
     public void generarLvGnc(EspecificacionProducto gnc){
         for (int i=0;i<CANT_AF_GNC;i++){
-            //TODO cambiar el producto que se pasa por GNC
             this.venta.crearLineaVenta(new EspecificacionProducto(),this.aforadores.get(i).getCantVendida());
         }
     }
 
     public void generarLvAceite(){
         for (int i=0;i<CANT_AF_ACEITE;i++){
-            //TODO cambiar el producto que se pasa por ACEITE
             this.venta.crearLineaVenta(new EspecificacionProducto(),this.aforadores.get(i).getCantVendida());
         }
     }
