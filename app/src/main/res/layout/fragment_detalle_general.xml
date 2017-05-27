@@ -23,12 +23,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_weight="1.0"
                 android:text="TOTAL VENTAS"
                 android:textAlignment="textStart"
                 android:textColor="@color/grey_light"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                android:layout_weight="1.0"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/llGnc"
@@ -36,8 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvTitleTotalVentas"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:layout_weight="1.0">
+                android:layout_weight="1.0"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -65,8 +65,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/llGnc"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:layout_weight="1.0">
+                android:layout_weight="1.0"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -94,8 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/llAceite"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:layout_weight="1.0">
+                android:layout_weight="1.0"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -118,14 +118,20 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/llTotales"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/llVarios"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal"
                 android:layout_weight="1.0"
-                >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -150,9 +156,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginTop="40dp"
-                android:layout_weight="4.0">
+                android:layout_weight="4.0"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvTitleDescuentos"
@@ -163,8 +169,7 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/grey_light"
                     android:textSize="18dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/listDescuentos"
