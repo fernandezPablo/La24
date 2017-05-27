@@ -21,9 +21,14 @@ public class VentaActivity extends AppCompatActivity {
     private ItemSpinnerAdapter spinnerAdapter;
     private ArrayList<EspecificacionProducto> productosLista;
 
+    /*
     private ProductoAdapter productoAdapter;
     private ArrayList<EspecificacionProducto> productosVenta;
     private ArrayList<Double> cantidades;
+    */
+
+    private LineaVentaAdapter lineaVentaAdapter;
+    private ArrayList<LineaVenta> lineasVenta;
 
     private ListView listProductos;
     private Spinner spinerProductos;
@@ -38,8 +43,11 @@ public class VentaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_venta);
 
         this.productosLista = VentaPresenter.getProdcutos(this);
+        /*
         this.productosVenta = new ArrayList<>();
         this.cantidades = new ArrayList<>();
+        */
+        this.lineasVenta = new ArrayList<>();
 
         this.btnAdd = (ImageButton) findViewById(R.id.btnAdd);
         this.etCantidad = (EditText) findViewById(R.id.etCantidad);
@@ -47,10 +55,12 @@ public class VentaActivity extends AppCompatActivity {
         this.spinerProductos = (Spinner) findViewById(R.id.spProductos);
 
         this.spinnerAdapter = new ItemSpinnerAdapter(this,productosLista);
-        this.productoAdapter = new ProductoAdapter(this,productosVenta,cantidades);
+        //this.productoAdapter = new ProductoAdapter(this,productosVenta,cantidades);
+        this.lineaVentaAdapter = new LineaVentaAdapter(this.lineasVenta,this);
 
         this.spinerProductos.setAdapter(spinnerAdapter);
-        this.listProductos.setAdapter(productoAdapter);
+        //this.listProductos.setAdapter(productoAdapter);
+        this.listProductos.setAdapter(lineaVentaAdapter);
 
         this.ventaPresenter = new VentaPresenter(this);
 
@@ -78,15 +88,13 @@ public class VentaActivity extends AppCompatActivity {
     }
 
     public void cargarListadoLineasVenta(ArrayList<LineaVenta> lineasVenta){
-        this.productosVenta.clear();
-        this.cantidades.clear();
+        this.lineasVenta.clear();
         if(lineasVenta.size() > 0) {
             for (LineaVenta lv :
                     lineasVenta) {
-                this.productosVenta.add(lv.getProducto());
-                this.cantidades.add(lv.getCantidad());
+                this.lineasVenta.add(lv);
             }
-            this.productoAdapter.notifyDataSetChanged();
+            this.lineaVentaAdapter.notifyDataSetChanged();
         }
         else{
             Toast.makeText(this,"NO EXISTEN LINEAS DE VENTA PARA LA VENTA ACTUAL...",Toast.LENGTH_SHORT).show();
