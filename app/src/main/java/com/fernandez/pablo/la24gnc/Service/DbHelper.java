@@ -42,7 +42,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "('4','REFRIGERANTE x 5LTS','50')," +
             "('5','AGUA DESTILADA x 1LTS','15')," +
             "('5','AGUA DESTILADA x 5LTS','35')," +
-            "('6','LIQUIDO PARA FRENOS','20')";
+            "('6','LIQUIDO PARA FRENOS',40')";
 
     private static DbHelper dbHelper;
 
