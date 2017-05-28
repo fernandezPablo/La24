@@ -18,14 +18,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:id="@+id/spProductos" />
+            android:id="@+id/spProductos"
+            />
 
         <EditText
+            android:id="@+id/etCantidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
             android:layout_weight="0.5"
-            android:id="@+id/etCantidad" />
+            android:inputType="numberDecimal" />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

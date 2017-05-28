@@ -34,10 +34,10 @@ public class AbrirTurnoActivity extends AppCompatActivity {
         viewPageAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         gncFragment = new GncFragment();
         aceiteFragment = new AceiteFragment();
-        variosFragment = new VariosFragment();
+        //variosFragment = new VariosFragment();
         viewPageAdapter.addFragments(gncFragment,"GNC");
         viewPageAdapter.addFragments(aceiteFragment,"ACEITE");
-        viewPageAdapter.addFragments(variosFragment,"VARIOS");
+        //viewPageAdapter.addFragments(variosFragment,"VARIOS");
         viewPager.setAdapter(viewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }

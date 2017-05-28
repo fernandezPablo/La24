@@ -28,93 +28,98 @@
                 android:paddingBottom="30dp"
                 />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SURTIDOR N° 1"
-                    android:layout_weight="1"
-                    />
-                <EditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilSurtidor1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SURTIDOR N°1"
+                android:layout_marginTop="10dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tietSurtidor1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:ems="10"
-                    android:id="@+id/etSurtidor1"
-                    android:layout_weight="1.5"
                     />
+            </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SURTIDOR N° 2"
-                    android:layout_weight="1"
-                    />
-                <EditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilSurtidor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SURTIDOR N°2"
+                android:layout_marginTop="10dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tietSurtidor2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:ems="10"
-                    android:id="@+id/etSurtidor2"
-                    android:layout_weight="1.5"
                     />
+            </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SURTIDOR N° 3"
-                    android:layout_weight="1"
-                    />
-                <EditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilSurtidor3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SURTIDOR N°3"
+                android:layout_marginTop="10dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tietSurtidor3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:ems="10"
-                    android:id="@+id/etSurtidor3"
-                    android:layout_weight="1.5"
                     />
+            </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SURTIDOR N° 4"
-                    android:layout_weight="1"
-                    />
-                <EditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilSurtidor4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SURTIDOR N°4"
+                android:layout_marginTop="10dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tietSurtidor4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:ems="10"
-                    android:id="@+id/etSurtidor4"
-                    android:layout_weight="1.5"
                     />
+            </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SURTIDOR N° 5"
-                    android:layout_weight="1"
-                    />
-                <EditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilSurtidor5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SURTIDOR N°5"
+                android:layout_marginTop="10dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tietSurtidor5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:ems="10"
-                    android:id="@+id/etSurtidor5"
-                    android:layout_weight="1.5" />
+                    />
+            </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SURTIDOR N° 6"
-                    android:layout_weight="1"
-                    />
-                <EditText
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilSurtidor6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SURTIDOR N°6"
+                android:layout_marginTop="10dp"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tietSurtidor6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:ems="10"
-                    android:id="@+id/etSurtidor6"
-                    android:layout_weight="1.5" />
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

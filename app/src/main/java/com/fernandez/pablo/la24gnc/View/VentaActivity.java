@@ -20,13 +20,7 @@ public class VentaActivity extends AppCompatActivity {
 
     private ItemSpinnerAdapter spinnerAdapter;
     private ArrayList<EspecificacionProducto> productosLista;
-
-    /*
-    private ProductoAdapter productoAdapter;
-    private ArrayList<EspecificacionProducto> productosVenta;
-    private ArrayList<Double> cantidades;
-    */
-
+    
     private LineaVentaAdapter lineaVentaAdapter;
     private ArrayList<LineaVenta> lineasVenta;
 
@@ -43,10 +37,6 @@ public class VentaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_venta);
 
         this.productosLista = VentaPresenter.getProdcutos(this);
-        /*
-        this.productosVenta = new ArrayList<>();
-        this.cantidades = new ArrayList<>();
-        */
         this.lineasVenta = new ArrayList<>();
 
         this.btnAdd = (ImageButton) findViewById(R.id.btnAdd);
@@ -55,11 +45,9 @@ public class VentaActivity extends AppCompatActivity {
         this.spinerProductos = (Spinner) findViewById(R.id.spProductos);
 
         this.spinnerAdapter = new ItemSpinnerAdapter(this,productosLista);
-        //this.productoAdapter = new ProductoAdapter(this,productosVenta,cantidades);
         this.lineaVentaAdapter = new LineaVentaAdapter(this.lineasVenta,this);
 
         this.spinerProductos.setAdapter(spinnerAdapter);
-        //this.listProductos.setAdapter(productoAdapter);
         this.listProductos.setAdapter(lineaVentaAdapter);
 
         this.ventaPresenter = new VentaPresenter(this);

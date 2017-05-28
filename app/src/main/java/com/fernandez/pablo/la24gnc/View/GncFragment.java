@@ -2,6 +2,7 @@ package com.fernandez.pablo.la24gnc.View;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +20,12 @@ import java.util.ArrayList;
 public class GncFragment extends Fragment {
 
     private View view;
-    private EditText aforador_1;
-    private EditText aforador_2;
-    private EditText aforador_3;
-    private EditText aforador_4;
-    private EditText aforador_5;
-    private EditText aforador_6;
+    private TextInputEditText aforador_1;
+    private TextInputEditText aforador_2;
+    private TextInputEditText aforador_3;
+    private TextInputEditText aforador_4;
+    private TextInputEditText aforador_5;
+    private TextInputEditText aforador_6;
 
     public GncFragment() {
         // Required empty public constructor
@@ -38,12 +39,12 @@ public class GncFragment extends Fragment {
         // Inflate the layout for this fragment
         this.view = inflater.inflate(R.layout.fragment_gnc, container, false);
 
-        this.aforador_1 = (EditText) view.findViewById(R.id.etSurtidor1);
-        this.aforador_2 = (EditText) view.findViewById(R.id.etSurtidor2);
-        this.aforador_3 = (EditText) view.findViewById(R.id.etSurtidor3);
-        this.aforador_4 = (EditText) view.findViewById(R.id.etSurtidor4);
-        this.aforador_5 = (EditText) view.findViewById(R.id.etSurtidor5);
-        this.aforador_6 = (EditText) view.findViewById(R.id.etSurtidor6);
+        this.aforador_1 = (TextInputEditText) view.findViewById(R.id.tietSurtidor1);
+        this.aforador_2 = (TextInputEditText) view.findViewById(R.id.tietSurtidor2);
+        this.aforador_3 = (TextInputEditText) view.findViewById(R.id.tietSurtidor3);
+        this.aforador_4 = (TextInputEditText) view.findViewById(R.id.tietSurtidor4);
+        this.aforador_5 = (TextInputEditText) view.findViewById(R.id.tietSurtidor5);
+        this.aforador_6 = (TextInputEditText) view.findViewById(R.id.tietSurtidor6);
 
         return view;
     }
