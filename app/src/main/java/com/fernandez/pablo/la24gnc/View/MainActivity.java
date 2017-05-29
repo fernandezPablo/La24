@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickCerrarTurno(View v){
         if(!turnoAbierto.equals(SIN_TURNO)) {
+            finish();
             Toast.makeText(this, "INICIANDO CERRAR TURNO...", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this,CerrarTurnoActivity.class);
             startActivity(i);
