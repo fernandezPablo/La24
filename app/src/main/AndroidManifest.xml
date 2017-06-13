@@ -9,18 +9,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".View.MainActivity">
+
+        </activity>
+        <activity android:name=".View.AbrirTurnoActivity" />
+        <activity android:name=".View.VentaActivity" />
+        <activity android:name=".View.DescuentoActivity" />
+        <activity android:name=".View.CerrarTurnoActivity" />
+        <activity
+            android:name=".View.DetalleTurnoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.MainV2Activity"
+            android:label="@string/title_activity_main_v2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.AbrirTurnoActivity" />
-        <activity android:name=".View.VentaActivity" />
-        <activity android:name=".View.DescuentoActivity" />
-        <activity android:name=".View.CerrarTurnoActivity" />
-        <activity android:name=".View.DetalleTurnoActivity"
-            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

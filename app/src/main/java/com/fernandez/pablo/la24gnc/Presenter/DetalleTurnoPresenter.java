@@ -172,7 +172,7 @@ public class DetalleTurnoPresenter {
         activity.getDetalleVariosFragment().cargarTotalDineroVarios(df.format(this.totalDineroVarios));
     }
 
-    public void cargarValoresGenerales(){
+    public void cargarTotales(){
 
         DecimalFormat df = new DecimalFormat("#.00");
 
@@ -183,10 +183,13 @@ public class DetalleTurnoPresenter {
                 df.format(this.totalDineroVarios),
                 df.format(totalVentas));
 
+    }
+
+    public void cargarValoresADeclarar(){
         DescuentoDAO descuentoDAO = new DescuentoDAO(activity);
         ArrayList<Descuento> descuentos = descuentoDAO.getDescuentos(this.turno.getVenta().getCodigo());
-        activity.getDetalleGeneralFragment().cargarListaDescuentos(descuentos);
 
+        activity.getDetalleADeclararFragment().cargarListaDescuentos(descuentos);
     }
 
 }

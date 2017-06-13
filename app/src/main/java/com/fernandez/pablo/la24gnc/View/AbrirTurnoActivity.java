@@ -34,10 +34,8 @@ public class AbrirTurnoActivity extends AppCompatActivity {
         viewPageAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         gncFragment = new GncFragment();
         aceiteFragment = new AceiteFragment();
-        //variosFragment = new VariosFragment();
         viewPageAdapter.addFragments(gncFragment,"GNC");
         viewPageAdapter.addFragments(aceiteFragment,"ACEITE");
-        //viewPageAdapter.addFragments(variosFragment,"VARIOS");
         viewPager.setAdapter(viewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -66,9 +64,7 @@ public class AbrirTurnoActivity extends AppCompatActivity {
         return gncFragment;
     }
 
-    public void setGncFragment(GncFragment gncFragment) {
-        this.gncFragment = gncFragment;
-    }
+    public void setGncFragment(GncFragment gncFragment){ this.gncFragment = gncFragment; }
 
     public AceiteFragment getAceiteFragment() {
         return aceiteFragment;
@@ -88,7 +84,7 @@ public class AbrirTurnoActivity extends AppCompatActivity {
 
     public void guardarTurno(View v){
         AbrirTurnoPresenter.guardarTurno(this);
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,MainV2Activity.class);
         startActivity(intent);
         finish();
     }

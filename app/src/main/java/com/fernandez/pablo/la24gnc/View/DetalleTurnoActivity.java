@@ -2,12 +2,10 @@ package com.fernandez.pablo.la24gnc.View;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.fernandez.pablo.la24gnc.Presenter.DetalleTurnoPresenter;
 import com.fernandez.pablo.la24gnc.R;
@@ -22,6 +20,7 @@ public class DetalleTurnoActivity extends AppCompatActivity {
     private DetalleAceiteFragment detalleAceiteFragment;
     private DetalleVariosFragment detalleVariosFragment;
     private DetalleGeneralFragment detalleGeneralFragment;
+    private DetalleADeclararFragment detalleADeclararFragment;
     private DetalleTurnoPresenter detalleTurnoPresenter;
 
     @Override
@@ -35,11 +34,13 @@ public class DetalleTurnoActivity extends AppCompatActivity {
         this.detalleAceiteFragment = new DetalleAceiteFragment();
         this.detalleVariosFragment = new DetalleVariosFragment();
         this.detalleGeneralFragment = new DetalleGeneralFragment();
+        this.detalleADeclararFragment = new DetalleADeclararFragment();
         this.viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         this.viewPagerAdapter.addFragments(this.detalleGncFragment,"GNC");
         this.viewPagerAdapter.addFragments(this.detalleAceiteFragment,"ACEITE");
         this.viewPagerAdapter.addFragments(this.detalleVariosFragment,"VARIOS");
-        this.viewPagerAdapter.addFragments(this.detalleGeneralFragment,"GENERAL");
+        this.viewPagerAdapter.addFragments(this.detalleGeneralFragment,"TOTALES");
+        this.viewPagerAdapter.addFragments(this.detalleADeclararFragment,"BUZON/VALE");
         this.viewpager.setAdapter(viewPagerAdapter);
         this.tabLayout.setupWithViewPager(viewpager);
         this.detalleTurnoPresenter = new DetalleTurnoPresenter(this);
@@ -57,7 +58,9 @@ public class DetalleTurnoActivity extends AppCompatActivity {
         this.detalleTurnoPresenter.cargarValoresProductosVarios();
     }
 
-    public void cargarDetalleGeneral(){ this.detalleTurnoPresenter.cargarValoresGenerales();}
+    public void cargarDetalleTotales(){ this.detalleTurnoPresenter.cargarTotales();}
+
+    public void cargarDetalleADeclarar(){ this.detalleTurnoPresenter.cargarValoresADeclarar();}
 
     public DetalleGncFragment getDetalleGncFragment() {
         return detalleGncFragment;
@@ -75,9 +78,13 @@ public class DetalleTurnoActivity extends AppCompatActivity {
         return detalleGeneralFragment;
     }
 
+    public DetalleADeclararFragment getDetalleADeclararFragment() {
+        return detalleADeclararFragment;
+    }
+
     public void goHOme(){
         finish();
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,MainV2Activity.class);
         startActivity(intent);
     }
 

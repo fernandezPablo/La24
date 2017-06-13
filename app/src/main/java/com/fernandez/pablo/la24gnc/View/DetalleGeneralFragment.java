@@ -6,15 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.fernandez.pablo.la24gnc.Model.Descuento;
 import com.fernandez.pablo.la24gnc.R;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,9 +20,6 @@ public class DetalleGeneralFragment extends Fragment {
     private TextView tvTotalAceite;
     private TextView tvTotalVarios;
     private TextView tvTotalVentas;
-    private ListView listDescuentos;
-    private ArrayList<Descuento> descuentos;
-    private DescuentoAdapter descuentoAdapter;
 
     public DetalleGeneralFragment() {
         // Required empty public constructor
@@ -44,13 +35,9 @@ public class DetalleGeneralFragment extends Fragment {
         this.tvTotalAceite = (TextView) view.findViewById(R.id.tvTotaAceite);
         this.tvTotalVarios = (TextView) view.findViewById(R.id.tvTotalVarios);
         this.tvTotalVentas = (TextView) view.findViewById(R.id.tvTotalVentas);
-        this.listDescuentos = (ListView) view.findViewById(R.id.listDescuentos);
 
-        this.descuentos = new ArrayList<>();
-        this.descuentoAdapter = new DescuentoAdapter(getActivity(),this.descuentos);
-        this.listDescuentos.setAdapter(this.descuentoAdapter);
 
-        ((DetalleTurnoActivity) getActivity()).cargarDetalleGeneral();
+        ((DetalleTurnoActivity) getActivity()).cargarDetalleTotales();
 
         return view;
     }
@@ -62,11 +49,6 @@ public class DetalleGeneralFragment extends Fragment {
         this.tvTotalVentas.setText(totalVentas);
     }
 
-    public void cargarListaDescuentos(ArrayList<Descuento> descuentos){
-        for (Descuento des:
-             descuentos) {
-            this.descuentos.add(des);
-        }
-    }
+
 
 }

@@ -2,6 +2,7 @@ package com.fernandez.pablo.la24gnc.View;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +35,24 @@ public class AceiteFragment extends Fragment {
 
         etAforador1 = (EditText) view.findViewById(R.id.etAforadorAceite1);
 
+        if(savedInstanceState != null){
+            etAforador1.setText(savedInstanceState.getString("etAforador1"));
+        }
+
         // Inflate the layout for this fragment
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((AbrirTurnoActivity) getActivity()).setAceiteFragment(this);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("etAforador1",this.etAforador1.getText().toString());
     }
 
     public ArrayList<Double> getValoresAforadores(){
