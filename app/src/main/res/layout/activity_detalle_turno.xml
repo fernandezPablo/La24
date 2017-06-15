@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fernandez.pablo.la24gnc.View.DetalleTurnoActivity">
+    tools:context="com.fernandez.pablo.la24gnc.View.DetalleTurno.DetalleTurnoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"

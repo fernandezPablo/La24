@@ -1,6 +1,7 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.AbrirTurno;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
 import com.fernandez.pablo.la24gnc.Presenter.AbrirTurnoPresenter;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.Main.MainV2Activity;
+import com.fernandez.pablo.la24gnc.View.Utils.ViewPagerAdapter;
 
 public class AbrirTurnoActivity extends AppCompatActivity {
 
@@ -83,10 +86,23 @@ public class AbrirTurnoActivity extends AppCompatActivity {
     }
 
     public void guardarTurno(View v){
-        AbrirTurnoPresenter.guardarTurno(this);
-        Intent intent = new Intent(this,MainV2Activity.class);
-        startActivity(intent);
-        finish();
+
+        new AsyncTask<AbrirTurnoActivity,Void,Void>(){
+            @Override
+            protected Void doInBackground(AbrirTurnoActivity... params) {
+                AbrirTurnoPresenter.guardarTurno(params[0]);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Intent intent = new Intent(getApplicationContext(),MainV2Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        }.execute(this);
+
     }
 
 }

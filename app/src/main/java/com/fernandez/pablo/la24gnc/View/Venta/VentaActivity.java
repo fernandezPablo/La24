@@ -1,5 +1,6 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.Venta;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,8 @@ import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
 import com.fernandez.pablo.la24gnc.Model.LineaVenta;
 import com.fernandez.pablo.la24gnc.Presenter.VentaPresenter;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.Utils.ItemSpinnerAdapter;
+import com.fernandez.pablo.la24gnc.View.Utils.LineaVentaAdapter;
 
 import java.util.ArrayList;
 
@@ -55,12 +58,32 @@ public class VentaActivity extends AppCompatActivity {
         this.actualizarLineasVentaListView();
     }
 
-    public void addProductoListView(View v){
+    public EditText getEtCantidad() {
+        return etCantidad;
+    }
 
-        this.ventaPresenter.agregarLineaVenta();
-        this.etCantidad.setText("");
-        this.actualizarLineasVentaListView();
-        Toast.makeText(this,"VENTA CONCRETADA CORRECTAMENTE ...",Toast.LENGTH_SHORT).show();
+    public void setEtCantidad(EditText etCantidad) {
+        this.etCantidad = etCantidad;
+    }
+
+    public void addProductoListView(View v){
+        new AsyncTask<Void,Void,VentaActivity>(){
+
+            @Override
+            protected VentaActivity doInBackground(Void... params) {
+                ventaPresenter.agregarLineaVenta();
+                return ventaPresenter.getActivity();
+            }
+
+            @Override
+            protected void onPostExecute(VentaActivity ventaActivity) {
+                super.onPostExecute(ventaActivity);
+                ventaActivity.getEtCantidad().setText("");
+                ventaActivity.actualizarLineasVentaListView();
+                Toast.makeText(ventaActivity,"VENTA CONCRETADA CORRECTAMENTE ...",Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }.execute();
     }
 
     public EspecificacionProducto getProductoSeleccionado(){

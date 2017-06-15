@@ -5,12 +5,11 @@ import com.fernandez.pablo.la24gnc.Model.AforadorDAO;
 import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
 import com.fernandez.pablo.la24gnc.Model.VentaDAO;
-import com.fernandez.pablo.la24gnc.View.AbrirTurnoActivity;
+import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**

@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.Utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;

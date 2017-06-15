@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context="com.fernandez.pablo.la24gnc.View.MainV2Activity"
+    tools:context="com.fernandez.pablo.la24gnc.View.Main.MainV2Activity"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 

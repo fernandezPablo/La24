@@ -8,10 +8,8 @@ import com.fernandez.pablo.la24gnc.Model.LineaVenta;
 import com.fernandez.pablo.la24gnc.Model.LineaVentaDAO;
 import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
-import com.fernandez.pablo.la24gnc.Model.Venta;
-import com.fernandez.pablo.la24gnc.Model.VentaDAO;
 import com.fernandez.pablo.la24gnc.Service.DbHelper;
-import com.fernandez.pablo.la24gnc.View.VentaActivity;
+import com.fernandez.pablo.la24gnc.View.Venta.VentaActivity;
 
 import java.util.ArrayList;
 
@@ -22,6 +20,11 @@ import java.util.ArrayList;
 public class VentaPresenter {
 
     private Turno turno;
+
+    public VentaActivity getActivity() {
+        return activity;
+    }
+
     private VentaActivity activity;
 
     public VentaPresenter(VentaActivity activity) {

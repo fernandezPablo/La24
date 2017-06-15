@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.DetalleTurno;
 
 
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.fernandez.pablo.la24gnc.Model.LineaVenta;
-import com.fernandez.pablo.la24gnc.Presenter.DetalleTurnoPresenter;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.Utils.LineaVentaAdapter;
 
 import java.util.ArrayList;
 

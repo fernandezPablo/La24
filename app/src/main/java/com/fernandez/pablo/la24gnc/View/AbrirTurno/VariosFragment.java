@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.AbrirTurno;
 
 
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.Spinner;
 
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.Utils.ItemSpinnerAdapter;
+import com.fernandez.pablo.la24gnc.View.Utils.ProductoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

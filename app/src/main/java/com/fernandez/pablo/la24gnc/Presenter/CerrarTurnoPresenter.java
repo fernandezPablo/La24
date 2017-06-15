@@ -1,20 +1,18 @@
 package com.fernandez.pablo.la24gnc.Presenter;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Model.Aforador;
 import com.fernandez.pablo.la24gnc.Model.AforadorDAO;
 import com.fernandez.pablo.la24gnc.Model.Descuento;
 import com.fernandez.pablo.la24gnc.Model.DescuentoDAO;
-import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProductoDAO;
 import com.fernandez.pablo.la24gnc.Model.LineaVenta;
 import com.fernandez.pablo.la24gnc.Model.LineaVentaDAO;
 import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
 import com.fernandez.pablo.la24gnc.Model.VentaDAO;
-import com.fernandez.pablo.la24gnc.View.CerrarTurnoActivity;
+import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity;
 
 /**
  * Created by pablo on 18/05/2017.
@@ -30,6 +28,10 @@ public class CerrarTurnoPresenter {
         this.turno = TurnoDAO.getTurno(activity,new TurnoDAO(activity).getCodLastTurno());
         this.turno.setAforadores(new AforadorDAO(activity).listAforadores(turno.getCodigo(),Aforador.GNC));
         this.turno.getAforadores().add(new AforadorDAO(activity).listAforadores(turno.getCodigo(),Aforador.ACEITE).get(0));
+    }
+
+    public CerrarTurnoActivity getActivity() {
+        return activity;
     }
 
     public void cerrarTurno(){

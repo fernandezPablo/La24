@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.DetalleTurno;
 
 
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.fernandez.pablo.la24gnc.Model.Descuento;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.Utils.DescuentoAdapter;
 
 import java.util.ArrayList;
 
@@ -50,6 +51,7 @@ public class DetalleADeclararFragment extends Fragment {
                 descuentos) {
             this.descuentos.add(des);
         }
+        this.descuentoAdapter.notifyDataSetChanged();
     }
 
 }

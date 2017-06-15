@@ -1,9 +1,9 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.Descuentos;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,9 +12,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Model.Descuento;
-import com.fernandez.pablo.la24gnc.Model.DescuentoDAO;
 import com.fernandez.pablo.la24gnc.Presenter.DescuentoPresenter;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.Utils.DescuentoAdapter;
 
 import java.util.ArrayList;
 
@@ -56,6 +56,14 @@ public class DescuentoActivity extends AppCompatActivity {
 
     }
 
+    public EditText getEtDescripcion() {
+        return etDescripcion;
+    }
+
+    public EditText getEtMonto() {
+        return etMonto;
+    }
+
     public String getTipo(){
         return spTipos.getSelectedItem().toString();
     }
@@ -69,11 +77,26 @@ public class DescuentoActivity extends AppCompatActivity {
     }
 
     public void confirmarDescuento(View view){
-        this.descuentoPresenter.guardarDescuento();
-        this.etDescripcion.setText("");
-        this.etMonto.setText("");
-        this.descuentoPresenter.getDescuentos();
-        Toast.makeText(this,"DESCUENTO AGREGADO CORRECTAMENTE...",Toast.LENGTH_SHORT).show();
+
+        new AsyncTask<Void,Void,DescuentoActivity>(){
+
+            @Override
+            protected DescuentoActivity doInBackground(Void... params) {
+                descuentoPresenter.guardarDescuento();
+                return descuentoPresenter.getActivity();
+            }
+
+            @Override
+            protected void onPostExecute(DescuentoActivity descuentoActivity) {
+                super.onPostExecute(descuentoActivity);
+                descuentoActivity.getEtDescripcion().setText("");
+                descuentoActivity.getEtMonto().setText("");
+                descuentoActivity.getEtDescripcion().requestFocus();
+                descuentoPresenter.getDescuentos();
+                Toast.makeText(descuentoActivity,"DESCUENTO AGREGADO CORRECTAMENTE...",Toast.LENGTH_SHORT).show();
+            }
+        }.execute();
+
     }
 
     public void cargarDescuentos(ArrayList<Descuento> descuentos){

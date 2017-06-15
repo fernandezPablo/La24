@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.Main;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fernandez.pablo.la24gnc.Presenter.AbrirTurnoPresenter;
 import com.fernandez.pablo.la24gnc.Presenter.MainPresenter;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity;
+import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity;
+import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoActivity;
+import com.fernandez.pablo.la24gnc.View.Venta.VentaActivity;
 
 public class MainActivity extends AppCompatActivity {
 

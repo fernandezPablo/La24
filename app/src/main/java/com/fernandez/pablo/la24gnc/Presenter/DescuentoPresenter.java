@@ -4,9 +4,7 @@ import com.fernandez.pablo.la24gnc.Model.Descuento;
 import com.fernandez.pablo.la24gnc.Model.DescuentoDAO;
 import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
-import com.fernandez.pablo.la24gnc.View.DescuentoActivity;
-
-import java.util.ArrayList;
+import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoActivity;
 
 /**
  * Created by pablo on 13/05/2017.
@@ -34,4 +32,7 @@ public class DescuentoPresenter {
         activity.cargarDescuentos(descuentoDAO.getDescuentos(this.turno.getVenta().getCodigo()));
     }
 
+    public DescuentoActivity getActivity() {
+        return activity;
+    }
 }

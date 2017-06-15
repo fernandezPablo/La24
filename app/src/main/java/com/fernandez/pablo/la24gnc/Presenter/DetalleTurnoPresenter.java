@@ -4,14 +4,12 @@ import com.fernandez.pablo.la24gnc.Model.Aforador;
 import com.fernandez.pablo.la24gnc.Model.AforadorDAO;
 import com.fernandez.pablo.la24gnc.Model.Descuento;
 import com.fernandez.pablo.la24gnc.Model.DescuentoDAO;
-import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProductoDAO;
 import com.fernandez.pablo.la24gnc.Model.LineaVenta;
 import com.fernandez.pablo.la24gnc.Model.LineaVentaDAO;
 import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
-import com.fernandez.pablo.la24gnc.View.DetalleTurnoActivity;
-import com.j256.ormlite.field.types.DoubleObjectType;
+import com.fernandez.pablo.la24gnc.View.DetalleTurno.DetalleTurnoActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -145,6 +143,35 @@ public class DetalleTurnoPresenter {
         this.activity.getDetalleAceiteFragment().cargarTotalDinero(totalAceite);
     }
 
+
+    public ArrayList<LineaVenta> getLineasVentaVarios(){
+        LineaVentaDAO lvDao = new LineaVentaDAO(activity);
+        ArrayList<LineaVenta> lineasVenta = lvDao.getLineasVenta(this.turno.getVenta().getCodigo());
+        ArrayList<LineaVenta> lineasVentaVarios = new ArrayList<>();
+
+        for (LineaVenta lv:
+                lineasVenta) {
+            if(lv.getProducto().getCodigo() != 1 && lv.getProducto().getCodigo() != 2){
+                lineasVentaVarios.add(lv);
+            }
+        }
+        return lineasVentaVarios;
+    }
+
+    public double getTotalVentaVarios(ArrayList<LineaVenta> lineasVentaVarios){
+        double total = 0;
+
+        for (LineaVenta lv:
+                lineasVentaVarios) {
+            total += (lv.getCantidad() * lv.getProducto().getPrecio());
+        }
+
+        DecimalFormat df = new DecimalFormat("#.00");
+        this.totalDineroVarios = total;
+        return this.totalDineroVarios;
+    }
+
+
     public void cargarValoresProductosVarios(){
 
         LineaVentaDAO lvDao = new LineaVentaDAO(activity);
@@ -185,11 +212,23 @@ public class DetalleTurnoPresenter {
 
     }
 
+    public Double[] getTotales(){
+
+        double totalVentas = this.totalDineroGnc + this.totalDineroAceite + this.totalDineroVarios;
+
+        return  new Double[]{this.totalDineroGnc,this.totalDineroAceite,this.totalDineroVarios,totalVentas};
+    }
+
     public void cargarValoresADeclarar(){
         DescuentoDAO descuentoDAO = new DescuentoDAO(activity);
         ArrayList<Descuento> descuentos = descuentoDAO.getDescuentos(this.turno.getVenta().getCodigo());
 
         activity.getDetalleADeclararFragment().cargarListaDescuentos(descuentos);
+    }
+
+    public ArrayList<Descuento> getValoresADeclarar(){
+        DescuentoDAO descuentoDAO = new DescuentoDAO(activity);
+        return descuentoDAO.getDescuentos(this.turno.getVenta().getCodigo());
     }
 
 }

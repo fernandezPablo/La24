@@ -1,6 +1,7 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.CerrarTurno;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Presenter.CerrarTurnoPresenter;
 import com.fernandez.pablo.la24gnc.R;
+import com.fernandez.pablo.la24gnc.View.DetalleTurno.DetalleTurnoActivity;
 
 public class CerrarTurnoActivity extends AppCompatActivity {
 
@@ -64,11 +66,22 @@ public class CerrarTurnoActivity extends AppCompatActivity {
     }
 
     public void cerrarTurno(View view){
-        this.presenter.cerrarTurno();
-        finish();
-        Toast.makeText(this,"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
-        Intent i = new Intent(this,DetalleTurnoActivity.class);
-        startActivity(i);
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+                presenter.cerrarTurno();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                presenter.getActivity().finish();
+                Toast.makeText(presenter.getActivity(),"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
+                Intent i = new Intent(presenter.getActivity(),DetalleTurnoActivity.class);
+                startActivity(i);
+            }
+        }.execute();
     }
 
 }

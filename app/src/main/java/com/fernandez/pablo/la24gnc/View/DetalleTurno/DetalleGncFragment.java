@@ -1,4 +1,4 @@
-package com.fernandez.pablo.la24gnc.View;
+package com.fernandez.pablo.la24gnc.View.DetalleTurno;
 
 
 import android.os.Bundle;
@@ -8,13 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.fernandez.pablo.la24gnc.Model.Aforador;
-import com.fernandez.pablo.la24gnc.Presenter.DetalleTurnoPresenter;
 import com.fernandez.pablo.la24gnc.R;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
