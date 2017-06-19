@@ -55,22 +55,137 @@ public class DetalleTurnoActivity extends AppCompatActivity {
     }
 
     public void cargarDetalleGnc(){
-        new AsyncTask<Void,Void,Void>(){
+        /**
+         * Thread Valores Iniciles Gnc
+         * */
+        new AsyncTask<Void,Void,double[]>(){
             @Override
-            protected Void doInBackground(Void... params) {
-                detalleTurnoPresenter.cargarValoresDeGnc();
-                return null;
+            protected double [] doInBackground(Void... params) {
+                return detalleTurnoPresenter.getValoresInicialesGnc();
+            }
+
+            @Override
+            protected void onPostExecute(double[] doubles) {
+                super.onPostExecute(doubles);
+                detalleGncFragment.cargarValoresIniciales(getArrayStringFromArrayDouble(doubles));
+
+                /**
+                 * Thread Valores Finales Gnc
+                 * */
+                new AsyncTask<Void,Void,double[]>(){
+                    @Override
+                    protected double[] doInBackground(Void... params) {
+                        return detalleTurnoPresenter.getValoresFinalesGnc();
+                    }
+
+                    @Override
+                    protected void onPostExecute(double[] doubles) {
+                        super.onPostExecute(doubles);
+                        detalleGncFragment.cargarValoresFinales(getArrayStringFromArrayDouble(doubles));
+
+                        /**
+                         * Thread Diferencias Gnc
+                         * */
+                        new AsyncTask<Void,Void,double[]>(){
+                            @Override
+                            protected double[] doInBackground(Void... params) {
+                                return detalleTurnoPresenter.getDiferneciaAforadores();
+                            }
+
+                            @Override
+                            protected void onPostExecute(double[] doubles) {
+                                super.onPostExecute(doubles);
+                                detalleGncFragment.cargarDiferencias(getArrayStringFromArrayDouble(doubles));
+
+                                /**
+                                 * Thread Total M3 GNC
+                                 * */
+                                new AsyncTask<double[],Void,Double>(){
+                                    @Override
+                                    protected Double doInBackground(double[]... params) {
+                                        return detalleTurnoPresenter.getTotalM3(params[0]);
+                                    }
+
+                                    @Override
+                                    protected void onPostExecute(Double aDouble) {
+                                        super.onPostExecute(aDouble);
+                                        detalleGncFragment.cargarTotalM3(new DecimalFormat("#.##").
+                                                format(aDouble));
+                                        /**
+                                         * Thread Total Gnc
+                                         * */
+                                        new AsyncTask<Double,Void,Double>(){
+                                            @Override
+                                            protected Double doInBackground(Double... params) {
+                                                return detalleTurnoPresenter.getTotalDineroGnc(params[0]);
+                                            }
+
+                                            @Override
+                                            protected void onPostExecute(Double aDouble) {
+                                                super.onPostExecute(aDouble);
+                                                detalleGncFragment.cargarTotalDinero(
+                                                        new DecimalFormat("#.##").format(aDouble)
+                                                );
+                                                /**
+                                                 * Thread Pmz Gnc
+                                                 * */
+                                                new AsyncTask<Void,Void,String>(){
+                                                    @Override
+                                                    protected String doInBackground(Void... params) {
+                                                        return detalleTurnoPresenter.getPmz();
+                                                    }
+
+                                                    @Override
+                                                    protected void onPostExecute(String s) {
+                                                        super.onPostExecute(s);
+                                                        detalleGncFragment.cargarPmz(s);
+                                                    }
+                                                }.execute();
+                                            }
+                                        }.execute(aDouble);
+                                    }
+                                }.execute(doubles);
+                            }
+                        }.execute();
+                    }
+
+                }.execute();
+
             }
         }.execute();
     }
 
     public void cargarDetalleAceite()
     {
-        new AsyncTask<Void,Void,Void>(){
+        new AsyncTask<Void,Void,double[]>(){
             @Override
-            protected Void doInBackground(Void... params) {
-                detalleTurnoPresenter.cargarValoresDeAceite();
-                return null;
+            protected double [] doInBackground(Void... params) {
+                return detalleTurnoPresenter.getValoresAceite();
+            }
+
+            @Override
+            protected void onPostExecute(double[] doubles) {
+                super.onPostExecute(doubles);
+                DecimalFormat df = new DecimalFormat("#.##");
+                detalleAceiteFragment.cargarValorInicialAceite(df.format(doubles[0]));
+                detalleAceiteFragment.cargarValorFinalAceite(df.format(doubles[1]));
+                detalleAceiteFragment.cargarDiferencia(df.format(doubles[2]));
+                detalleAceiteFragment.cargarTotalLts(df.format(doubles[2]));
+
+                new AsyncTask<Double,Void,Double>(){
+                    @Override
+                    protected Double doInBackground(Double... params) {
+                        return detalleTurnoPresenter.getTotalAceite(params[0]);
+                    }
+
+                    @Override
+                    protected void onPostExecute(Double aDouble) {
+                        super.onPostExecute(aDouble);
+                        DecimalFormat df = new DecimalFormat("#.##");
+                        detalleAceiteFragment.cargarTotalDinero(df.format(aDouble));
+                    }
+                }.execute(doubles[2]);
+
             }
         }.execute();
     }
@@ -115,8 +230,9 @@ public class DetalleTurnoActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Double[] doubles) {
                 super.onPostExecute(doubles);
-                detalleGeneralFragment.cargarTotales(Double.toString(doubles[0]),Double.toString(doubles[1]),
-                        Double.toString(doubles[2]),Double.toString(doubles[3]));
+                DecimalFormat df = new DecimalFormat("#.##");
+                detalleGeneralFragment.cargarTotales(df.format(doubles[0]),df.format(doubles[1]),
+                        df.format(doubles[2]),df.format(doubles[3]));
             }
         }.execute();
     }
@@ -167,6 +283,15 @@ public class DetalleTurnoActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         goHOme();
+    }
+
+    public String [] getArrayStringFromArrayDouble(double [] doubles){
+        DecimalFormat df = new DecimalFormat("#.##");
+        String [] strings = new String[doubles.length];
+        for (int i = 0; i < doubles.length ; i++ ){
+            strings[i] = df.format(doubles[i]);
+        }
+        return strings;
     }
 
 

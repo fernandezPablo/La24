@@ -57,27 +57,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/aforador1VF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="222222"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/difAforador1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textEnd" />
+                    android:text="---"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -91,27 +91,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="1111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/aforador2VF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="222222"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/difAforador2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textEnd" />
+                    android:text="---"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -125,27 +125,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/aforador3VF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="222222"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/difAforador3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textEnd" />
+                    android:text="---"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -159,27 +159,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/aforador4VF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="222222"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/difAforador4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textEnd" />
+                    android:text="---"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -193,27 +193,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/aforador5VF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="222222"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/difAforador5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textEnd" />
+                    android:text="---"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -227,27 +227,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/aforador6VF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="222222"
-                    android:textSize="18dp"
-                    android:textAlignment="textStart" />
+                    android:text="---"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/difAforador6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="111111"
-                    android:textSize="18dp"
-                    android:textAlignment="textEnd" />
+                    android:text="---"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -270,7 +270,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.0"
-                    android:text="44444 m3"
+                    android:text="---"
                     android:textAlignment="textEnd"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -297,7 +297,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.0"
-                    android:text="44444 m3"
+                    android:text="---"
                     android:textAlignment="textEnd"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -324,7 +324,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.0"
-                    android:text="$ 1000"
+                    android:text="---"
                     android:textAlignment="textEnd"
                     android:textSize="18dp"
                     android:textStyle="bold" />

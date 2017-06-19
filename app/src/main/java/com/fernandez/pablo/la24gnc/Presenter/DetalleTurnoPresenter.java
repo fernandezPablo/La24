@@ -36,6 +36,81 @@ public class DetalleTurnoPresenter {
         this.totalDineroVarios = 0;
     }
 
+    public double [] getValoresInicialesGnc(){
+        return new double[]
+                {
+                        this.turno.getAforadores().get(0).getValorInicial(),
+                        this.turno.getAforadores().get(1).getValorInicial(),
+                        this.turno.getAforadores().get(2).getValorInicial(),
+                        this.turno.getAforadores().get(3).getValorInicial(),
+                        this.turno.getAforadores().get(4).getValorInicial(),
+                        this.turno.getAforadores().get(5).getValorInicial(),
+                };
+    }
+
+    public double [] getValoresFinalesGnc(){
+
+        return new double[]
+                {
+                        this.turno.getAforadores().get(0).getValorFinal(),
+                        this.turno.getAforadores().get(1).getValorFinal(),
+                        this.turno.getAforadores().get(2).getValorFinal(),
+                        this.turno.getAforadores().get(3).getValorFinal(),
+                        this.turno.getAforadores().get(4).getValorFinal(),
+                        this.turno.getAforadores().get(5).getValorFinal(),
+                };
+    }
+
+    public double [] getDiferneciaAforadores(){
+        double [] valoresIniciales = new double[]
+                {
+                        this.turno.getAforadores().get(0).getValorInicial(),
+                        this.turno.getAforadores().get(1).getValorInicial(),
+                        this.turno.getAforadores().get(2).getValorInicial(),
+                        this.turno.getAforadores().get(3).getValorInicial(),
+                        this.turno.getAforadores().get(4).getValorInicial(),
+                        this.turno.getAforadores().get(5).getValorInicial(),
+                };
+
+        double [] valoresFinales = new double[]
+                {
+                        this.turno.getAforadores().get(0).getValorFinal(),
+                        this.turno.getAforadores().get(1).getValorFinal(),
+                        this.turno.getAforadores().get(2).getValorFinal(),
+                        this.turno.getAforadores().get(3).getValorFinal(),
+                        this.turno.getAforadores().get(4).getValorFinal(),
+                        this.turno.getAforadores().get(5).getValorFinal(),
+                };
+
+        return new double[]
+                {
+                        valoresFinales[0] - valoresIniciales[0],
+                        valoresFinales[1] - valoresIniciales[1],
+                        valoresFinales[2] - valoresIniciales[2],
+                        valoresFinales[3] - valoresIniciales[3],
+                        valoresFinales[4] - valoresIniciales[4],
+                        valoresFinales[5] - valoresIniciales[5],
+                };
+    }
+
+    public String getPmz(){
+     return Double.toString(this.turno.getPmz());
+    }
+
+    public double getTotalM3(double [] diferencias){
+        double totalM3 = 0;
+        for (double dif:
+             diferencias) {
+            totalM3 += dif;
+        }
+        return totalM3;
+    }
+
+    public double getTotalDineroGnc(double totalM3){
+        double precioGnc = EspecificacionProductoDAO.getProducto(activity,1).getPrecio();
+        return this.totalDineroGnc = precioGnc * totalM3;
+    }
+
     public void cargarValoresDeGnc(){
 
         DecimalFormat df = new DecimalFormat("#.00");
@@ -119,30 +194,17 @@ public class DetalleTurnoPresenter {
         this.activity.getDetalleGncFragment().cargarTotalDinero(totalDinero);
     }
 
-    public void cargarValoresDeAceite(){
-
-        DecimalFormat df = new DecimalFormat("#.00");
-
+    public double [] getValoresAceite(){
         double valorInicial = this.turno.getAforadores().get(6).getValorInicial();
         double valorFinal = this.turno.getAforadores().get(6).getValorFinal();
 
-        String valorIString = df.format(valorInicial);
-        this.activity.getDetalleAceiteFragment().cargarValorInicialAceite(valorIString);
-
-        String valorFString = df.format(valorFinal);
-        this.activity.getDetalleAceiteFragment().cargarValorFinalAceite(valorFString);
-
-        double diferencia = valorFinal - valorInicial;
-        String diferenciaString = df.format(diferencia);
-        this.activity.getDetalleAceiteFragment().cargarDiferencia(diferenciaString);
-        this.activity.getDetalleAceiteFragment().cargarTotalLts(diferenciaString);
-
-        double precioAceite = EspecificacionProductoDAO.getProducto(activity,2).getPrecio();
-        this.totalDineroAceite = diferencia * precioAceite;
-        String totalAceite = df.format(this.totalDineroAceite);
-        this.activity.getDetalleAceiteFragment().cargarTotalDinero(totalAceite);
+        return new double[]{valorInicial, valorFinal, valorFinal - valorInicial};
     }
 
+    public double getTotalAceite(double diferencia){
+        return this.totalDineroAceite = EspecificacionProductoDAO.getProducto(activity,2).
+                getPrecio() * diferencia;
+    }
 
     public ArrayList<LineaVenta> getLineasVentaVarios(){
         LineaVentaDAO lvDao = new LineaVentaDAO(activity);
@@ -171,59 +233,11 @@ public class DetalleTurnoPresenter {
         return this.totalDineroVarios;
     }
 
-
-    public void cargarValoresProductosVarios(){
-
-        LineaVentaDAO lvDao = new LineaVentaDAO(activity);
-        ArrayList<LineaVenta> lineasVenta = lvDao.getLineasVenta(this.turno.getVenta().getCodigo());
-        ArrayList<LineaVenta> lineasVentaVarios = new ArrayList<>();
-
-        for (LineaVenta lv:
-             lineasVenta) {
-            if(lv.getProducto().getCodigo() != 1 && lv.getProducto().getCodigo() != 2){
-                lineasVentaVarios.add(lv);
-            }
-        }
-
-        activity.getDetalleVariosFragment().cargarListLineasVenta(lineasVentaVarios);
-
-        double total = 0;
-
-        for (LineaVenta lv:
-             lineasVentaVarios) {
-            total += (lv.getCantidad() * lv.getProducto().getPrecio());
-        }
-
-        DecimalFormat df = new DecimalFormat("#.00");
-        this.totalDineroVarios = total;
-        activity.getDetalleVariosFragment().cargarTotalDineroVarios(df.format(this.totalDineroVarios));
-    }
-
-    public void cargarTotales(){
-
-        DecimalFormat df = new DecimalFormat("#.00");
-
-        double totalVentas = this.totalDineroGnc + this.totalDineroAceite + this.totalDineroVarios;
-
-        activity.getDetalleGeneralFragment().cargarTotales(df.format(this.totalDineroGnc),
-                df.format(this.totalDineroAceite),
-                df.format(this.totalDineroVarios),
-                df.format(totalVentas));
-
-    }
-
     public Double[] getTotales(){
 
         double totalVentas = this.totalDineroGnc + this.totalDineroAceite + this.totalDineroVarios;
 
         return  new Double[]{this.totalDineroGnc,this.totalDineroAceite,this.totalDineroVarios,totalVentas};
-    }
-
-    public void cargarValoresADeclarar(){
-        DescuentoDAO descuentoDAO = new DescuentoDAO(activity);
-        ArrayList<Descuento> descuentos = descuentoDAO.getDescuentos(this.turno.getVenta().getCodigo());
-
-        activity.getDetalleADeclararFragment().cargarListaDescuentos(descuentos);
     }
 
     public ArrayList<Descuento> getValoresADeclarar(){
