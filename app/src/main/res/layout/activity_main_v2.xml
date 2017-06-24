@@ -94,21 +94,28 @@
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:background="@color/grey_light"
+            android:elevation="0dp"
             android:text="ABRIR TURNO"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:drawableLeft="@drawable/ic_abrir_turno"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
             />
 
         <Button
             android:id="@+id/btnVenta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="VENTA"
-            android:background="@color/grey_light"
             android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@color/grey_light"
+            android:text="VENTA"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:drawableLeft="@drawable/ic_vender"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
             />
 
         <Button
@@ -121,6 +128,9 @@
             android:layout_marginBottom="5dp"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:drawableLeft="@drawable/ic_buzon_vale"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
             />
 
         <Button
@@ -133,6 +143,9 @@
             android:layout_marginBottom="5dp"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:drawableLeft="@drawable/ic_cerrar_turno"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
             />
 
         <Button
@@ -145,6 +158,9 @@
             android:layout_marginBottom="5dp"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:drawableLeft="@drawable/ic_action_name"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
             />
 
         <Button
@@ -157,6 +173,9 @@
             android:layout_marginBottom="5dp"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:drawableLeft="@drawable/ic_consultar_turno"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
             />
     </LinearLayout>
 
