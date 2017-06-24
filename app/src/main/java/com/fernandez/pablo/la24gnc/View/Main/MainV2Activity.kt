@@ -11,6 +11,7 @@ import com.fernandez.pablo.la24gnc.Presenter.MainPresenter
 import com.fernandez.pablo.la24gnc.R
 import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity
 import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity
+import com.fernandez.pablo.la24gnc.View.ConsultarTurno.ConsultarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoActivity
 import com.fernandez.pablo.la24gnc.View.Venta.VentaActivity
 
@@ -44,6 +45,7 @@ class MainV2Activity : AppCompatActivity() {
         btnVenta.setOnClickListener { venta() }
         btnBuzonVale.setOnClickListener { buzonVale() }
         btnCerrarTurno.setOnClickListener { cerrarTurno() }
+        btnConsultarTurno.setOnClickListener{ consultarTurno()}
     }
 
     fun abrirTurno(){
@@ -86,6 +88,13 @@ class MainV2Activity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "NO EXISTE NINGUN TURNO ABIERTO...", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun consultarTurno(){
+        finish()
+        Toast.makeText(this, "INICIANDO CONSULTAR TURNO...", Toast.LENGTH_SHORT).show()
+        val i = Intent(this, ConsultarTurnoActivity::class.java)
+        startActivity(i)
     }
 
 }
