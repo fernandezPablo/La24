@@ -1,8 +1,10 @@
 package com.fernandez.pablo.la24gnc.View.CerrarTurno;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -66,22 +68,37 @@ public class CerrarTurnoActivity extends AppCompatActivity {
     }
 
     public void cerrarTurno(View view){
-        new AsyncTask<Void,Void,Void>(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(presenter.getActivity());
+        builder.setMessage("ESTA SEGURO QUE DESEA CERRAR EL TURNO?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
-            protected Void doInBackground(Void... params) {
-                presenter.cerrarTurno();
-                return null;
-            }
+            public void onClick(DialogInterface dialog, int which) {
+                new AsyncTask<Void,Void,Void>(){
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        presenter.cerrarTurno();
+                        return null;
+                    }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                presenter.getActivity().finish();
-                Toast.makeText(presenter.getActivity(),"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
-                Intent i = new Intent(presenter.getActivity(),DetalleTurnoActivity.class);
-                startActivity(i);
+                    @Override
+                    protected void onPostExecute(Void aVoid) {
+                        super.onPostExecute(aVoid);
+                        presenter.getActivity().finish();
+                        Toast.makeText(presenter.getActivity(),"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
+                        Intent i = new Intent(presenter.getActivity(),DetalleTurnoActivity.class);
+                        startActivity(i);
+                    }
+                }.execute();
             }
-        }.execute();
+        });
+        builder.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(presenter.getActivity(),"CONTINUANDO EL INGRESO DE AFORADORES...",Toast.LENGTH_SHORT);
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 }

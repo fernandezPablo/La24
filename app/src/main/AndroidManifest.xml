@@ -12,7 +12,9 @@
         <activity android:name=".View.AbrirTurno.AbrirTurnoActivity" />
         <activity android:name=".View.Venta.VentaActivity" />
         <activity android:name=".View.Descuentos.DescuentoActivity" />
-        <activity android:name=".View.CerrarTurno.CerrarTurnoActivity" />
+        <activity
+            android:name=".View.CerrarTurno.CerrarTurnoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".View.DetalleTurno.DetalleTurnoActivity"
             android:screenOrientation="portrait" />
