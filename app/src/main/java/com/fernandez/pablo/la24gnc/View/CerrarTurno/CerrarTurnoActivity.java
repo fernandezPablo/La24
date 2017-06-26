@@ -86,6 +86,7 @@ public class CerrarTurnoActivity extends AppCompatActivity {
                         presenter.getActivity().finish();
                         Toast.makeText(presenter.getActivity(),"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
                         Intent i = new Intent(presenter.getActivity(),DetalleTurnoActivity.class);
+                        i.putExtra("codigoTurno",presenter.getTurno().getCodigo());
                         startActivity(i);
                     }
                 }.execute();

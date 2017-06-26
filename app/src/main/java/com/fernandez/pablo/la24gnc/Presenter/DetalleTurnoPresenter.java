@@ -28,7 +28,8 @@ public class DetalleTurnoPresenter {
 
     public DetalleTurnoPresenter(DetalleTurnoActivity activity) {
         this.activity = activity;
-        this.turno = TurnoDAO.getTurno(activity,new TurnoDAO(activity).getCodLastTurno());
+        //this.turno = TurnoDAO.getTurno(activity,new TurnoDAO(activity).getCodLastTurno());
+        this.turno = TurnoDAO.getTurno(activity,activity.getIntent().getIntExtra("codigoTurno",1));
         this.turno.setAforadores(new AforadorDAO(activity).listAforadores(turno.getCodigo(), Aforador.GNC));
         this.turno.getAforadores().add(new AforadorDAO(activity).listAforadores(turno.getCodigo(),Aforador.ACEITE).get(0));
         this.totalDineroAceite = 0;

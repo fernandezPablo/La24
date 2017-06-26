@@ -113,4 +113,23 @@ public class TurnoDAO {
         db.close();
     }
 
+    public static ArrayList<Turno> listTurnosCerrados(Context context){
+        SQLiteDatabase db = DbHelper.getInstance(context).getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM Turno WHERE estado = ? ",new String[]{Turno.TURNO_CERRADO});
+        ArrayList<Turno> turnos = new ArrayList<>();
+        try{
+            if(c.moveToFirst()) {
+                do {
+                    turnos.add(new Turno(c.getInt(0),c.getInt(1),c.getString(3),c.getDouble(2),
+                            c.getString(4),new Venta(c.getInt(5))));
+                } while (c.moveToNext());
+            }
+            return turnos;
+        }
+        finally {
+            c.close();
+            db.close();
+        }
+    }
+
 }

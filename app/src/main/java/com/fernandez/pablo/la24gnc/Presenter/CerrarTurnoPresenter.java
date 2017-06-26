@@ -34,6 +34,10 @@ public class CerrarTurnoPresenter {
         return activity;
     }
 
+    public Turno getTurno() {
+        return turno;
+    }
+
     public void cerrarTurno(){
 
         double [] valoresFinales = activity.getValoresFinales();
