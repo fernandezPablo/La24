@@ -39,7 +39,7 @@ public class VentaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venta);
 
-        this.productosLista = VentaPresenter.getProdcutos(this);
+        this.productosLista = ventaPresenter.getProdcutos(this);
         this.lineasVenta = new ArrayList<>();
 
         this.btnAdd = (ImageButton) findViewById(R.id.btnAdd);
@@ -53,7 +53,7 @@ public class VentaActivity extends AppCompatActivity {
         this.spinerProductos.setAdapter(spinnerAdapter);
         this.listProductos.setAdapter(lineaVentaAdapter);
 
-        this.ventaPresenter = new VentaPresenter(this);
+        //this.ventaPresenter = new VentaPresenter(this);
 
         this.actualizarLineasVentaListView();
     }
@@ -67,7 +67,7 @@ public class VentaActivity extends AppCompatActivity {
     }
 
     public void addProductoListView(View v){
-        new AsyncTask<Void,Void,VentaActivity>(){
+        /*new AsyncTask<Void,Void,VentaActivity>(){
 
             @Override
             protected VentaActivity doInBackground(Void... params) {
@@ -83,7 +83,7 @@ public class VentaActivity extends AppCompatActivity {
                 Toast.makeText(ventaActivity,"VENTA CONCRETADA CORRECTAMENTE ...",Toast.LENGTH_SHORT)
                         .show();
             }
-        }.execute();
+        }.execute();*/
     }
 
     public EspecificacionProducto getProductoSeleccionado(){
@@ -95,7 +95,7 @@ public class VentaActivity extends AppCompatActivity {
     }
 
     public void actualizarLineasVentaListView(){
-        this.ventaPresenter.cargarLineasVenta();
+        //this.ventaPresenter.cargarLineasVenta();
     }
 
     public void cargarListadoLineasVenta(ArrayList<LineaVenta> lineasVenta){

@@ -3,9 +3,6 @@ package com.fernandez.pablo.la24gnc.View.Main
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ImageSpan
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -17,6 +14,7 @@ import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.ConsultarTurno.ConsultarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoActivity
 import com.fernandez.pablo.la24gnc.View.Venta.VentaActivity
+import com.fernandez.pablo.la24gnc.View.VentaV2Activity
 
 class MainV2Activity : AppCompatActivity() {
 
@@ -65,7 +63,7 @@ class MainV2Activity : AppCompatActivity() {
     fun venta() {
         if (turnoAbierto != SIN_TURNO) {
             Toast.makeText(this, "INICIANDO VENTA...", Toast.LENGTH_SHORT).show()
-            val i = Intent(this, VentaActivity::class.java)
+            val i = Intent(this, VentaV2Activity::class.java)
             startActivity(i)
         } else {
             Toast.makeText(this, "NO EXISTE NINGUN TURNO ABIERTO...", Toast.LENGTH_SHORT).show()

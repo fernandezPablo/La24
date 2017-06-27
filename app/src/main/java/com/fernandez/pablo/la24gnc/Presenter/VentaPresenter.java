@@ -10,6 +10,7 @@ import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
 import com.fernandez.pablo.la24gnc.Service.DbHelper;
 import com.fernandez.pablo.la24gnc.View.Venta.VentaActivity;
+import com.fernandez.pablo.la24gnc.View.VentaV2Activity;
 
 import java.util.ArrayList;
 
@@ -21,23 +22,23 @@ public class VentaPresenter {
 
     private Turno turno;
 
-    public VentaActivity getActivity() {
+    public VentaV2Activity getActivity() {
         return activity;
     }
 
-    private VentaActivity activity;
+    private VentaV2Activity activity;
 
-    public VentaPresenter(VentaActivity activity) {
+    public VentaPresenter(VentaV2Activity activity) {
         this.activity = activity;
         TurnoDAO turnoDAO = new TurnoDAO(activity);
         this.turno = TurnoDAO.getTurno(activity,turnoDAO.getCodLastTurno());
     }
 
-    public static ArrayList<EspecificacionProducto> getProdcutos(Context context){
+    public  ArrayList<EspecificacionProducto> getProdcutos(Context context){
         return new EspecificacionProductoDAO(DbHelper.getInstance(context)).listProductos();
     }
 
-    public void agregarLineaVenta(){
+    /*public void agregarLineaVenta(){
         EspecificacionProducto producto = activity.getProductoSeleccionado();
 
         LineaVentaDAO lineaVentaDAO = new LineaVentaDAO(this.activity);
@@ -57,5 +58,6 @@ public class VentaPresenter {
         LineaVentaDAO lineaVentaDAO = new LineaVentaDAO(this.activity);
         activity.cargarListadoLineasVenta(lineaVentaDAO.getLineasVenta(this.turno.getVenta().getCodigo()));
     }
+*/
 
 }
