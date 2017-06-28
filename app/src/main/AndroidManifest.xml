@@ -29,7 +29,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.ConsultarTurno.ConsultarTurnoActivity" />
-        <activity android:name=".View.VentaV2Activity"></activity>
+        <activity
+            android:name=".View.Venta.VentaV2Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

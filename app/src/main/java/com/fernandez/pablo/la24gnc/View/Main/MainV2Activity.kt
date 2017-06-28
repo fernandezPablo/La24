@@ -13,8 +13,7 @@ import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity
 import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.ConsultarTurno.ConsultarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoActivity
-import com.fernandez.pablo.la24gnc.View.Venta.VentaActivity
-import com.fernandez.pablo.la24gnc.View.VentaV2Activity
+import com.fernandez.pablo.la24gnc.View.Venta.VentaV2Activity
 
 class MainV2Activity : AppCompatActivity() {
 

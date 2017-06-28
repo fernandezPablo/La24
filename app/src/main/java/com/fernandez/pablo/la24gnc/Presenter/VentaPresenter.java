@@ -9,8 +9,7 @@ import com.fernandez.pablo.la24gnc.Model.LineaVentaDAO;
 import com.fernandez.pablo.la24gnc.Model.Turno;
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO;
 import com.fernandez.pablo.la24gnc.Service.DbHelper;
-import com.fernandez.pablo.la24gnc.View.Venta.VentaActivity;
-import com.fernandez.pablo.la24gnc.View.VentaV2Activity;
+import com.fernandez.pablo.la24gnc.View.Venta.VentaV2Activity;
 
 import java.util.ArrayList;
 
@@ -38,26 +37,25 @@ public class VentaPresenter {
         return new EspecificacionProductoDAO(DbHelper.getInstance(context)).listProductos();
     }
 
-    /*public void agregarLineaVenta(){
-        EspecificacionProducto producto = activity.getProductoSeleccionado();
+    public void agregarLineaVenta(EspecificacionProducto producto, Double cantidad){
 
         LineaVentaDAO lineaVentaDAO = new LineaVentaDAO(this.activity);
 
         int codLVRepetida = lineaVentaDAO.findLineaVenta(producto,turno.getVenta());
 
         if(codLVRepetida == -1){
-            LineaVenta lineaVenta = new LineaVenta(activity.getCantidadLineaVenta(),producto,turno.getVenta());
+            LineaVenta lineaVenta = new LineaVenta(cantidad,producto,turno.getVenta());
             lineaVentaDAO.createLineaVenta(lineaVenta);
         }
         else{
-            lineaVentaDAO.incrementarLineaVenta(codLVRepetida,activity.getCantidadLineaVenta());
+            lineaVentaDAO.incrementarLineaVenta(codLVRepetida,cantidad);
         }
     }
 
-    public void cargarLineasVenta(){
+    /*public void cargarLineasVenta(){
         LineaVentaDAO lineaVentaDAO = new LineaVentaDAO(this.activity);
         activity.cargarListadoLineasVenta(lineaVentaDAO.getLineasVenta(this.turno.getVenta().getCodigo()));
-    }
-*/
+    }*/
+
 
 }
