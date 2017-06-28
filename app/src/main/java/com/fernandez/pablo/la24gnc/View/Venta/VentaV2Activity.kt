@@ -1,5 +1,8 @@
 package com.fernandez.pablo.la24gnc.View.Venta
 
+import android.content.res.AssetManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +14,7 @@ import com.fernandez.pablo.la24gnc.Presenter.VentaPresenter
 import com.fernandez.pablo.la24gnc.View.Utils.ProductoAdapter
 
 import com.fernandez.pablo.la24gnc.R
+import java.io.InputStream
 
 class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
 
@@ -41,6 +45,13 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         val etCantidad : EditText = mView.findViewById(R.id.etCantidad) as EditText
         val btnCancelar : Button = mView.findViewById(R.id.btnCancelar) as Button
         val btnConfirmar : Button = mView.findViewById(R.id.btnConfirmar) as Button
+        val ivProducto : ImageView = mView.findViewById(R.id.imageProducto) as ImageView
+
+        val assetManager : AssetManager = getAssets()
+        val inputStream : InputStream = assetManager.open(ventaPresenter.getImagenProducto(
+                listProductos.get(position).codigo))
+        val bitMap : Bitmap = BitmapFactory.decodeStream(inputStream)
+        ivProducto.setImageBitmap(bitMap)
 
         tvNombreProducto.text = listProductos.get(position).descripcion
         tvPrecio.text = "$ ${listProductos.get(position).precio.toString()}"

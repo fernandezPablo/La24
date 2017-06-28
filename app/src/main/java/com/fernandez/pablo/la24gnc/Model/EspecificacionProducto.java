@@ -10,6 +10,7 @@ public class EspecificacionProducto {
     private int rubro;
     private String descripcion;
     private double precio;
+    private String urlImagen;
 
     public EspecificacionProducto(){
 
@@ -52,6 +53,14 @@ public class EspecificacionProducto {
 
     public void setRubro(int rubro) {
         this.rubro = rubro;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 
     @Override

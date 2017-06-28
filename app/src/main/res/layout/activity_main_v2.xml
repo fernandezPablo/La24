@@ -113,13 +113,12 @@
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:background="@color/grey_light"
-            android:text="VENTA"
-            android:textColor="@color/white"
-            android:textSize="15dp"
             android:drawableLeft="@drawable/ic_vender"
             android:paddingLeft="100dp"
             android:paddingRight="100dp"
-            />
+            android:text="VENTA"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/btnBuzonVale"

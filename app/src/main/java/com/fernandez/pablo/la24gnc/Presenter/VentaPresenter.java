@@ -52,6 +52,10 @@ public class VentaPresenter {
         }
     }
 
+    public String getImagenProducto(int codigo){
+        return new EspecificacionProductoDAO(DbHelper.getInstance(activity)).getImagenProducto(codigo);
+    }
+
     /*public void cargarLineasVenta(){
         LineaVentaDAO lineaVentaDAO = new LineaVentaDAO(this.activity);
         activity.cargarListadoLineasVenta(lineaVentaDAO.getLineasVenta(this.turno.getVenta().getCodigo()));

@@ -33,6 +33,22 @@ public class EspecificacionProductoDAO {
 
     }
 
+    public String getImagenProducto(int codigo) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT url_imagen FROM especificacion_producto WHERE codigo = ?",
+                new String[]{Integer.toString(codigo)});
+        try {
+            if (c.moveToFirst()) {
+                return c.getString(0);
+            }
+        }
+        finally {
+            db.close();
+            c.close();
+        }
+        return null;
+    }
+
     public ArrayList<EspecificacionProducto> listProductos(){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         ArrayList<EspecificacionProducto> productos = new ArrayList<>();
