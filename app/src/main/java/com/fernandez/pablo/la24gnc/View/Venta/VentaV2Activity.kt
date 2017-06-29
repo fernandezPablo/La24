@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.*
@@ -32,6 +33,7 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         this.listViewProductos = findViewById(R.id.lvProductos) as ListView
         this.listProductos = this.ventaPresenter.getProdcutos(applicationContext)
         for(prod in listProductos) listCantidades.add(0.0)
+        ventaPresenter.inicializarCantidades()
         productoAdapter = ProductoAdapter(applicationContext,listProductos,listCantidades)
         this.listViewProductos.adapter = productoAdapter
         this.listViewProductos.onItemClickListener = this
@@ -64,8 +66,8 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         }
 
         btnConfirmar.setOnClickListener{
-            listCantidades.set(position,etCantidad.text.toString().toDouble())
-            ventaPresenter.agregarLineaVenta(listProductos.get(position),listCantidades.get(position))
+            listCantidades.set(position,listCantidades.get(position) + etCantidad.text.toString().toDouble())
+            ventaPresenter.agregarLineaVenta(listProductos.get(position),etCantidad.text.toString().toDouble())
             productoAdapter.notifyDataSetChanged()
             alertDialog.hide()
         }
@@ -73,4 +75,8 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         alertDialog.show()
     }
 
+    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+        super.onSaveInstanceState(outState, outPersistentState)
+
+    }
 }

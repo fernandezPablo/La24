@@ -61,5 +61,24 @@ public class VentaPresenter {
         activity.cargarListadoLineasVenta(lineaVentaDAO.getLineasVenta(this.turno.getVenta().getCodigo()));
     }*/
 
+    public void inicializarCantidades(){
+        ArrayList<LineaVenta> lineasVenta = new LineaVentaDAO(activity).
+                getLineasVenta(this.turno.getVenta().getCodigo());
+        for (LineaVenta lv:
+             lineasVenta)
+        {
+            int position = 0;
+            for (EspecificacionProducto prod:
+                 this.activity.getListProductos())
+            {
+                if(prod.getCodigo() == lv.getProducto().getCodigo())
+                {
+                    this.activity.getListCantidades().set(position,lv.getCantidad());
+                    break;
+                }
+                position++;
+            }
+        }
+    }
 
 }
