@@ -31,8 +31,8 @@
         <activity android:name=".View.ConsultarTurno.ConsultarTurnoActivity" />
         <activity
             android:name=".View.Venta.VentaV2Activity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".View.ABMProductos.ABMProductosActivity"></activity>
     </application>
 
 </manifest>
