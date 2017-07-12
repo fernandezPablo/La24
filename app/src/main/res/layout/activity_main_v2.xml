@@ -174,7 +174,6 @@
             android:layout_weight="1"
             android:text="CONSULTAR TURNO"
             android:background="@color/grey_light"
-            android:layout_marginBottom="2dp"
             android:textColor="@color/white"
             android:textSize="15dp"
             android:drawableLeft="@drawable/ic_consultar_turno"

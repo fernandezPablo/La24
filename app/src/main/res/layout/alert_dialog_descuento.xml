@@ -8,6 +8,7 @@
 
     <TextView
         style="@style/title"
+        android:id="@+id/tvDescuento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DESCUENTO"
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:hint="MONTO ($) ..."
         android:layout_marginBottom="4dp"
+        android:inputType="numberDecimal"
         />
 
     <LinearLayout

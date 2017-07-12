@@ -21,11 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         >
 
         <Button
             style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:id="@+id/btnBuzon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
@@ -34,6 +36,7 @@
 
         <Button
             style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:id="@+id/btnVale"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
@@ -43,8 +46,9 @@
     </LinearLayout>
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:id="@+id/lvDescuentos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
     </ListView>

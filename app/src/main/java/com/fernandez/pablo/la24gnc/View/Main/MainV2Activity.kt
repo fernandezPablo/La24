@@ -13,6 +13,7 @@ import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity
 import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.ConsultarTurno.ConsultarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoActivity
+import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoV2Activity
 import com.fernandez.pablo.la24gnc.View.Venta.VentaV2Activity
 
 class MainV2Activity : AppCompatActivity() {
@@ -72,7 +73,7 @@ class MainV2Activity : AppCompatActivity() {
     fun buzonVale() {
         if (turnoAbierto != SIN_TURNO) {
             Toast.makeText(this, "INICIANDO BUZON/VALE...", Toast.LENGTH_SHORT).show()
-            val i = Intent(this, DescuentoActivity::class.java)
+            val i = Intent(this, DescuentoV2Activity::class.java)
             startActivity(i)
         } else {
             Toast.makeText(this, "NO EXISTE NINGUN TURNO ABIERTO...", Toast.LENGTH_SHORT).show()
