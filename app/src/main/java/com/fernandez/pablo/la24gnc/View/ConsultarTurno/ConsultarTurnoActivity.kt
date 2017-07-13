@@ -9,6 +9,7 @@ import com.fernandez.pablo.la24gnc.Presenter.ConsultarTurnoPresenter
 
 import com.fernandez.pablo.la24gnc.R
 import com.fernandez.pablo.la24gnc.View.Utils.RVTurnoAdapter
+import java.util.*
 
 class ConsultarTurnoActivity : AppCompatActivity() {
 
@@ -22,5 +23,6 @@ class ConsultarTurnoActivity : AppCompatActivity() {
         val rvTurnoAdapter : RVTurnoAdapter = RVTurnoAdapter(turnos)
         rvTurnos.layoutManager = layoutManager
         rvTurnos.adapter = rvTurnoAdapter
+
     }
 }
