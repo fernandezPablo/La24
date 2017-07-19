@@ -58,7 +58,7 @@ public class AbrirTurnoActivity extends AppCompatActivity {
         variosFragment.getProductosOnListView().add(productoSeleccionado);
         variosFragment.getCantidades().add(Double.parseDouble(variosFragment.getTvCantidad().getText().toString()));
         variosFragment.getTvCantidad().setText("");
-        variosFragment.getProductoAdapter().notifyDataSetChanged();
+        variosFragment.getProductoParaVentaAdapter().notifyDataSetChanged();
 
         Toast.makeText(this,variosFragment.getSpProductos().getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
     }

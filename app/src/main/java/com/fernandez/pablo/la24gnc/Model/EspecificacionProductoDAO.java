@@ -87,4 +87,26 @@ public class EspecificacionProductoDAO {
         return null;
     }
 
+    public ArrayList<EspecificacionProducto> listAllProductos(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<EspecificacionProducto> productos = new ArrayList<>();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
+
+        try {
+            if (c.moveToFirst()) {
+                do {
+                    productos.add(new EspecificacionProducto(c.getInt(0), c.getString(2), c.getDouble(3), c.getInt(1)));
+                    productos.get(c.getPosition()).setUrlImagen(c.getString(4));
+                } while (c.moveToNext());
+            }
+        }
+        finally {
+            db.close();
+            c.close();
+        }
+
+        return productos;
+    }
+
 }

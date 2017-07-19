@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.fernandez.pablo.la24gnc.Presenter.MainPresenter
 
 import com.fernandez.pablo.la24gnc.R
+import com.fernandez.pablo.la24gnc.View.ABMProductos.ABMProductosActivity
 import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity
 import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.ConsultarTurno.ConsultarTurnoActivity
@@ -46,6 +47,7 @@ class MainV2Activity : AppCompatActivity() {
         btnVenta.setOnClickListener { venta() }
         btnBuzonVale.setOnClickListener { buzonVale() }
         btnCerrarTurno.setOnClickListener { cerrarTurno() }
+        btnABMProudctos.setOnClickListener { abmProductos() }
         btnConsultarTurno.setOnClickListener{ consultarTurno()}
     }
 
@@ -89,6 +91,13 @@ class MainV2Activity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "NO EXISTE NINGUN TURNO ABIERTO...", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun abmProductos(){
+        finish()
+        Toast.makeText(this, "INICIANDO ABM PRODUCTOS...", Toast.LENGTH_SHORT).show()
+        val i = Intent(this, ABMProductosActivity::class.java)
+        startActivity(i)
     }
 
     fun consultarTurno(){

@@ -18,13 +18,13 @@ import java.util.List;
  * Created by pablo on 09/03/2017.
  */
 
-public class ProductoAdapter  extends BaseAdapter{
+public class ProductoParaVentaAdapter extends BaseAdapter{
 
     private List<EspecificacionProducto> productos;
     private List<Double> cantidades;
     private Context context;
 
-    public ProductoAdapter(Context context, List<EspecificacionProducto> productos, List<Double> cantidades) {
+    public ProductoParaVentaAdapter(Context context, List<EspecificacionProducto> productos, List<Double> cantidades) {
         this.productos = productos;
         this.context = context;
         this.cantidades = cantidades;

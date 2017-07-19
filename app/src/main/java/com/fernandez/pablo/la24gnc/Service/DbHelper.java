@@ -34,7 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "DECIMAL, valor_final DECIMAL, tipo VARCHAR(10),codigo_turno INTEGER, " +
             "FOREIGN KEY(codigo_turno) REFERENCES Turno(codigo))";
     private static final String PRODUCTOS = "INSERT INTO especificacion_producto(rubro,descripcion,precio,url_imagen)" +
-            "VALUES ('1','GNC','11.26','')," +
+            "VALUES ('1','GNC','11.26','img/gnc.png')," +
             "('2','ACEITE NORMAL YPF x LTS','50','img/aceite_ypf_normal_20w40.jpg')," +
             "('3','HIELO x 5KG','55','img/hielo_5kg.png')," +
             "('3','HIELO x 15KG','90','img/hielo_15kg.png')," +

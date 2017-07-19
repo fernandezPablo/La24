@@ -3,7 +3,6 @@ package com.fernandez.pablo.la24gnc.View.Venta
 import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -12,7 +11,7 @@ import android.view.View
 import android.widget.*
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto
 import com.fernandez.pablo.la24gnc.Presenter.VentaPresenter
-import com.fernandez.pablo.la24gnc.View.Utils.ProductoAdapter
+import com.fernandez.pablo.la24gnc.View.Utils.ProductoParaVentaAdapter
 
 import com.fernandez.pablo.la24gnc.R
 import java.io.InputStream
@@ -22,7 +21,7 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
     lateinit var listViewProductos: ListView
     var listProductos: ArrayList<EspecificacionProducto> = ArrayList()
     var listCantidades: ArrayList<Double> = ArrayList()
-    lateinit var productoAdapter: ProductoAdapter
+    lateinit var productoParaVentaAdapter: ProductoParaVentaAdapter
     lateinit var ventaPresenter : VentaPresenter
 
 
@@ -34,8 +33,8 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         this.listProductos = this.ventaPresenter.getProdcutos(applicationContext)
         for(prod in listProductos) listCantidades.add(0.0)
         ventaPresenter.inicializarCantidades()
-        productoAdapter = ProductoAdapter(applicationContext,listProductos,listCantidades)
-        this.listViewProductos.adapter = productoAdapter
+        productoParaVentaAdapter = ProductoParaVentaAdapter(applicationContext, listProductos, listCantidades)
+        this.listViewProductos.adapter = productoParaVentaAdapter
         this.listViewProductos.onItemClickListener = this
     }
 
@@ -68,7 +67,7 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         btnConfirmar.setOnClickListener{
             listCantidades.set(position,listCantidades.get(position) + etCantidad.text.toString().toDouble())
             ventaPresenter.agregarLineaVenta(listProductos.get(position),etCantidad.text.toString().toDouble())
-            productoAdapter.notifyDataSetChanged()
+            productoParaVentaAdapter.notifyDataSetChanged()
             alertDialog.hide()
         }
 

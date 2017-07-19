@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto;
 import com.fernandez.pablo.la24gnc.R;
 import com.fernandez.pablo.la24gnc.View.Utils.ItemSpinnerAdapter;
-import com.fernandez.pablo.la24gnc.View.Utils.ProductoAdapter;
+import com.fernandez.pablo.la24gnc.View.Utils.ProductoParaVentaAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class VariosFragment extends Fragment{
     private EditText tvCantidad;
     private ItemSpinnerAdapter spProductoAdapter;
     private ListView listViewProductos;
-    private ProductoAdapter productoAdapter;
+    private ProductoParaVentaAdapter productoParaVentaAdapter;
     private List<EspecificacionProducto> productosOnSpinner;
     private List<EspecificacionProducto> productosOnListView;
     private List<Double> cantidades;
@@ -62,8 +62,8 @@ public class VariosFragment extends Fragment{
         spProductoAdapter = new ItemSpinnerAdapter(getActivity(),productosOnSpinner);
         spProductos.setAdapter(spProductoAdapter);
 
-        productoAdapter = new ProductoAdapter(getActivity(),productosOnListView,cantidades);
-        listViewProductos.setAdapter(productoAdapter);
+        productoParaVentaAdapter = new ProductoParaVentaAdapter(getActivity(),productosOnListView,cantidades);
+        listViewProductos.setAdapter(productoParaVentaAdapter);
 
         return view;
     }
@@ -100,12 +100,12 @@ public class VariosFragment extends Fragment{
         this.listViewProductos = listViewProductos;
     }
 
-    public ProductoAdapter getProductoAdapter() {
-        return productoAdapter;
+    public ProductoParaVentaAdapter getProductoParaVentaAdapter() {
+        return productoParaVentaAdapter;
     }
 
-    public void setProductoAdapter(ProductoAdapter productoAdapter) {
-        this.productoAdapter = productoAdapter;
+    public void setProductoParaVentaAdapter(ProductoParaVentaAdapter productoParaVentaAdapter) {
+        this.productoParaVentaAdapter = productoParaVentaAdapter;
     }
 
     public List<EspecificacionProducto> getProductosOnSpinner() {
