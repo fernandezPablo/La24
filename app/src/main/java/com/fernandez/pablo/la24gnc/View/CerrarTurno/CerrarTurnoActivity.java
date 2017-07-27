@@ -73,21 +73,26 @@ public class CerrarTurnoActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                new AsyncTask<Void,Void,Void>(){
+                new AsyncTask<Void,Void,Integer>(){
                     @Override
-                    protected Void doInBackground(Void... params) {
-                        presenter.cerrarTurno();
-                        return null;
+                    protected Integer doInBackground(Void... params) {
+                        return presenter.cerrarTurno();
                     }
 
                     @Override
-                    protected void onPostExecute(Void aVoid) {
-                        super.onPostExecute(aVoid);
-                        presenter.getActivity().finish();
-                        Toast.makeText(presenter.getActivity(),"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
-                        Intent i = new Intent(presenter.getActivity(),DetalleTurnoActivity.class);
-                        i.putExtra("codigoTurno",presenter.getTurno().getCodigo());
-                        startActivity(i);
+                    protected void onPostExecute(Integer result) {
+                        super.onPostExecute(result);
+                        if(result > 0){
+                            presenter.getActivity().finish();
+                            Toast.makeText(presenter.getActivity(),"TURNO CERRADO CORRECTAMENTE...",Toast.LENGTH_SHORT);
+                            Intent i = new Intent(presenter.getActivity(),DetalleTurnoActivity.class);
+                            i.putExtra("codigoTurno",presenter.getTurno().getCodigo());
+                            startActivity(i);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),
+                                    "EL VALOR FINAL NO PUEDE SER MENOR QUE EL VALOR INICIAL", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }.execute();
             }

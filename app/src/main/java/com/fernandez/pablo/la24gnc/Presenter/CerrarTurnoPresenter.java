@@ -39,7 +39,7 @@ public class CerrarTurnoPresenter {
         return turno;
     }
 
-    public void cerrarTurno(){
+    public int cerrarTurno(){
 
         double [] valoresFinales = activity.getValoresFinales();
         AforadorDAO aforadorDAO = new AforadorDAO(this.activity);
@@ -56,8 +56,7 @@ public class CerrarTurnoPresenter {
         for (int i = 0 ; i < this.turno.getAforadores().size() ; i++){
             if (this.turno.getAforadores().get(i).getTipo().equals(Aforador.GNC)) {
                 if (this.turno.getAforadores().get(i).getValorInicial() > valoresFinales[i]) {
-                    Toast.makeText(activity, "EL VALOR FINAL NO PUEDE SER MENOR QUE EL VALOR INICIAL", Toast.LENGTH_SHORT).show();
-                    return;
+                    return -1;
                 } else {
                     this.turno.getAforadores().get(i).setValorFinal(valoresFinales[i]);
                 }
@@ -94,6 +93,7 @@ public class CerrarTurnoPresenter {
 
         TurnoDAO.cerrarTurno(activity,this.turno);
 
+        return 1;
     }
 
 }
