@@ -104,6 +104,8 @@ class ABMProductosActivity : AppCompatActivity(){
 
     fun eliminarProducto(){
         this.aBMProductosPresenter.eliminarProducto(this.productoSeleccionado.codigo)
+        finish()
+        startActivity(intent)
     }
 
 
