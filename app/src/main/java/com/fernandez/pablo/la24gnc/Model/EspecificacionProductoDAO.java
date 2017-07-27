@@ -26,8 +26,8 @@ public class EspecificacionProductoDAO {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        db.execSQL("INSERT INTO "+TABLE_NAME+"(rubro,descripcion,precio) VALUES(?,?,?)",
-                new Object[]{producto.getRubro(),producto.getDescripcion(),producto.getPrecio()});
+        db.execSQL("INSERT INTO "+TABLE_NAME+"(rubro,descripcion,precio,url_imagen) VALUES(?,?,?,?)",
+                new Object[]{producto.getRubro(),producto.getDescripcion(),producto.getPrecio(),producto.getUrlImagen()});
 
         db.close();
 
@@ -107,6 +107,22 @@ public class EspecificacionProductoDAO {
         }
 
         return productos;
+    }
+
+    public void updateEspecificacionProducto(EspecificacionProducto producto){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        db.execSQL("UPDATE "+TABLE_NAME+" SET rubro=?, descripcion=?, precio=?," +
+                " url_imagen=? WHERE codigo = ? ",new Object[]{producto.getRubro(),producto.getDescripcion(),
+        producto.getPrecio(), producto.getUrlImagen(),producto.getCodigo()});
+
+        db.close();
+    }
+
+    public void deleteEspecificacionProducto(int codigoProducto){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE codigo = ?",new Object[]{codigoProducto});
+        db.close();
     }
 
 }

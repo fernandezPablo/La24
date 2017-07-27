@@ -19,5 +19,8 @@ class ABMProductosPresenter {
     fun getProductos() : ArrayList<EspecificacionProducto> =
             EspecificacionProductoDAO(DbHelper.getInstance(activity)).listAllProductos()
 
+    fun eliminarProducto(codigoProducto : Int){
+        EspecificacionProductoDAO(DbHelper.getInstance(activity)).deleteEspecificacionProducto(codigoProducto)
+    }
 
 }

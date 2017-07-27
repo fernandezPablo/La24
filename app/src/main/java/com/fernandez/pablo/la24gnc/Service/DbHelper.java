@@ -39,9 +39,9 @@ public class DbHelper extends SQLiteOpenHelper {
             "('3','HIELO x 5KG','55','img/hielo_5kg.png')," +
             "('3','HIELO x 15KG','90','img/hielo_15kg.png')," +
             "('4','REFRIGERANTE x 1LTS','20','img/refrigerante_1lts.png')," +
-            "('4','REFRIGERANTE x 5LTS','50','img/refrigerante_5lts.png')," +
-            "('5','AGUA DESTILADA x 1LTS','15','img/agua_destilada_1lts.png')," +
-            "('5','AGUA DESTILADA x 5LTS','35','img/agua_destilada_5lts.png')," +
+            "('4','REFRIGERANTE x 5LTS','55','img/refrigerante_5lts.png')," +
+            "('5','AGUA DESTILADA x 1LTS','18','img/agua_destilada_1lts.png')," +
+            "('5','AGUA DESTILADA x 5LTS','40','img/agua_destilada_5lts.png')," +
             "('6','LIQUIDO PARA FRENOS','40','img/liquido_para_frenos.png')";
 
     private static DbHelper dbHelper;

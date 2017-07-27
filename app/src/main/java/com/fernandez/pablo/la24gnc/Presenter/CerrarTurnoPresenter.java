@@ -1,5 +1,6 @@
 package com.fernandez.pablo.la24gnc.Presenter;
 
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.fernandez.pablo.la24gnc.Model.Aforador;
