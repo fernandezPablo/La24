@@ -23,7 +23,8 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
     var listCantidades: ArrayList<Double> = ArrayList()
     lateinit var productoParaVentaAdapter: ProductoParaVentaAdapter
     lateinit var ventaPresenter : VentaPresenter
-
+    var mBuilder: AlertDialog.Builder? = null
+    var alertDialog : AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +39,13 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         this.listViewProductos.onItemClickListener = this
     }
 
+    override fun onPause() {
+        super.onPause()
+        alertDialog?.dismiss()
+    }
+
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val mBuilder : AlertDialog.Builder = AlertDialog.Builder(this)
+
         val mView : View = layoutInflater.inflate(R.layout.alert_dialog_detalle_producto,null)
         val tvNombreProducto : TextView = mView.findViewById(R.id.tvNombreProducto) as TextView
         val tvPrecio : TextView = mView.findViewById(R.id.tvPrecio) as TextView
@@ -57,21 +63,22 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         tvNombreProducto.text = listProductos.get(position).descripcion
         tvPrecio.text = "$ ${listProductos.get(position).precio.toString()}"
 
-        mBuilder.setView(mView)
-        val alertDialog : AlertDialog = mBuilder.create()
+        mBuilder = AlertDialog.Builder(this)
+        mBuilder?.setView(mView)
+        alertDialog = mBuilder?.create()
 
         btnCancelar.setOnClickListener {
-            alertDialog.hide()
+            alertDialog?.hide()
         }
 
         btnConfirmar.setOnClickListener{
             listCantidades.set(position,listCantidades.get(position) + etCantidad.text.toString().toDouble())
             ventaPresenter.agregarLineaVenta(listProductos.get(position),etCantidad.text.toString().toDouble())
             productoParaVentaAdapter.notifyDataSetChanged()
-            alertDialog.hide()
+            alertDialog?.hide()
         }
 
-        alertDialog.show()
+        alertDialog?.show()
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {

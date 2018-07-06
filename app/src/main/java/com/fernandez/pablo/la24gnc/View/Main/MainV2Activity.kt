@@ -13,13 +13,13 @@ import com.fernandez.pablo.la24gnc.View.ABMProductos.ABMProductosActivity
 import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity
 import com.fernandez.pablo.la24gnc.View.CerrarTurno.CerrarTurnoActivity
 import com.fernandez.pablo.la24gnc.View.ConsultarTurno.ConsultarTurnoActivity
-import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoActivity
 import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoV2Activity
 import com.fernandez.pablo.la24gnc.View.Venta.VentaV2Activity
 
 class MainV2Activity : AppCompatActivity() {
 
     val SIN_TURNO : String? = "NINGUN TURNO ABIERTO"
+
     var turnoAbierto : String? = null
 
 

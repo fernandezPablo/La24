@@ -92,6 +92,11 @@ class DescuentoV2Activity:AppCompatActivity() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        alertDialog.dismiss()
+    }
+
     fun cargarDescuentos(descuentos : ArrayList<Descuento>) : Unit {
         this.listDescuentos.clear()
         if(descuentos.size > 0){

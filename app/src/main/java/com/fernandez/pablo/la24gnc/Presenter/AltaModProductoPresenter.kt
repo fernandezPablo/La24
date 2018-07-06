@@ -40,7 +40,7 @@ class AltaModProductoPresenter {
     }
 
     fun setProducto(codigo : Int) : Unit{
-        val producto : EspecificacionProducto = EspecificacionProductoDAO.getProducto(mActivity,codigo)
+        val producto : EspecificacionProducto = EspecificacionProductoDAO.getProducto(mActivity,codigo)!!
 
         mActivity.tietRubro.setText(producto.rubro.toString())
         mActivity.tietDescripcion.setText(producto.descripcion.toString())

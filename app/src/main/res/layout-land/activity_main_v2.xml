@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context="com.fernandez.pablo.la24gnc.View.Main.MainV2Activity"
+    android:orientation="vertical"
+    android:padding="12dp"
+    >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/la_24_gnc_logo"
+            />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal"
+            >
+
+
+            <TextView
+                android:id="@+id/textViewInfoTurno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Info Turno"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        >
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="2dp"
+            >
+            <Button
+                android:id="@+id/btnAbrirTurno"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/grey_light"
+                android:drawableLeft="@drawable/ic_abrir_turno"
+                android:elevation="0dp"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:text="ABRIR TURNO"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:layout_marginRight="2dp"
+                />
+
+            <Button
+                android:id="@+id/btnVenta"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/grey_light"
+                android:drawableLeft="@drawable/ic_vender"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:text="VENTA"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="2dp"
+            >
+            <Button
+                android:id="@+id/btnBuzonVale"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/grey_light"
+                android:drawableLeft="@drawable/ic_buzon_vale"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:text="BUZON/VALE"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:layout_marginRight="2dp"
+                />
+
+            <Button
+                android:id="@+id/btnCerrarTurno"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/grey_light"
+                android:drawableLeft="@drawable/ic_cerrar_turno"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:text="CERRAR TURNO"
+                android:textColor="@color/white"
+                android:textSize="10sp"  />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="2dp"
+            >
+            <Button
+                android:id="@+id/btnABMProductos"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/grey_light"
+                android:drawableLeft="@drawable/ic_action_name"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:text="ABM PRODUCTOS"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:layout_marginRight="2dp"
+                />
+
+            <Button
+                android:id="@+id/btnConsultarTurno"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/grey_light"
+                android:drawableLeft="@drawable/ic_consultar_turno"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:text="CONSULTAR TURNO"
+                android:textColor="@color/white"
+                android:textSize="10sp"  />
+        </TableRow>
+
+
+    </TableLayout>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+</LinearLayout>

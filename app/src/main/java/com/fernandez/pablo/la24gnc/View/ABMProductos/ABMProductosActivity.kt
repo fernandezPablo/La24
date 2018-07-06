@@ -13,24 +13,22 @@ import com.fernandez.pablo.la24gnc.Presenter.ABMProductosPresenter
 import com.fernandez.pablo.la24gnc.R
 import com.fernandez.pablo.la24gnc.View.Utils.ProductoAdapter
 
-class ABMProductosActivity : AppCompatActivity(){
+class ABMProductosActivity() : AppCompatActivity(), IABMProductos{
 
     lateinit var iVAdd : ImageView
     lateinit var lvProductos : ListView
     lateinit var listProductos : ArrayList<EspecificacionProducto>
     lateinit var aBMProductosPresenter : ABMProductosPresenter
     lateinit var productoAdapter : ProductoAdapter
-
     lateinit var alertDialogOpciones : AlertDialog
     lateinit var adapter : ArrayAdapter<String>
     lateinit var productoSeleccionado : EspecificacionProducto
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_abmproductos)
 
-        aBMProductosPresenter = ABMProductosPresenter(activity = this)
+        aBMProductosPresenter = ABMProductosPresenter(activity = this, context = this)
         val mBuilder : AlertDialog.Builder = AlertDialog.Builder(this)
         adapter = ArrayAdapter(this,android.R.layout.select_dialog_singlechoice)
 
@@ -44,22 +42,20 @@ class ABMProductosActivity : AppCompatActivity(){
         //INIT WIDGETS
         this.iVAdd = findViewById(R.id.ivAddProducto) as ImageView
         this.lvProductos = findViewById(R.id.lvProductos) as ListView
+        
+        aBMProductosPresenter.cargarProductos()
 
-        this.listProductos = aBMProductosPresenter.getProductos()
-        this.productoAdapter = ProductoAdapter(listProductos = this.listProductos, context = this)
-        this.lvProductos.adapter = this.productoAdapter
-
-        this.lvProductos.setOnItemLongClickListener{
+        this.lvProductos!!.setOnItemLongClickListener{
             parent, view, position, id ->  onItemLongClick(parent,view,position,id)
         }
 
-        this.iVAdd.setOnClickListener { view -> abrirAltaModProducto() }
+        this.iVAdd!!.setOnClickListener { view -> abrirAltaModProducto() }
 
     }
 
     fun onItemLongClick(adapter: AdapterView<*>,view : View,position: Int,id: Long) : Boolean{
-        this.productoSeleccionado = listProductos[position]
-        alertDialogOpciones.show()
+        this.productoSeleccionado = this.listProductos[position]
+        this.alertDialogOpciones.show()
         return true
     }
 
@@ -108,5 +104,21 @@ class ABMProductosActivity : AppCompatActivity(){
         startActivity(intent)
     }
 
+    override fun getProducts(): ArrayList<EspecificacionProducto> = this.listProductos
+
+    override fun setProductsList(products: ArrayList<EspecificacionProducto>) {
+        this.listProductos = products
+        this.productoAdapter = ProductoAdapter(listProductos = this.listProductos, context = this)
+        this.lvProductos!!.adapter = this.productoAdapter
+    }
+
+    override fun showAlert(message: String, title: String) {
+        val builder : AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setMessage(message)
+        builder.setTitle(title)
+        builder.setPositiveButton("ACEPTAR",DialogInterface.OnClickListener {
+            dialogInterface, i -> Unit
+        })
+    }
 
 }

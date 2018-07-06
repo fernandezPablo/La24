@@ -10,10 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/La24GncTheme">
-        <activity android:name=".View.Main.MainActivity" />
         <activity android:name=".View.AbrirTurno.AbrirTurnoActivity" />
-        <activity android:name=".View.Venta.VentaActivity" />
-        <activity android:name=".View.Descuentos.DescuentoActivity" />
         <activity android:name=".View.CerrarTurno.CerrarTurnoActivity" />
         <activity
             android:name=".View.DetalleTurno.DetalleTurnoActivity"

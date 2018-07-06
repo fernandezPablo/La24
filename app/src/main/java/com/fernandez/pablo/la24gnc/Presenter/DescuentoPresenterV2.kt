@@ -13,7 +13,7 @@ class DescuentoPresenterV2 {
 
     constructor(activity: DescuentoV2Activity) {
         this.activity = activity
-        this.turno = TurnoDAO.getTurno(this.activity,TurnoDAO(this.activity).codLastTurno)
+        this.turno = TurnoDAO.getTurno(this.activity,TurnoDAO(this.activity).codLastTurno)!!
     }
 
     fun guardarDescuento() : Unit
@@ -24,13 +24,13 @@ class DescuentoPresenterV2 {
                                 activity.etDescripcion.text.toString(),
                                 activity.tvDescuento.text.toString(),
                                 activity.etMonto.text.toString().toDouble(),
-                                this.turno.venta)
+                                this.turno.venta!!)
                                 )
     }
 
     fun getDescuentos() : Unit {
         activity.cargarDescuentos(
-                DescuentoDAO(this.activity).getDescuentos(this.turno.venta.codigo))
+                DescuentoDAO(this.activity).getDescuentos(this.turno.venta!!.codigo))
     }
 
 }
