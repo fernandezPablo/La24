@@ -9,9 +9,9 @@ import java.util.ArrayList
 class Venta {
 
     var codigo: Int = 0
-    private var total: Double = 0.toDouble()
+    var total: Double = 0.toDouble()
     var lineasVenta: ArrayList<LineaVenta>? = null
-    private var descuentos: ArrayList<Descuento>? = null
+    var descuentos: ArrayList<Descuento>? = null
 
     val totalConDescuento: Double
         get() {
@@ -37,10 +37,6 @@ class Venta {
         this.descuentos = ArrayList()
     }
 
-    fun setTotal(total: Double) {
-        this.total = total
-    }
-
     fun calcularTotal(): Double {
         for (lv in lineasVenta!!) {
             this.total += lv.subtotal
@@ -52,16 +48,6 @@ class Venta {
     fun asignarLineasVenta(lvs: ArrayList<LineaVenta>) {
         for (lv in lvs) {
             this.lineasVenta!!.add(lv)
-        }
-    }
-
-    fun getDescuentos(): ArrayList<Descuento>? {
-        return descuentos
-    }
-
-    fun setDescuentos(descuentos: ArrayList<Descuento>) {
-        for (des in descuentos) {
-            this.descuentos!!.add(des)
         }
     }
 

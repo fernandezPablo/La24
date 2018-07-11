@@ -71,11 +71,17 @@ class GncFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_gnc, container, false)
 
         this.aforador_1 = view.findViewById(R.id.tietSurtidor1) as TextInputEditText
+        this.aforador_1!!.textSize = 25F
         this.aforador_2 = view.findViewById(R.id.tietSurtidor2) as TextInputEditText
+        this.aforador_2!!.textSize = 25F
         this.aforador_3 = view.findViewById(R.id.tietSurtidor3) as TextInputEditText
+        this.aforador_3!!.textSize = 25F
         this.aforador_4 = view.findViewById(R.id.tietSurtidor4) as TextInputEditText
+        this.aforador_4!!.textSize = 25F
         this.aforador_5 = view.findViewById(R.id.tietSurtidor5) as TextInputEditText
+        this.aforador_5!!.textSize = 25F
         this.aforador_6 = view.findViewById(R.id.tietSurtidor6) as TextInputEditText
+        this.aforador_6!!.textSize = 25F
 
         if (savedInstanceState != null) {
             this.aforador_1!!.setText(savedInstanceState.getString("aforador_1"))

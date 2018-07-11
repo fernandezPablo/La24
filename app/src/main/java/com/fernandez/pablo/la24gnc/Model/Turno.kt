@@ -32,12 +32,6 @@ class Turno {
     }
 
 
-    fun settingAforadores(aforadores: ArrayList<Aforador>) {
-        for (af in aforadores) {
-            this.aforadores.add(af)
-        }
-    }
-
     override fun toString(): String {
         return "Turno{" +
                 "nro=" + nro +

@@ -70,7 +70,7 @@ class CerrarTurnoPresenter(val activity: CerrarTurnoActivity) {
         this.turno.pmz = activity.pmz
 
         val descuentoDAO = DescuentoDAO(activity)
-        this.turno.venta!!.setDescuentos(descuentoDAO.getDescuentos(this.turno.venta!!.codigo))
+        this.turno.venta!!.descuentos = descuentoDAO.getDescuentos(this.turno.venta!!.codigo)
 
         descuentoDAO.createDescuento(Descuento("Buzón", Descuento.BUZON, this.turno.venta!!.totalConDescuento, this.turno.venta!!))
 

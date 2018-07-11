@@ -31,7 +31,7 @@ class VentaDAO(context: Context) {
             if (c.moveToFirst()) {
                 val v = Venta()
                 v.codigo = c.getInt(0)
-                v.setTotal(c.getDouble(1))
+                v.total = c.getDouble(1)
                 return v
             }
         } finally {
