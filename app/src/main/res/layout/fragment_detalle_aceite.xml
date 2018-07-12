@@ -93,7 +93,7 @@
                 android:layout_weight="1"
                 android:text="1111"
                 android:textAlignment="textStart"
-                android:textSize="18dp" />
+                android:textSize="@dimen/size_num_detail" />
 
             <TextView
                 android:id="@+id/aforadorAceite1VF"
@@ -106,7 +106,7 @@
                 android:layout_weight="1"
                 android:text="2222"
                 android:textAlignment="textStart"
-                android:textSize="18dp" />
+                android:textSize="@dimen/size_num_detail" />
 
             <TextView
                 android:id="@+id/difAceite"
@@ -119,7 +119,7 @@
                 android:layout_weight="1"
                 android:text="1111"
                 android:textAlignment="textStart"
-                android:textSize="18dp" />
+                android:textSize="@dimen/size_num_detail" />
         </LinearLayout>
 
         <LinearLayout
@@ -155,7 +155,7 @@
                 android:layout_weight="1"
                 android:text="$ 1000"
                 android:textAlignment="textEnd"
-                android:textSize="18dp"
+                android:textSize="@dimen/size_num_detail"
                 android:textStyle="bold"
                 tools:layout_conversion_absoluteHeight="21dp"
                 tools:layout_conversion_absoluteWidth="110dp"
@@ -199,7 +199,7 @@
                 android:layout_weight="1"
                 android:text="44444 m3"
                 android:textAlignment="textEnd"
-                android:textSize="18dp"
+                android:textSize="@dimen/size_num_detail"
                 android:textStyle="bold"
                 tools:layout_conversion_absoluteHeight="21dp"
                 tools:layout_conversion_absoluteWidth="110dp"

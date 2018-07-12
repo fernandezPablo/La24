@@ -42,6 +42,7 @@ class AceiteFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_aceite, container, false)
 
         this.etAforador1 = view.findViewById(R.id.etAforadorAceite1) as EditText
+        this.etAforador1!!.textSize = 30F
 
         if (savedInstanceState != null) {
             etAforador1!!.setText(savedInstanceState.getString("etAforador1"))

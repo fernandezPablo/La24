@@ -46,12 +46,19 @@ class CerrarTurnoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cerrar_turno)
 
         this.tietPmz = findViewById(R.id.tietPmz) as TextInputEditText
+        this.tietPmz!!.textSize = 30F
         this.tietSurtidor1 = findViewById(R.id.tietSurtidor1) as TextInputEditText
+        this.tietSurtidor1!!.textSize = 30F
         this.tietSurtidor2 = findViewById(R.id.tietSurtidor2) as TextInputEditText
+        this.tietSurtidor2!!.textSize = 30F
         this.tietSurtidor3 = findViewById(R.id.tietSurtidor3) as TextInputEditText
+        this.tietSurtidor3!!.textSize = 30F
         this.tietSurtidor4 = findViewById(R.id.tietSurtidor4) as TextInputEditText
+        this.tietSurtidor4!!.textSize = 30F
         this.tietSurtidor5 = findViewById(R.id.tietSurtidor5) as TextInputEditText
+        this.tietSurtidor5!!.textSize = 30F
         this.tietSurtidor6 = findViewById(R.id.tietSurtidor6) as TextInputEditText
+        this.tietSurtidor6!!.textSize = 30F
 
         this.presenter = CerrarTurnoPresenter(this)
     }

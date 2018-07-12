@@ -54,7 +54,7 @@
                     android:layout_weight="1.0"
                     android:text="0.0"
                     android:textAlignment="textEnd"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/size_num_detail"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -83,7 +83,7 @@
                     android:layout_weight="1.0"
                     android:text="0.0"
                     android:textAlignment="textEnd"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/size_num_detail"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -112,7 +112,7 @@
                     android:layout_weight="1.0"
                     android:text="0.0"
                     android:textAlignment="textEnd"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/size_num_detail"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -148,7 +148,7 @@
                     android:layout_weight="1.0"
                     android:text="0.0"
                     android:textAlignment="textEnd"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/size_num_detail"
                     android:textStyle="bold" />
 
             </LinearLayout>
