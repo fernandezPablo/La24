@@ -87,12 +87,6 @@ class DetalleADeclararFragment : Fragment() {
             this.descuentos!!.set(this.posicionDescuentoSeleccionado!!, this.descuentoSeleccionado!!)
             DescuentoDAO(activity).updateDescuento(this.descuentoSeleccionado!!)
             this.descuentoAdapter!!.notifyDataSetChanged()
-            /*
-            * TODO
-            * - crear un nuevo descuento en la db
-            * - actualizar el descuento seleccionado
-            * - actualizar el listView
-            * */
         }
         else{
             Toast.makeText(activity,"El monto ingresado es mayor o igual al monto actual del buzon",Toast.LENGTH_SHORT).show()
