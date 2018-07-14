@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey_light"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Division de Buzón"
+        android:textAlignment="center"
+        />
+    <EditText
+        android:id="@+id/etMonto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Monto a dividir ($)"
+        android:inputType="numberDecimal"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            style="@android:style/Widget.Material.Button.Colored"
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="Cancelar"
+            android:inputType="numberDecimal"
+            tools:targetApi="m" />
+
+        <Button
+            style="@android:style/Widget.Material.Button.Colored"
+            android:id="@+id/btnDividir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="Dividir"
+            android:inputType="numberDecimal"
+            tools:targetApi="m" />
+
+    </LinearLayout>
+
+</LinearLayout>

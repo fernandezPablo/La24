@@ -54,4 +54,13 @@ class DescuentoDAO(context: Context) {
         private val TABLE_NAME = "Descuento"
     }
 
+    fun updateDescuento(descuento: Descuento){
+        val db = dbHelper.writableDatabase
+
+        db.execSQL("UPDATE $TABLE_NAME SET descripcion = ?, monto = ? where codigo = ?",
+                arrayOf<Any>(descuento.descripcion!!, descuento.monto, descuento.codigo))
+
+        db.close()
+    }
+
 }
