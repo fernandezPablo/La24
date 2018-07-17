@@ -22,7 +22,7 @@ class AltaModProductoPresenter {
         producto.rubro = mActivity.tietRubro.text.toString().toInt()
         producto.descripcion = mActivity.tietDescripcion.text.toString()
         producto.precio = mActivity.tietPrecio.text.toString().toDouble()
-        producto.urlImagen = "img/no_image.jpg"
+        producto.urlImagen = mActivity.tietPathImagen.text.toString()
 
         EspecificacionProductoDAO(DbHelper.getInstance(mActivity)).createEspecificacionProducto(producto)
     }
@@ -34,7 +34,7 @@ class AltaModProductoPresenter {
         producto.rubro = mActivity.tietRubro.text.toString().toInt()
         producto.descripcion = mActivity.tietDescripcion.text.toString()
         producto.precio = mActivity.tietPrecio.text.toString().toDouble()
-        producto.urlImagen = "img/no_image.jpg"
+        producto.urlImagen = mActivity.tietPathImagen.text.toString()
 
         EspecificacionProductoDAO(DbHelper.getInstance(mActivity)).updateEspecificacionProducto(producto)
     }
@@ -45,5 +45,6 @@ class AltaModProductoPresenter {
         mActivity.tietRubro.setText(producto.rubro.toString())
         mActivity.tietDescripcion.setText(producto.descripcion.toString())
         mActivity.tietPrecio.setText(producto.precio.toString())
+        mActivity.tietPathImagen.setText(producto.urlImagen.toString())
     }
 }

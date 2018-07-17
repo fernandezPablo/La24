@@ -49,7 +49,7 @@ class EspecificacionProductoDAO(private val dbHelper: DbHelper) {
         try {
             if (c.moveToFirst()) {
                 do {
-                    productos.add(EspecificacionProducto(c.getInt(0), c.getString(2), c.getDouble(3), c.getInt(1)))
+                    productos.add(EspecificacionProducto(c.getInt(0), c.getString(2), c.getDouble(3), c.getInt(1),c.getString(4)))
                 } while (c.moveToNext())
             }
         } finally {
@@ -69,8 +69,8 @@ class EspecificacionProductoDAO(private val dbHelper: DbHelper) {
         try {
             if (c.moveToFirst()) {
                 do {
-                    productos.add(EspecificacionProducto(c.getInt(0), c.getString(2), c.getDouble(3), c.getInt(1)))
-                    productos[c.position].urlImagen = c.getString(4)
+                    productos.add(EspecificacionProducto(c.getInt(0), c.getString(2), c.getDouble(3),
+                            c.getInt(1),c.getString(4)))
                 } while (c.moveToNext())
             }
         } finally {
@@ -107,7 +107,8 @@ class EspecificacionProductoDAO(private val dbHelper: DbHelper) {
 
             try {
                 if (c.moveToFirst()) {
-                    return EspecificacionProducto(c.getInt(0), c.getString(2), c.getDouble(3), c.getInt(1))
+                    return EspecificacionProducto(c.getInt(0), c.getString(2), c.getDouble(3),
+                            c.getInt(1),c.getString(4))
                 }
             } finally {
                 db.close()

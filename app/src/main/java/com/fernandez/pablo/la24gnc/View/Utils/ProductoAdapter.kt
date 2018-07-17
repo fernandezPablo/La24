@@ -1,9 +1,14 @@
 package com.fernandez.pablo.la24gnc.View.Utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Path
+import android.net.Uri
+import android.support.v4.app.ActivityCompat
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +17,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto
 import com.fernandez.pablo.la24gnc.R
+import java.io.File
+import java.io.FileNotFoundException
 import java.io.InputStream
+import java.util.jar.Manifest
 
 /**
  * Created by pablo on 13/07/2017.
@@ -42,15 +50,31 @@ class ProductoAdapter : BaseAdapter{
         var tvDescripcionProducto : TextView? = view?.findViewById(R.id.tvNombreProducto) as TextView?
         var tvPrecioProducto : TextView? = view?.findViewById(R.id.tvPrecio) as TextView?
 
-        val assetManager : AssetManager = this.context.assets
-        val inputStream : InputStream = assetManager.open(this.listProductos[position].urlImagen)
-        val bitMap : Bitmap = BitmapFactory.decodeStream(inputStream)
-        ivProducto?.setImageBitmap(bitMap)
-
-
         tvDescripcionProducto?.setText(this.listProductos[position].descripcion)
         tvPrecioProducto?.setText(this.listProductos[position].precio.toString())
 
+        var assetManager: AssetManager = this.context.assets
+        var inputStream: InputStream
+        var bitMap: Bitmap
+        try {
+            inputStream = assetManager.open(this.listProductos[position].urlImagen)
+            bitMap = BitmapFactory.decodeStream(inputStream)
+            ivProducto?.setImageBitmap(bitMap)
+        }
+        catch (ex: FileNotFoundException){
+            try {
+                Log.e("Exception","Archivo no encontrado")
+                inputStream = File(this.listProductos[position].urlImagen).inputStream()
+                ivProducto?.setImageBitmap(BitmapFactory.decodeFile(this.listProductos[position].urlImagen))
+            }
+            catch (ex: FileNotFoundException){
+                inputStream = assetManager.open("img/no_image.jpg")
+                bitMap = BitmapFactory.decodeStream(inputStream)
+                ivProducto?.setImageBitmap(bitMap)
+            }
+        }
+
+0
         return view
     }
 

@@ -1,11 +1,16 @@
 package com.fernandez.pablo.la24gnc.View.ABMProductos
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.AssetManager
+import android.database.Cursor
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.design.widget.TextInputEditText
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -13,6 +18,7 @@ import android.widget.Toast
 import com.fernandez.pablo.la24gnc.Presenter.AltaModProductoPresenter
 
 import com.fernandez.pablo.la24gnc.R
+import java.util.jar.Manifest
 
 class AltaModProudctoActivity : AppCompatActivity() {
 
@@ -67,8 +73,16 @@ class AltaModProudctoActivity : AppCompatActivity() {
         if(resultCode == RESULT_OK)
         {
             val path : Uri? = data?.data
-            //this.ivProducto.setImageURI(path)
-            this.tietPathImagen.setText(path.toString())
+            val filePathColumn: Array<String> = Array(1,{MediaStore.Images.Media.DATA})
+            val cursor : Cursor = contentResolver.query(path,filePathColumn,null,null,null)
+            cursor.moveToFirst()
+
+            val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+            val picturePath = cursor.getString(columnIndex)
+            cursor.close()
+
+            this.tietPathImagen.setText(picturePath)
+
         }
         else{
            Toast.makeText(this,"NO SE RETORNO LA IMAGEN...",Toast.LENGTH_SHORT).show()
@@ -77,7 +91,12 @@ class AltaModProudctoActivity : AppCompatActivity() {
     }
 
     fun cargarImagen() {
-        val intent : Intent = Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,
+                    Array(1,{android.Manifest.permission.READ_EXTERNAL_STORAGE}),100)
+        }
+        val intent  = Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.setType("image/*")
         startActivityForResult(Intent.createChooser(intent,"ELIJA UNA APP PARA VISUALIZAR IMAGENES"),REQUEST_CODE_IMAGE)
     }

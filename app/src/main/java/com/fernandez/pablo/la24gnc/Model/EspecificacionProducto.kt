@@ -21,6 +21,14 @@ class EspecificacionProducto {
         this.rubro = rubro
     }
 
+    constructor(codigo: Int, descripcion: String, precio: Double, rubro: Int, urlImagen: String){
+        this.codigo = codigo
+        this.descripcion = descripcion
+        this.precio = precio
+        this.rubro = rubro
+        this.urlImagen = urlImagen
+    }
+
     override fun toString(): String {
         return "EspecificacionProducto{" +
                 "codigo=" + codigo +

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.fernandez.pablo.la24gnc.Model.EspecificacionProducto
@@ -14,6 +15,8 @@ import com.fernandez.pablo.la24gnc.Presenter.VentaPresenter
 import com.fernandez.pablo.la24gnc.View.Utils.ProductoParaVentaAdapter
 
 import com.fernandez.pablo.la24gnc.R
+import java.io.File
+import java.io.FileNotFoundException
 import java.io.InputStream
 
 class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
@@ -54,11 +57,30 @@ class VentaV2Activity  : AppCompatActivity(), AdapterView.OnItemClickListener {
         val btnConfirmar : Button = mView.findViewById(R.id.btnConfirmar) as Button
         val ivProducto : ImageView = mView.findViewById(R.id.imageProducto) as ImageView
 
-        val assetManager : AssetManager = getAssets()
-        val inputStream : InputStream = assetManager.open(ventaPresenter.getImagenProducto(
-                listProductos.get(position).codigo))
-        val bitMap : Bitmap = BitmapFactory.decodeStream(inputStream)
-        ivProducto.setImageBitmap(bitMap)
+        val assetManager: AssetManager = assets
+        var inputStream: InputStream
+        var bitMap: Bitmap
+
+        try {
+           inputStream = assetManager.open(ventaPresenter.getImagenProducto(
+                    listProductos.get(position).codigo))
+            bitMap = BitmapFactory.decodeStream(inputStream)
+            ivProducto.setImageBitmap(bitMap)
+        }
+        catch (ex: FileNotFoundException){
+            try {
+                Log.e("Exception","Archivo no encontrado")
+                inputStream = File(this.listProductos[position].urlImagen).inputStream()
+                ivProducto?.setImageBitmap(BitmapFactory.decodeFile(this.listProductos[position].urlImagen))
+            }
+            catch (ex: FileNotFoundException){
+                Log.e("Exception","Archivo no encontrado")
+                inputStream = assetManager.open("img/no_image.jpg")
+                bitMap = BitmapFactory.decodeStream(inputStream)
+                ivProducto?.setImageBitmap(bitMap)
+            }
+        }
+
 
         tvNombreProducto.text = listProductos.get(position).descripcion
         tvPrecio.text = "$ ${listProductos.get(position).precio.toString()}"
