@@ -52,12 +52,14 @@ class MainV2Activity : AppCompatActivity() {
     }
 
     fun abrirTurno(){
+        val i = Intent(this, AbrirTurnoActivity::class.java)
         if (turnoAbierto == SIN_TURNO) {
             Toast.makeText(this, "ABRIENDO TURNO...", Toast.LENGTH_SHORT).show()
-            val i = Intent(this, AbrirTurnoActivity::class.java)
             startActivity(i)
             finish()
         } else {
+            i.putExtra("turno_abierto",true)
+            startActivity(i)
             Toast.makeText(this, "DEBE CERRAR EL TURNO ACTUAL PARA ABRIR OTRO TURNO...", Toast.LENGTH_SHORT).show()
         }
     }

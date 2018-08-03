@@ -48,6 +48,14 @@ class AceiteFragment : Fragment() {
             etAforador1!!.setText(savedInstanceState.getString("etAforador1"))
         }
 
+        if (arguments!= null){
+            this.etAforador1!!.setText(arguments.getDouble("af_aceite").toString())
+        }
+        else {
+            print("Arguments not Added")
+        }
+
+
         // Inflate the layout for this fragment
         return view
     }

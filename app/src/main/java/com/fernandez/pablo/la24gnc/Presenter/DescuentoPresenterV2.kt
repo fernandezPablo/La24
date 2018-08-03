@@ -2,35 +2,30 @@ package com.fernandez.pablo.la24gnc.Presenter
 
 import com.fernandez.pablo.la24gnc.Model.*
 import com.fernandez.pablo.la24gnc.View.Descuentos.DescuentoV2Activity
+import com.fernandez.pablo.la24gnc.View.Descuentos.IDescuentos
 
 /**
  * Created by pablo on 10/07/2017.
  */
 class DescuentoPresenterV2 {
 
-    lateinit var turno : Turno
-    lateinit var activity : DescuentoV2Activity
+    var turno : Turno
+    var activity : IDescuentos
 
     constructor(activity: DescuentoV2Activity) {
         this.activity = activity
-        this.turno = TurnoDAO.getTurno(this.activity,TurnoDAO(this.activity).codLastTurno)!!
+        this.turno = TurnoDAO.getTurno(this.activity as DescuentoV2Activity,TurnoDAO((this.activity as DescuentoV2Activity)).codLastTurno)!!
     }
 
     fun guardarDescuento() : Unit
     {
-        DescuentoDAO(this.activity).
-                createDescuento(
-                        Descuento(
-                                activity.etDescripcion.text.toString(),
-                                activity.tvDescuento.text.toString(),
-                                activity.etMonto.text.toString().toDouble(),
-                                this.turno.venta!!)
-                                )
+        DescuentoDAO(this.activity as DescuentoV2Activity).
+                createDescuento(activity.obtenerDescuento())
     }
 
     fun getDescuentos() : Unit {
         activity.cargarDescuentos(
-                DescuentoDAO(this.activity).getDescuentos(this.turno.venta!!.codigo))
+                DescuentoDAO(this.activity as DescuentoV2Activity).getDescuentos(this.turno.venta!!.codigo))
     }
 
 }

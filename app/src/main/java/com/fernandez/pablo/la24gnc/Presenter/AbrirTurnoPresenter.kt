@@ -6,6 +6,7 @@ import com.fernandez.pablo.la24gnc.Model.Turno
 import com.fernandez.pablo.la24gnc.Model.TurnoDAO
 import com.fernandez.pablo.la24gnc.Model.VentaDAO
 import com.fernandez.pablo.la24gnc.View.AbrirTurno.AbrirTurnoActivity
+import com.fernandez.pablo.la24gnc.View.AbrirTurno.IAbrirTurno
 
 import java.text.SimpleDateFormat
 import java.util.ArrayList
@@ -16,13 +17,16 @@ import java.util.GregorianCalendar
  * Created by pablo on 07/05/2017.
  */
 
-object AbrirTurnoPresenter {
+class AbrirTurnoPresenter(view: IAbrirTurno) {
+
+    val turno = Turno()
+    val view : IAbrirTurno = view
 
     fun guardarTurno(activity: AbrirTurnoActivity) {
 
-        val turno = Turno()
-        val valoresInicialesGnc = activity.gncFragment.valoresAforadores
-        val valoresInicialesAceite = activity.aceiteFragment.valoresAforadores
+        //TODO comprobar si el turno existe y actualizarlo
+        val valoresInicialesGnc = activity.gncFragment!!.valoresAforadores
+        val valoresInicialesAceite = activity.aceiteFragment!!.valoresAforadores
         val aforadoresGnc = ArrayList<Aforador>()
         val aforadoresAceite = ArrayList<Aforador>()
 
@@ -53,7 +57,9 @@ object AbrirTurnoPresenter {
         turno.codigo = turnoDAO.codLastTurno
 
         for (i in valoresInicialesGnc.indices) {
-            aforadoresGnc.add(Aforador(i + 1, "m3", valoresInicialesGnc[i].toDouble(), 0.0, Aforador.GNC, turno.codigo))
+            aforadoresGnc.add(Aforador(i + 1, "m3", valoresInicialesGnc[i].toDouble(),
+                    0.0, Aforador.GNC, turno.codigo))
+            this.turno.aforadores.add(aforadoresGnc.last())
         }
 
         val aforadorDAO = AforadorDAO(activity)
@@ -63,7 +69,9 @@ object AbrirTurnoPresenter {
         }
 
         for (i in valoresInicialesAceite.indices) {
-            aforadoresAceite.add(Aforador(i + 1, "lts", valoresInicialesAceite[i], 0.0, Aforador.ACEITE, turno.codigo))
+            aforadoresAceite.add(Aforador(i + 1, "lts", valoresInicialesAceite[i],
+                    0.0, Aforador.ACEITE, turno.codigo))
+            this.turno.aforadores.add(aforadoresAceite.last())
         }
 
         for (af in aforadoresAceite) {

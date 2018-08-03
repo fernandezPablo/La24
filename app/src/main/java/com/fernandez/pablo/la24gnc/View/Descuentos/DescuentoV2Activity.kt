@@ -14,7 +14,7 @@ import com.fernandez.pablo.la24gnc.Presenter.DescuentoPresenterV2
 import com.fernandez.pablo.la24gnc.R
 import com.fernandez.pablo.la24gnc.View.Utils.DescuentoAdapter
 
-class DescuentoV2Activity:AppCompatActivity() {
+class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
 
     //PRESENTER
     lateinit var descuentoPresenter : DescuentoPresenterV2
@@ -38,7 +38,7 @@ class DescuentoV2Activity:AppCompatActivity() {
     lateinit var btnCancelar : Button
     lateinit var btnConfirmar : Button
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_descuento_v2)
 
@@ -97,7 +97,7 @@ class DescuentoV2Activity:AppCompatActivity() {
         alertDialog.dismiss()
     }
 
-    fun cargarDescuentos(descuentos : ArrayList<Descuento>) : Unit {
+    override fun cargarDescuentos(descuentos : ArrayList<Descuento>) : Unit {
         this.listDescuentos.clear()
         if(descuentos.size > 0){
             for (des in descuentos){
@@ -107,4 +107,11 @@ class DescuentoV2Activity:AppCompatActivity() {
         }
     }
 
+    override fun obtenerDescuento(): Descuento =
+            Descuento(
+                    etDescripcion.text.toString(),
+                    tvDescuento.text.toString(),
+                    etMonto.text.toString().toDouble(),
+                    descuentoPresenter.turno.venta!!
+            )
 }

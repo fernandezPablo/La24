@@ -4,6 +4,7 @@ package com.fernandez.pablo.la24gnc.View.AbrirTurno
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -92,9 +93,20 @@ class GncFragment : Fragment() {
             this.aforador_6!!.setText(savedInstanceState.getString("aforador_6"))
         }
 
+        if (arguments!= null){
+            this.aforador_1!!.setText(arguments.getDouble("af0").toString())
+            this.aforador_2!!.setText(arguments.getDouble("af1").toString())
+            this.aforador_3!!.setText(arguments.getDouble("af2").toString())
+            this.aforador_4!!.setText(arguments.getDouble("af3").toString())
+            this.aforador_5!!.setText(arguments.getDouble("af4").toString())
+            this.aforador_6!!.setText(arguments.getDouble("af5").toString())
+        }
+        else {
+            print("Arguments not Added")
+        }
+
         return view
     }
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
