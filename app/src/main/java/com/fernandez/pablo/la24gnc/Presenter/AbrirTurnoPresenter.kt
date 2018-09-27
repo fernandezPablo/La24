@@ -19,17 +19,47 @@ import java.util.GregorianCalendar
 
 class AbrirTurnoPresenter(view: IAbrirTurno) {
 
-    val turno = Turno()
+    var turno = Turno()
     val view : IAbrirTurno = view
 
     fun guardarTurno(activity: AbrirTurnoActivity) {
 
-        //TODO comprobar si el turno existe y actualizarlo
         val valoresInicialesGnc = activity.gncFragment!!.valoresAforadores
         val valoresInicialesAceite = activity.aceiteFragment!!.valoresAforadores
         val aforadoresGnc = ArrayList<Aforador>()
         val aforadoresAceite = ArrayList<Aforador>()
+        val turnoAbierto = TurnoDAO.hayTurnoAbierto(activity)
 
+        if(turnoAbierto == null){
+            this.nuevoTurno()
+        }
+        else{
+            this.editarTurno()
+        }
+
+        for (i in valoresInicialesGnc.indices) {
+            aforadoresGnc.add(Aforador(i + 1, "m3", valoresInicialesGnc[i].toDouble(),
+                    0.0, Aforador.GNC, turno.codigo))
+            this.turno.aforadores.add(aforadoresGnc.last())
+        }
+
+        for (i in valoresInicialesAceite.indices) {
+            aforadoresAceite.add(Aforador(i + 1, "lts", valoresInicialesAceite[i],
+                    0.0, Aforador.ACEITE, turno.codigo))
+            this.turno.aforadores.add(aforadoresAceite.last())
+        }
+
+        if(turnoAbierto == null){
+            this.crearAforadores(aforadoresGnc,aforadoresAceite)
+        }
+        else{
+            this.editarAforadores(aforadoresGnc,aforadoresAceite)
+        }
+
+
+    }
+
+    fun nuevoTurno(){
         val calendar = GregorianCalendar()
 
         val sdf = SimpleDateFormat("dd/MM/yyyy - HH:mm")
@@ -48,36 +78,47 @@ class AbrirTurnoPresenter(view: IAbrirTurno) {
             turno.nro = 0
         }
 
-        val ventaDAO = VentaDAO(activity)
+        val ventaDAO = VentaDAO(this.view as AbrirTurnoActivity)
         turno.venta = ventaDAO.createVenta()
 
-        val turnoDAO = TurnoDAO(activity)
+        val turnoDAO = TurnoDAO(this.view as AbrirTurnoActivity)
         turnoDAO.createTurno(turno)
 
         turno.codigo = turnoDAO.codLastTurno
+    }
 
-        for (i in valoresInicialesGnc.indices) {
-            aforadoresGnc.add(Aforador(i + 1, "m3", valoresInicialesGnc[i].toDouble(),
-                    0.0, Aforador.GNC, turno.codigo))
-            this.turno.aforadores.add(aforadoresGnc.last())
-        }
+    fun editarTurno(){
+        val turnoDAO = TurnoDAO(view as AbrirTurnoActivity)
+        val ventaDAO = VentaDAO(view as AbrirTurnoActivity)
 
-        val aforadorDAO = AforadorDAO(activity)
+        this.turno = TurnoDAO.getTurno(view as AbrirTurnoActivity,turnoDAO.codLastTurno)!!
+
+        this.turno.venta = ventaDAO.getVenta(this.turno.codigo)
+    }
+
+    fun crearAforadores(aforadoresGnc: ArrayList<Aforador>,aforadoresAceite: ArrayList<Aforador>){
+        val aforadorDAO = AforadorDAO(view as AbrirTurnoActivity)
 
         for (af in aforadoresGnc) {
             aforadorDAO.createAforador(af)
-        }
-
-        for (i in valoresInicialesAceite.indices) {
-            aforadoresAceite.add(Aforador(i + 1, "lts", valoresInicialesAceite[i],
-                    0.0, Aforador.ACEITE, turno.codigo))
-            this.turno.aforadores.add(aforadoresAceite.last())
         }
 
         for (af in aforadoresAceite) {
             aforadorDAO.createAforador(af)
         }
 
+    }
+
+    fun editarAforadores(aforadoresGnc: ArrayList<Aforador>,aforadoresAceite: ArrayList<Aforador>){
+        val aforadorDAO = AforadorDAO(view as AbrirTurnoActivity)
+
+        for (af in aforadoresGnc) {
+            aforadorDAO.updateAforador(this.turno.codigo,af)
+        }
+
+        for (af in aforadoresAceite) {
+            aforadorDAO.updateAforador(this.turno.codigo,af)
+        }
     }
 
 }

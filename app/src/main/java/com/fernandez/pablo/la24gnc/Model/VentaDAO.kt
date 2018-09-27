@@ -49,6 +49,24 @@ class VentaDAO(context: Context) {
         db.close()
     }
 
+    fun getVenta(codigoTurno: Int): Venta{
+        var venta : Venta = Venta()
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME WHERE codigo = ?", arrayOf(Integer.toString(codigoTurno)))
+
+        try {
+            if(cursor.moveToFirst()){
+                venta.codigo = cursor.getInt(0)
+                venta.total = cursor.getDouble(1)
+            }
+            return venta
+        }
+        finally {
+            db.close()
+            cursor.close()
+        }
+    }
+
     companion object {
         private val TABLE_NAME = "venta"
     }

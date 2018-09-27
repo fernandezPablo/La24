@@ -76,10 +76,23 @@ class AforadorDAO(context: Context) {
         return aforadores
     }
 
-    fun updateAforador(codigo: Int, aforador: Aforador) {
+    fun updateAforador(codigoTurno: Int, aforador: Aforador) {
         val db = dbHelper.writableDatabase
         val stmt = db.compileStatement(UPDATE_AFORADOR)
+
+        stmt.bindString(1,Integer.toString(aforador.numero))
+        stmt.bindString(2,aforador.unidad)
+        stmt.bindDouble(3,aforador.valorInicial)
+        stmt.bindDouble(4,aforador.valorFinal)
+        stmt.bindString(5,aforador.tipo)
+        stmt.bindString(6,Integer.toString(aforador.numero))
+        stmt.bindString(7,Integer.toString(codigoTurno))
+        stmt.bindString(8,aforador.tipo)
+
         stmt.execute()
+
+        stmt.close()
+        db.close()
     }
 
     fun setValorFinal(aforador: Aforador) {
@@ -92,7 +105,7 @@ class AforadorDAO(context: Context) {
     companion object {
         private val TABLE_NAME = "Aforador"
         private val CREATE_AFORADOR = "INSERT INTO Aforador(numero,unidad,valor_inicial," + "valor_final,tipo,codigo_turno) VALUES(?,?,?,?,?,?)"
-        private val UPDATE_AFORADOR = "UPDATE Aforador WHERE codigo = ? SET numero=?," + " unidad=?, valor_inicial=?, valor_final=?, tipo=?, codigo_turno=?"
+        private val UPDATE_AFORADOR = "UPDATE Aforador SET numero=?," + " unidad=?, valor_inicial=?, valor_final=?, tipo=? WHERE numero = ? AND codigo_turno = ? AND tipo = ?"
         private val COLUMNAS = arrayOf("codigo", "numero", "unidad", "valor_inicial", "valor_final", "tipo", "codigo_turno")
     }
 
