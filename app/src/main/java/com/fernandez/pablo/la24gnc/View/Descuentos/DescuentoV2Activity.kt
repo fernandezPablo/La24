@@ -1,13 +1,11 @@
 package com.fernandez.pablo.la24gnc.View.Descuentos
 
+import android.content.DialogInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import com.fernandez.pablo.la24gnc.Model.Descuento
 import com.fernandez.pablo.la24gnc.Presenter.DescuentoPresenterV2
 
@@ -27,6 +25,7 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
     //RECURSOS PARA EL LISTVIEW
     lateinit var listDescuentos: ArrayList<Descuento>
     lateinit var descuentoAdapter: DescuentoAdapter
+    lateinit var descuentoSeleccionado: Descuento
 
     //ALERTDIALOG
     lateinit var mBuilder: AlertDialog.Builder
@@ -37,6 +36,11 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
     lateinit var etMonto : EditText
     lateinit var btnCancelar : Button
     lateinit var btnConfirmar : Button
+
+    //ALERTDIALOG OPTIONS
+    lateinit var mBuilderOptions: AlertDialog.Builder
+    lateinit var adapterOptions: ArrayAdapter<String>
+    lateinit var alertDialogOptions: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +59,9 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
         this.descuentoAdapter = DescuentoAdapter(this, listDescuentos)
         this.descuentoPresenter.getDescuentos()
         this.listViewDescuentos.adapter = descuentoAdapter
+        this.listViewDescuentos.setOnItemLongClickListener{
+            parent, view, position, id -> onItemLongClick(parent,view,position,id)
+        }
 
         //INIT ALERTDIALOG
         this.mBuilder = AlertDialog.Builder(this)
@@ -89,7 +96,56 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
             this.alertDialog.hide()
         }
 
+        //INIT ALERTDIALOG OPTIONS
+        this.mBuilderOptions = AlertDialog.Builder(this)
+        this.adapterOptions = ArrayAdapter(this, android.R.layout.select_dialog_singlechoice)
 
+        this.adapterOptions.add("Editar")
+        this.adapterOptions.add("Elminiar")
+
+        mBuilderOptions.setAdapter(this.adapterOptions, DialogInterface.OnClickListener { dialog, which -> onClickOpcion(dialog,which)})
+
+        this.alertDialogOptions = mBuilderOptions.create()
+
+    }
+
+    private fun onItemLongClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long): Boolean {
+        this.descuentoSeleccionado = this.listDescuentos[position]
+        this.alertDialogOptions.show()
+        Toast.makeText(this,"Descuento seleccionado ${this.descuentoSeleccionado.toString()}",Toast.LENGTH_SHORT).show()
+        return true
+    }
+
+    private fun onClickOpcion(dialog: DialogInterface?, which: Int): Boolean{
+        when(which){
+            0 -> editarDescuento()
+            1 -> eliminarDescuento()
+        }
+
+        return true
+    }
+
+    private fun eliminarDescuento() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Eliminar Descuento").setMessage("Esta seguro que desea eliminar el descuento ${this.descuentoSeleccionado.descripcion}")
+        builder.setPositiveButton("Eliminar",DialogInterface.OnClickListener{
+          dialog, wich ->  this.confirmacionEliminarDescuento()
+        })
+        builder.setNegativeButton("Cancelar",DialogInterface.OnClickListener {
+            dialogInterface, i -> dialogInterface.dismiss()
+        })
+
+        builder.create().show()
+    }
+
+    private fun confirmacionEliminarDescuento(){
+        descuentoPresenter.eliminarDescuento(this.descuentoSeleccionado)
+        this.listDescuentos.remove(this.descuentoSeleccionado)
+        this.descuentoAdapter.setData(this.listDescuentos)
+    }
+
+    private fun editarDescuento() {
+        Toast.makeText(this,"Editando Descuento",Toast.LENGTH_LONG).show()
     }
 
     override fun onPause() {

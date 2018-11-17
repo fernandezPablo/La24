@@ -28,4 +28,8 @@ class DescuentoPresenterV2 {
                 DescuentoDAO(this.activity as DescuentoV2Activity).getDescuentos(this.turno.venta!!.codigo))
     }
 
+    fun eliminarDescuento(descuento: Descuento): Unit{
+        DescuentoDAO(this.activity as DescuentoV2Activity).deleteDescuento(descuento)
+    }
+
 }

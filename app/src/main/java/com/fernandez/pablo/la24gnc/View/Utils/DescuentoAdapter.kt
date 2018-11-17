@@ -17,7 +17,7 @@ import java.util.ArrayList
  * Created by pablo on 14/05/2017.
  */
 
-class DescuentoAdapter(private val context: Context, private val descuentos: ArrayList<Descuento>) : BaseAdapter() {
+class DescuentoAdapter(private val context: Context, private var descuentos: ArrayList<Descuento>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return descuentos.size
@@ -50,5 +50,10 @@ class DescuentoAdapter(private val context: Context, private val descuentos: Arr
         tvMonto.text = df.format(descuentos[position].monto)
 
         return rowView
+    }
+
+    fun setData(descuentos: ArrayList<Descuento>){
+        this.descuentos = descuentos
+        this.notifyDataSetChanged()
     }
 }

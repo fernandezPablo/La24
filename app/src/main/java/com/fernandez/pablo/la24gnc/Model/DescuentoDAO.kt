@@ -63,4 +63,10 @@ class DescuentoDAO(context: Context) {
         db.close()
     }
 
+    fun deleteDescuento(descuento: Descuento){
+        val db = dbHelper.writableDatabase
+        db.execSQL("DELETE FROM $TABLE_NAME WHERE codigo = ?", arrayOf<Any>(descuento.codigo))
+        db.close()
+    }
+
 }
