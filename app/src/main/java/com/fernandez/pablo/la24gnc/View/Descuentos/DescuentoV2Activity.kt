@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.fernandez.pablo.la24gnc.Model.Descuento
@@ -41,6 +42,8 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
     lateinit var mBuilderOptions: AlertDialog.Builder
     lateinit var adapterOptions: ArrayAdapter<String>
     lateinit var alertDialogOptions: AlertDialog
+
+    var isEdit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +94,24 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
             this.alertDialog.hide()
         }
         this.btnConfirmar.setOnClickListener {
-            this.descuentoPresenter.guardarDescuento()
+            if(isEdit){
+                this.listDescuentos.remove(this.descuentoSeleccionado)
+                this.descuentoSeleccionado.descripcion = this.etDescripcion.text.toString()
+                try{
+                    this.descuentoSeleccionado.monto = this.etMonto.text.toString().toDouble()
+                }
+                catch (ex: java.lang.NumberFormatException){
+                    Log.w("Warning",ex.message)
+                }
+
+                this.listDescuentos.add(this.descuentoSeleccionado)
+                this.descuentoAdapter.setData(this.listDescuentos)
+                this.descuentoPresenter.editarDescuento(this.descuentoSeleccionado)
+                this.isEdit = false
+            }
+            else{
+                this.descuentoPresenter.guardarDescuento()
+            }
             this.descuentoPresenter.getDescuentos()
             this.alertDialog.hide()
         }
@@ -146,6 +166,11 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
 
     private fun editarDescuento() {
         Toast.makeText(this,"Editando Descuento",Toast.LENGTH_LONG).show()
+        this.isEdit = true
+        this.tvDescuento.setText(this.descuentoSeleccionado.tipo)
+        this.etDescripcion.setText(this.descuentoSeleccionado.descripcion)
+        this.etMonto.setText(this.descuentoSeleccionado.monto.toString())
+        this.alertDialog.show()
     }
 
     override fun onPause() {

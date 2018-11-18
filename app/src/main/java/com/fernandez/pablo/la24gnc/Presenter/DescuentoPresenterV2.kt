@@ -23,6 +23,11 @@ class DescuentoPresenterV2 {
                 createDescuento(activity.obtenerDescuento())
     }
 
+    fun editarDescuento(descuento: Descuento) : Unit
+    {
+       DescuentoDAO(this.activity as DescuentoV2Activity).updateDescuento(descuento)
+    }
+
     fun getDescuentos() : Unit {
         activity.cargarDescuentos(
                 DescuentoDAO(this.activity as DescuentoV2Activity).getDescuentos(this.turno.venta!!.codigo))
