@@ -154,4 +154,13 @@ class DetalleTurnoPresenter(private val activity: DetalleTurnoActivity) {
         return this.totalDineroVarios
     }
 
+    fun eliminarDescuento(descuento: Descuento){
+        DescuentoDAO(activity).deleteDescuento(descuento)
+    }
+
+    fun actualizarMontoDescuento(descuento: Descuento, monto: Double){
+        descuento.monto += monto
+        DescuentoDAO(activity).updateDescuento(descuento)
+    }
+
 }

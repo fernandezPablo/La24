@@ -8,5 +8,5 @@ import com.fernandez.pablo.la24gnc.Model.Descuento
 interface IDescuentos {
 
     fun cargarDescuentos(descuentos : ArrayList<Descuento>) : Unit
-    fun obtenerDescuento(): Descuento
+    fun obtenerDescuento(): Descuento?
 }

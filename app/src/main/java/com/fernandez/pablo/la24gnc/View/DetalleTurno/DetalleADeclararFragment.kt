@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,8 @@ import java.util.ArrayList
 class DetalleADeclararFragment : Fragment() {
 
 
+    //TODO: REVISAR LOS DESCUENTOS SE VUELVEN A GENERAR O NO SE ELIMINAN DE LA BD
+
     private var listDescuentos: ListView? = null
     private var descuentos: ArrayList<Descuento>? = null
     private var descuentoAdapter: DescuentoAdapter? = null
@@ -39,6 +42,11 @@ class DetalleADeclararFragment : Fragment() {
     private var montoValeEditText: EditText? = null
     private var cancelarGenValeButton: Button? = null
     private var genValeButton: Button? = null
+    private var alertDialogSeleccionarDescuento: AlertDialog? = null
+    private var alertDialogViewListaDescuento: View? = null
+    private var descuentosEnAlertDialog: ArrayList<Descuento>? = null
+    private var descuentoAdapterAlertDialog: DescuentoAdapter?= null
+    private var descuentoSeleccionadoEnAlertDialog: Descuento? = null
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -49,7 +57,7 @@ class DetalleADeclararFragment : Fragment() {
         this.listDescuentos = view.findViewById(R.id.listDescuentos) as ListView
 
         this.descuentos = ArrayList()
-        this.descuentoAdapter = DescuentoAdapter(activity, this.descuentos!!)
+        this.descuentoAdapter = DescuentoAdapter(this.activity!!, this.descuentos!!)
         this.listDescuentos!!.adapter = this.descuentoAdapter
 
         this.listDescuentos!!.setOnItemLongClickListener {
@@ -105,6 +113,31 @@ class DetalleADeclararFragment : Fragment() {
 
         (activity as DetalleTurnoActivity).cargarDetalleADeclarar()
 
+        /*
+        * GENERATE DIALOG VIEW SELECCIONAR DESCUENTO
+        * */
+
+        this.alertDialogViewListaDescuento = inflater.inflate(
+                R.layout.alert_dialog_seleccionar_descuento,
+                container,
+                false)
+
+        val mBuilder = AlertDialog.Builder(this.activity)
+        val listView = this.alertDialogViewListaDescuento!!.findViewById(R.id.lvDescuentos) as ListView
+        this.descuentosEnAlertDialog = ArrayList()
+        this.descuentoAdapterAlertDialog = DescuentoAdapter(activity,this.descuentosEnAlertDialog!!)
+        listView.adapter = this.descuentoAdapterAlertDialog
+        listView.setOnItemClickListener {
+            adapterView, view, i, l ->
+            Log.i("La24Info","Descuento seleccionado: ${descuentosEnAlertDialog!![i].descripcion} - " +
+                    "${descuentosEnAlertDialog!![i].monto}")
+            this.alertDialogSeleccionarDescuento!!.dismiss()
+            this.descuentoSeleccionadoEnAlertDialog = this.descuentosEnAlertDialog!![i]
+            this.confirmarEliminarDescuento()
+        }
+        mBuilder.setView(this.alertDialogViewListaDescuento)
+        this.alertDialogSeleccionarDescuento = mBuilder.create()
+
         return view
     }
 
@@ -150,8 +183,8 @@ class DetalleADeclararFragment : Fragment() {
     }
 
     fun onItemLongClick(position: Int): Boolean{
+        this.descuentoSeleccionado = this.descuentos!![position]
         if(this.descuentos!![position].tipo!!.equals(Descuento.BUZON)){
-            this.descuentoSeleccionado = this.descuentos!![position]
             this.posicionDescuentoSeleccionado = position
             Toast.makeText(activity,"Buzon: ${this.descuentoSeleccionado}",Toast.LENGTH_LONG).show()
             val optionsDialog : AlertDialog.Builder = AlertDialog.Builder(activity)
@@ -167,9 +200,40 @@ class DetalleADeclararFragment : Fragment() {
             //alertDialogDivBuzon!!.show()
         }
         else{
-            Toast.makeText(activity,"Los vales no se pueden dividir",Toast.LENGTH_SHORT).show()
+            val mBuilderMsjEliminar = AlertDialog.Builder(activity)
+            mBuilderMsjEliminar.setTitle("Eliminar descuento")
+                    .setMessage("Esta seguro que desea eliminar el vale?")
+                    .setPositiveButton("Eliminar"){
+                        dialog , wich -> eliminarDescuento()
+                    }
+                    .setNegativeButton("Cancelar"){
+                        dialog, wich -> Log.i("InfoLa24","Se cancelo la eliminación")
+                    }
+            mBuilderMsjEliminar.create().show()
         }
         return true
+    }
+
+    private fun eliminarDescuento() {
+        Log.i("InfoLa24", "Eliminando Descuento")
+        this.descuentosEnAlertDialog = ArrayList(this.descuentos)
+        this.descuentosEnAlertDialog!!.remove(this.descuentoSeleccionado)
+        this.descuentoAdapterAlertDialog!!.setData(this.descuentosEnAlertDialog!!)
+        this.descuentoAdapterAlertDialog!!.notifyDataSetChanged()
+        this.alertDialogSeleccionarDescuento!!.show()
+    }
+
+    fun confirmarEliminarDescuento(){
+        (this.activity as DetalleTurnoActivity)
+                .detalleTurnoPresenter!!
+                .eliminarDescuento(this.descuentoSeleccionado!!)
+        (this.activity as DetalleTurnoActivity)
+                .detalleTurnoPresenter!!
+                .actualizarMontoDescuento(this.descuentoSeleccionadoEnAlertDialog!!,
+                        this.descuentoSeleccionado!!.monto)
+        this.descuentos!!.remove(this.descuentoSeleccionado!!)
+        this.descuentoAdapter!!.setData(this.descuentos!!)
+        this.descuentoAdapter!!.notifyDataSetChanged()
     }
 
 

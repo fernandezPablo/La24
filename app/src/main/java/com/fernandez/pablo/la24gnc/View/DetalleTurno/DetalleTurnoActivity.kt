@@ -34,7 +34,7 @@ class DetalleTurnoActivity : AppCompatActivity() {
         private set
     var detalleADeclararFragment: DetalleADeclararFragment? = null
         private set
-    private var detalleTurnoPresenter: DetalleTurnoPresenter? = null
+    var detalleTurnoPresenter: DetalleTurnoPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

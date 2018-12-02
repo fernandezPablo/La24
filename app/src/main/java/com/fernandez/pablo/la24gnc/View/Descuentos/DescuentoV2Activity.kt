@@ -188,11 +188,25 @@ class DescuentoV2Activity:AppCompatActivity(), IDescuentos{
         }
     }
 
-    override fun obtenerDescuento(): Descuento =
-            Descuento(
+    override fun obtenerDescuento(): Descuento? {
+        if(
+                !etDescripcion.text.toString().equals("") &&
+                !etMonto.text.toString().equals("") &&
+                !tvDescuento.text.toString().equals("")
+        ){
+            return Descuento(
                     etDescripcion.text.toString(),
                     tvDescuento.text.toString(),
                     etMonto.text.toString().toDouble(),
                     descuentoPresenter.turno.venta!!
             )
+        }
+        else{
+            Log.w("Advertencia","Descripcion empty: ${this.etDescripcion.text}")
+            Log.w("Advertencia","Monto empty: ${this.etMonto.text}")
+            Log.w("Advertencia","TipoDescuento: ${this.tvDescuento.text}")
+            return null
+        }
+    }
+
 }
