@@ -20,10 +20,11 @@ import java.util.ArrayList
 
 class DetalleTurnoPresenter(private val activity: DetalleTurnoActivity) {
 
-    private val turno: Turno?
+    val turno: Turno?
     private var totalDineroGnc: Double = 0.toDouble()
     private var totalDineroAceite: Double = 0.toDouble()
     private var totalDineroVarios: Double = 0.toDouble()
+
 
     val valoresInicialesGnc: DoubleArray
         get() = doubleArrayOf(this.turno!!.aforadores[0].valorInicial, this.turno.aforadores[1].valorInicial, this.turno.aforadores[2].valorInicial, this.turno.aforadores[3].valorInicial, this.turno.aforadores[4].valorInicial, this.turno.aforadores[5].valorInicial)

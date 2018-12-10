@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.EditarTurno.EditarAforadoresGncActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/toolbar_layout"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_below="@+id/appBar"
+       android:padding="15dp"
+       >
+
+       <TextView
+           android:id="@+id/activityTitle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="EDITANDO AFORADORES"
+           android:textStyle="bold"
+           android:textSize="18sp"
+           android:textAlignment="center"
+           />
+
+       <LinearLayout
+           android:id="@+id/llaf1"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_below="@+id/activityTitle"
+           android:padding="5dp"
+           >
+           <EditText
+               android:id="@+id/etAforadorInicial1"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 1 inicial..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+           <android.support.v7.widget.AppCompatImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="?attr/dividerVertical" />
+
+           <EditText
+               android:id="@+id/etAforadorFinal1"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 1 final..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/llaf2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_below="@+id/llaf1"
+           android:padding="5dp"
+           >
+           <EditText
+               android:id="@+id/etAforadorInicial2"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 2 inicial..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+           <android.support.v7.widget.AppCompatImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="?attr/dividerVertical" />
+
+           <EditText
+               android:id="@+id/etAforadorFinal2"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 2 final..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/llaf3"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_below="@+id/llaf2"
+           android:padding="5dp"
+           >
+           <EditText
+               android:id="@+id/etAforadorInicial3"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 3 inicial..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+           <android.support.v7.widget.AppCompatImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="?attr/dividerVertical" />
+
+           <EditText
+               android:id="@+id/etAforadorFinal3"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 3 final..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/llaf4"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_below="@+id/llaf3"
+           android:padding="5dp"
+           >
+           <EditText
+               android:id="@+id/etAforadorInicial4"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 4 inicial..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+           <android.support.v7.widget.AppCompatImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="?attr/dividerVertical" />
+
+           <EditText
+               android:id="@+id/etAforadorFinal4"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 4 final..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/llaf5"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_below="@+id/llaf4"
+           android:padding="5dp"
+           >
+           <EditText
+               android:id="@+id/etAforadorInicial5"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 5 inicial..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+           <android.support.v7.widget.AppCompatImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="?attr/dividerVertical" />
+
+           <EditText
+               android:id="@+id/etAforadorFinal5"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 5 final..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/llaf6"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_below="@+id/llaf5"
+           android:padding="5dp"
+           >
+           <EditText
+               android:id="@+id/etAforadorInicial6"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 6 inicial..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+           <android.support.v7.widget.AppCompatImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="?attr/dividerVertical" />
+
+           <EditText
+               android:id="@+id/etAforadorFinal6"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:hint="Aforador 6 final..."
+               android:layout_weight="1.0"
+               android:textSize="18sp"
+               android:inputType="numberDecimal"
+               />
+
+       </LinearLayout>
+
+       <EditText
+           android:id="@+id/etPmz"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/llaf6"
+           android:hint="PMZ..."
+           android:textSize="18sp"
+           android:inputType="numberDecimal"
+           />
+
+       <LinearLayout
+           android:id="@+id/llButons"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_alignParentBottom="true"
+           android:layout_marginTop="10dp"
+           >
+           <android.support.v7.widget.AppCompatButton
+               style="@style/Base.Widget.AppCompat.Button.Colored"
+               android:id="@+id/btnCancelar"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:text="CANCELAR"
+               android:layout_weight="1.0"
+               />
+
+           <android.support.v7.widget.AppCompatButton
+               style="@style/Base.Widget.AppCompat.Button.Colored"
+               android:id="@+id/btnConfirmar"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:text="CONFIRMAR"
+               android:layout_weight="1.0"
+               />
+
+       </LinearLayout>
+
+   </RelativeLayout>
+
+</RelativeLayout>

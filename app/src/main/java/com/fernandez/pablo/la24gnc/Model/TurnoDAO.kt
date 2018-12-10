@@ -125,4 +125,10 @@ class TurnoDAO(context: Context) {
         }
     }
 
+    fun updatePmz(context: Context,codigo: Int,pmz: Double){
+        val db = DbHelper.getInstance(context).writableDatabase
+        db.execSQL("UPDATE Turno SET pmz = ? WHERE codigo = ?", arrayOf(pmz,codigo))
+        db.close()
+    }
+
 }

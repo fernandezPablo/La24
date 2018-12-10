@@ -1,14 +1,17 @@
 package com.fernandez.pablo.la24gnc.View.DetalleTurno
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 
 import com.fernandez.pablo.la24gnc.R
+import com.fernandez.pablo.la24gnc.View.EditarTurno.EditarAforadoresGncActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -37,6 +40,7 @@ class DetalleGncFragment : Fragment() {
     private var totalM3: TextView? = null
     private var totalDinero: TextView? = null
     private var pmz: TextView? = null
+    private var editarAforadoresButton: Button? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -69,6 +73,16 @@ class DetalleGncFragment : Fragment() {
         this.totalDinero = view.findViewById(R.id.totalDinero) as TextView
 
         (this.activity as DetalleTurnoActivity).cargarDetalleGnc()
+
+        this.editarAforadoresButton = view.findViewById(R.id.btnEditarAforadores) as Button
+
+        this.editarAforadoresButton!!.setOnClickListener {
+            activity.finish()
+            val intent = Intent(activity,EditarAforadoresGncActivity::class.java)
+            val codTurno = (this.activity as DetalleTurnoActivity).detalleTurnoPresenter?.turno?.codigo
+            intent.putExtra("codigoTurno",codTurno)
+            startActivity(intent)
+        }
 
         return view
     }

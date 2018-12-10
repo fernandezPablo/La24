@@ -2,23 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fernandez.pablo.la24gnc.View.DetalleTurno.DetalleGncFragment">
+    tools:context="com.fernandez.pablo.la24gnc.View.DetalleTurno.DetalleGncFragment"
+    >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="140dp">
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="120dp"
+            android:paddingBottom="20dp"
+            >
 
             <LinearLayout
+                android:id="@+id/llheaders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:orientation="horizontal">
 
                 <TextView
@@ -47,9 +49,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llaf1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_below="@id/llheaders"
                 android:orientation="horizontal">
 
                 <TextView
@@ -81,8 +85,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llaf2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/llaf1"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -115,8 +121,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llaf3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/llaf2"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -149,8 +157,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llaf4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/llaf3"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -182,9 +192,12 @@
                     android:textSize="@dimen/size_num_detail" />
             </LinearLayout>
 
+
             <LinearLayout
+                android:id="@+id/llaf5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/llaf4"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -217,8 +230,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llaf6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/llaf5"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -251,10 +266,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llpmz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_above="@+id/llTotalM3"
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -278,10 +295,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llTotalM3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_above="@+id/llTotales"
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -305,10 +325,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llTotales"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_above="@+id/llButtonEdit"
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -331,8 +354,23 @@
 
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llButtonEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:paddingTop="30dp">
 
-    </ScrollView>
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:id="@+id/btnEditarAforadores"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Editar Aforadores" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
 </FrameLayout>

@@ -1,0 +1,8 @@
+TODO FILE
+issue24: perform edit "aforadores" from "DetalleGncFragment" in "DetalleTurno" view
+            - generate a button in "fragment_detalle_gnc" layout that allow edit.
+            - generate an activity to edit the value of "aforadores".
+            - call new activity from "DetalleTurnoActivity" with the "codigo turno"
+            - load "aforadores" and "pmz" values in the EditText's
+            - behavior of "cancelar" button
+            -* behavior of "Confirmar" button
