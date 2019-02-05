@@ -6,3 +6,5 @@ issue24: perform edit "aforadores" from "DetalleGncFragment" in "DetalleTurno" v
             - load "aforadores" and "pmz" values in the EditText's
             - behavior of "cancelar" button
             -* behavior of "Confirmar" button
+
+issue26: fix initial app crash after declaring turn

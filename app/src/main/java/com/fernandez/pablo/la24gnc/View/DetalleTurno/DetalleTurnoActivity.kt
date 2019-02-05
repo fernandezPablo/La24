@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.util.Log
 
 import com.fernandez.pablo.la24gnc.Model.Descuento
 import com.fernandez.pablo.la24gnc.Model.LineaVenta
@@ -56,6 +57,10 @@ class DetalleTurnoActivity : AppCompatActivity() {
         this.viewpager!!.adapter = viewPagerAdapter
         this.tabLayout!!.setupWithViewPager(viewpager)
         this.detalleTurnoPresenter = DetalleTurnoPresenter(this)
+        if(this.detalleTurnoPresenter!!.turno == null) {
+            Log.i("La24GncInfo","Going to Home!")
+            this.goHOme()
+        }
     }
 
     fun cargarDetalleGnc() {

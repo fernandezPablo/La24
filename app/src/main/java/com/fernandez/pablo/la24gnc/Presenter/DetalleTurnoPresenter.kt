@@ -81,7 +81,6 @@ class DetalleTurnoPresenter(private val activity: DetalleTurnoActivity) {
         }
 
     init {
-        //this.turno = TurnoDAO.getTurno(activity,new TurnoDAO(activity).getCodLastTurno());
         this.turno = TurnoDAO.getTurno(activity, activity.intent.getIntExtra("codigoTurno", 1))
         this.turno!!.aforadores = AforadorDAO(activity).listAforadores(turno.codigo, Aforador.GNC)
         this.turno.aforadores.add(AforadorDAO(activity).listAforadores(turno.codigo, Aforador.ACEITE)[0])

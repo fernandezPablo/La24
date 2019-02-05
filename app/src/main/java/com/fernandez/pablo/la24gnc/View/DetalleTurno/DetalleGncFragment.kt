@@ -4,6 +4,7 @@ package com.fernandez.pablo.la24gnc.View.DetalleTurno
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.TextView
 
 import com.fernandez.pablo.la24gnc.R
 import com.fernandez.pablo.la24gnc.View.EditarTurno.EditarAforadoresGncActivity
+import com.fernandez.pablo.la24gnc.View.Main.MainV2Activity
 
 /**
  * A simple [Fragment] subclass.
@@ -90,42 +92,81 @@ class DetalleGncFragment : Fragment() {
 
     //TODO los metodos para cargar datos deben recibir datos nativos
     fun cargarValoresIniciales(VIaforadores: Array<String>) {
-        this.aforador1VI!!.text = VIaforadores[0]
-        this.aforador2VI!!.text = VIaforadores[1]
-        this.aforador3VI!!.text = VIaforadores[2]
-        this.aforador4VI!!.text = VIaforadores[3]
-        this.aforador5VI!!.text = VIaforadores[4]
-        this.aforador6VI!!.text = VIaforadores[5]
+        try{
+            this.aforador1VI!!.text = VIaforadores[0]
+            this.aforador2VI!!.text = VIaforadores[1]
+            this.aforador3VI!!.text = VIaforadores[2]
+            this.aforador4VI!!.text = VIaforadores[3]
+            this.aforador5VI!!.text = VIaforadores[4]
+            this.aforador6VI!!.text = VIaforadores[5]
+
+        }
+        catch (ex: KotlinNullPointerException){
+            this.noSeEncontraronValores("No se encontraron valores iniciales ${ex.message}")
+        }
     }
 
     fun cargarValoresFinales(VFaforadores: Array<String>) {
-        this.aforador1VF!!.text = VFaforadores[0]
-        this.aforador2VF!!.text = VFaforadores[1]
-        this.aforador3VF!!.text = VFaforadores[2]
-        this.aforador4VF!!.text = VFaforadores[3]
-        this.aforador5VF!!.text = VFaforadores[4]
-        this.aforador6VF!!.text = VFaforadores[5]
+        try{
+            this.aforador1VF!!.text = VFaforadores[0]
+            this.aforador2VF!!.text = VFaforadores[1]
+            this.aforador3VF!!.text = VFaforadores[2]
+            this.aforador4VF!!.text = VFaforadores[3]
+            this.aforador5VF!!.text = VFaforadores[4]
+            this.aforador6VF!!.text = VFaforadores[5]
+        }
+        catch(ex: KotlinNullPointerException){
+            this.noSeEncontraronValores("No se recibieron valores finales.\n ${ex.message}")
+        }
+
     }
 
     fun cargarDiferencias(diferencias: Array<String>) {
-        this.difAforador1!!.text = diferencias[0]
-        this.difAforador2!!.text = diferencias[1]
-        this.difAforador3!!.text = diferencias[2]
-        this.difAforador4!!.text = diferencias[3]
-        this.difAforador5!!.text = diferencias[4]
-        this.difAforador6!!.text = diferencias[5]
+        try {
+            this.difAforador1!!.text = diferencias[0]
+            this.difAforador2!!.text = diferencias[1]
+            this.difAforador3!!.text = diferencias[2]
+            this.difAforador4!!.text = diferencias[3]
+            this.difAforador5!!.text = diferencias[4]
+            this.difAforador6!!.text = diferencias[5]
+        }
+            catch(ex: KotlinNullPointerException){
+                this.noSeEncontraronValores("No se encontraron las diferencias entre aforadores. \n ${ex.message}")
+        }
     }
 
     fun cargarPmz(pmz: String) {
-        this.pmz!!.text = pmz
+        try {
+            this.pmz!!.text = pmz
+        }
+        catch (ex: KotlinNullPointerException){
+            this.noSeEncontraronValores("No se encontro el valor de pmz. \n${ex.message}")
+        }
     }
 
     fun cargarTotalM3(totalM3: String) {
-        this.totalM3!!.text = totalM3
+        try {
+            this.totalM3!!.text = totalM3
+        }
+        catch(ex: KotlinNullPointerException){
+            this.noSeEncontraronValores("No se el valor total en m3. \n${ex.message}")
+        }
     }
 
     fun cargarTotalDinero(totalDinero: String) {
-        this.totalDinero!!.text = totalDinero
+        try {
+            this.totalDinero!!.text = totalDinero
+        }
+        catch (ex: KotlinNullPointerException) {
+            this.noSeEncontraronValores("No se encontro el valor total en $ \n${ex.message}")
+        }
+    }
+
+    fun noSeEncontraronValores(msg: String = "No se recibio ningun valor"){
+        Log.e("La24GncError",msg)
+        val intent = Intent(activity,MainV2Activity::class.java)
+        startActivity(intent)
+        activity.finish()
     }
 
 }
